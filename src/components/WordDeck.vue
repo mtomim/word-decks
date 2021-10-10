@@ -211,7 +211,9 @@ export default Vue.extend({
   watch: {
     explain(val) {
       this.randomN.forEach((w, i) => {
-        [...this.$refs[`w_${i}`]].pop().setShowReading(val);
+        if (Array.isArray(this.$refs[`w_${i}`])) {
+          this.$refs[`w_${i}`].forEach((ref) => ref.setShowReading(val));
+        }
       });
     },
     dirHorizontal(val) {

@@ -9,7 +9,7 @@ Vue.use(VueI18n)
 Vue.config.productionTip = false
 
 const i18n = new VueI18n({
-  locale: 'fr',
+  locale: localStorage.getItem('wd-locale') || 'fr',
   messages
 });
 

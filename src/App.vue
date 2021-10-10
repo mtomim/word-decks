@@ -43,7 +43,8 @@
         >
           <v-list-item-title>
             <v-btn
-              @click="$i18n.locale=item"
+              @click="setLocale(item)"
+              :outlined="$i18n.locale === item"
             >
               <v-icon small>{{item}}</v-icon>
             </v-btn>
@@ -74,6 +75,10 @@ export default {
   methods: {
     routePush(route) {
       this.$router.push({ name: route.name }).catch(() => {});
+    },
+    setLocale(locale) {
+      this.$i18n.locale = locale;
+      localStorage.setItem("wd-locale", locale);
     }
   },
   mounted() {
