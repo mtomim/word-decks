@@ -41,6 +41,7 @@
             <v-progress-circular
               :value="progress"
               class="mr-2"
+              color="orange"
             ></v-progress-circular>
           </v-col>
         </v-row>

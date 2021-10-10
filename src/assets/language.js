@@ -1,6 +1,7 @@
 export default {
     en: {
         welcome: 'Welcome to WordDeck',
+        lang: "English",
         info: 'For help and collaboration with a Japanese speaker, please join our online',
         discordChannel: 'Discord channel',
         label: {
@@ -26,6 +27,7 @@ export default {
     },
     fr: {
         welcome: 'Bienvenue à WordDeck',
+        lang: "français",
         info: 'Pour avoir de l\'aide auprès d\'un Japonais, rejoignez-vous à notre',
         discordChannel: 'chaîne Discord',
         label: {
@@ -51,6 +53,7 @@ export default {
     },
     ja: {
         welcome: 'WordDeck へようこそ',
+        lang: "日本語",
         info: '日本語（にほんご）の質問（しつもん）等（とう、など）は、以下（いか）の方法（ほうほう）でどうぞ:',
         discordChannel: 'Discord チャンネル',
         label: {
