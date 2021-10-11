@@ -34,6 +34,16 @@ if (registry.length === 0) {
   }));
 }
 
+if (!registry.find((f) => f.fileName === "(internal easy 500)")) {
+  registry.push(Object.assign(new DataFile(), {
+    fileName: "(internal easy 500)",
+    fileSize: 56533,
+    headers: [ "word", "reading", "definition", "part" ],
+    content: require("@/assets/easy500.json"),
+    creationDate: new Date("2021-10-11"),
+  }));
+}
+
 export class DataFileRegistry {
   static REGISTRY = registry;
 
