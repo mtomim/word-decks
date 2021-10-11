@@ -1,9 +1,9 @@
 <template>
   <v-container>
     <v-row>
-      <v-col class="mb-5" cols="12">
+      <v-col cols="12">
         <v-row>
-          <v-col v-if="wordInFocus">
+          <v-col v-if="wordInFocus" class="col-6">
             <v-row>
               <v-col>
                 <span class="text-h1">{{ wordInFocus.word }}</span>
@@ -37,24 +37,27 @@
               $t("label.start")
             }}</v-btn>
           </v-col>
-          <v-col>
+          <v-col class="col-6">
             <v-progress-circular
               :value="progress"
-              class="mr-2"
               color="orange"
             ></v-progress-circular>
           </v-col>
         </v-row>
-        <v-row class="words-stack">
-          <div v-for="(word, i) in randomN" :key="`w-${i}`" class="word">
-            <word :word="word" :ref="`w_${i}`" @focus="handleWordFocus" />
-          </div>
+        <v-row class="words-stack" justify="start">
+          <v-col v-for="(word, i) in randomN" :key="`w-${i}`" cols="2">
+            <div class="word">
+              <word :word="word" :ref="`w_${i}`" @focus="handleWordFocus" />
+            </div>
+          </v-col>
         </v-row>
         <v-row align="start" class="mt-4">
-          <v-btn @click.prevent.stop="loadNext" color="accent">
-            <v-icon>mdi-autorenew</v-icon>
-          </v-btn>
-          <v-checkbox v-model="explain" :label="$t('label.explain')" class="ma-0" />
+          <v-col>
+            <v-btn @click.prevent.stop="loadNext" color="accent">
+              <v-icon>mdi-autorenew</v-icon>
+            </v-btn>
+            <v-checkbox v-model="explain" :label="$t('label.explain')" class="ma-0" />
+          </v-col>
         </v-row>
       </v-col>
     </v-row>
@@ -225,9 +228,12 @@ export default Vue.extend({
 </script>
 
 <style>
-.words-stack > .word {
+.words-stack .word {
   min-width: 8rem;
-  max-width: 12rem;
+  max-width: 15rem;
+}
+.words-stack .word .v-card__title {
+  white-space: nowrap;
 }
 .v-btn-toggle.vertical {
   flex-direction: column;
