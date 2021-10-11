@@ -38,10 +38,20 @@
             }}</v-btn>
           </v-col>
           <v-col class="col-6">
-            <v-progress-circular
-              :value="progress"
-              color="orange"
-            ></v-progress-circular>
+            <v-row class="d-flex flex-row">
+              <v-col cols="6" class="d-flex">
+                <v-progress-circular
+                  class="d-flex ml-auto"
+                  :value="progress"
+                  :color="color"
+                  size="64"
+                  width="8"
+                ></v-progress-circular>
+              </v-col>
+              <v-col cols="6" class="d-flex">
+                <span :style="`color: ${color}`" class="text-h2 d-flex ma-auto mr-1">{{ Number.isNaN(proportion) ? 0 : Math.round(100 - proportion * 100) }}%</span>
+              </v-col>
+            </v-row>
           </v-col>
         </v-row>
         <v-row class="words-stack" justify="start">
@@ -61,16 +71,17 @@
         </v-row>
       </v-col>
       <v-col cols="2" class="d-flex flex-column-reverse" align-self="start">
-        <v-chip
-          v-for="([word, answer], i) in answers"
-          :href="`https://jisho.org/search/${word.word}`"
+        <v-btn
+          v-for="([word, answer, right], i) in answers"
+          :href="`https://jisho.org/search/${word}`"
           target="jisho.org"
           link
+          class="mr-auto font-weight-black"
           :key="i"
-          :color="word.reading === answer && 'primary' || 'red'"
-          :dark="word.reading !== answer"
-          :outlined="word.reading === answer"
-        >{{word.word}}: {{answer}}</v-chip>
+          :color="right && 'primary lighten-1' || 'error'"
+        >
+        {{word}}: {{answer}}
+        </v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -109,6 +120,15 @@ export default Vue.extend({
     Object.assign(this, getSetting());
   },
   computed: {
+    proportion() {
+      return this.answers.filter(([,,right]) => !right).length / this.answers.length;
+    },
+    color() {
+      if (this.answers.length === 0) {
+        return "orange";
+      }
+      return `rgb(${255 * this.proportion}, ${255 - 255 * this.proportion}, 0)`;
+    },
     progress() {
       return  (this.numWords - this.randomN.length - (this.wordInFocus ? 1 : 0)) / this.numWords * 100;
     },
@@ -214,8 +234,8 @@ export default Vue.extend({
       });
     },
     correct(word, answer) {
-      this.answers.push([word, answer]);
       const right = word.reading === answer;
+      this.answers.push([word.word, answer, right]);
       (score[word.word] = score[word.word] || []).push(right);
       if (right) {
         this.focusOnWord(this.randomN.find(() => true));
