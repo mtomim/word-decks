@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12">
+      <v-col cols="10">
         <v-row>
           <v-col v-if="wordInFocus" class="col-6">
             <v-row>
@@ -60,6 +60,18 @@
           </v-col>
         </v-row>
       </v-col>
+      <v-col cols="2" class="d-flex flex-column-reverse" align-self="start">
+        <v-chip
+          v-for="([word, answer], i) in answers"
+          :href="`https://jisho.org/search/${word.word}`"
+          target="jisho.org"
+          link
+          :key="i"
+          :color="word.reading === answer && 'primary' || 'red'"
+          :dark="word.reading !== answer"
+          :outlined="word.reading === answer"
+        >{{word.word}}: {{answer}}</v-chip>
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -89,6 +101,7 @@ export default Vue.extend({
       answer: undefined,
       explain: false,
       dirHorizontal: true,
+      answers: [],
     };
   },
   beforeMount() {
@@ -201,6 +214,7 @@ export default Vue.extend({
       });
     },
     correct(word, answer) {
+      this.answers.push([word, answer]);
       const right = word.reading === answer;
       (score[word.word] = score[word.word] || []).push(right);
       if (right) {

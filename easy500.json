@@ -1,0 +1,3002 @@
+[
+  {
+    "word": "一つ",
+    "reading": "ひとつ",
+    "definition": "one (thing)",
+    "part": "Noun"
+  },
+  {
+    "word": "一",
+    "reading": "いち",
+    "definition": "one",
+    "part": "Noun"
+  },
+  {
+    "word": "二",
+    "reading": "に",
+    "definition": "two",
+    "part": "Noun"
+  },
+  {
+    "word": "二つ",
+    "reading": "ふたつ",
+    "definition": "two (things)",
+    "part": "Noun"
+  },
+  {
+    "word": "三",
+    "reading": "さん",
+    "definition": "three",
+    "part": "Noun"
+  },
+  {
+    "word": "三つ",
+    "reading": "みっつ",
+    "definition": "three (things)",
+    "part": "Noun"
+  },
+  {
+    "word": "四つ",
+    "reading": "よっつ",
+    "definition": "four (things)",
+    "part": "Noun"
+  },
+  {
+    "word": "四",
+    "reading": "し",
+    "definition": "four",
+    "part": "Noun"
+  },
+  {
+    "word": "四",
+    "reading": "よん",
+    "definition": "four",
+    "part": "Noun"
+  },
+  {
+    "word": "五つ",
+    "reading": "いつつ",
+    "definition": "five (things)",
+    "part": "Noun"
+  },
+  {
+    "word": "五",
+    "reading": "ご",
+    "definition": "five",
+    "part": "Noun"
+  },
+  {
+    "word": "六つ",
+    "reading": "むっつ",
+    "definition": "six (things)",
+    "part": "Noun"
+  },
+  {
+    "word": "六",
+    "reading": "ろく",
+    "definition": "six",
+    "part": "Noun"
+  },
+  {
+    "word": "七",
+    "reading": "なな",
+    "definition": "seven",
+    "part": "Noun"
+  },
+  {
+    "word": "七つ",
+    "reading": "ななつ",
+    "definition": "seven (things)",
+    "part": "Noun"
+  },
+  {
+    "word": "八",
+    "reading": "はち",
+    "definition": "eight",
+    "part": "Noun"
+  },
+  {
+    "word": "八つ",
+    "reading": "やっつ",
+    "definition": "eight (things)",
+    "part": "Noun"
+  },
+  {
+    "word": "九",
+    "reading": "きゅう",
+    "definition": "nine",
+    "part": "Noun"
+  },
+  {
+    "word": "九つ",
+    "reading": "ここのつ",
+    "definition": "nine (things)",
+    "part": "Noun"
+  },
+  {
+    "word": "十",
+    "reading": "じゅう",
+    "definition": "ten",
+    "part": "Noun"
+  },
+  {
+    "word": "百",
+    "reading": "ひゃく",
+    "definition": "hundred",
+    "part": "Noun"
+  },
+  {
+    "word": "千",
+    "reading": "せん",
+    "definition": "thousand",
+    "part": "Noun"
+  },
+  {
+    "word": "万",
+    "reading": "まん",
+    "definition": "ten thousand",
+    "part": "Noun"
+  },
+  {
+    "word": "円",
+    "reading": "えん",
+    "definition": "circle",
+    "part": "Noun"
+  },
+  {
+    "word": "円",
+    "reading": "えん",
+    "definition": "yen",
+    "part": "Noun"
+  },
+  {
+    "word": "時",
+    "reading": "とき",
+    "definition": "time",
+    "part": "Noun"
+  },
+  {
+    "word": "時々",
+    "reading": "ときどき",
+    "definition": "sometimes",
+    "part": "Adverb"
+  },
+  {
+    "word": "日",
+    "reading": "にち",
+    "definition": "day",
+    "part": "Noun"
+  },
+  {
+    "word": "六日",
+    "reading": "むいか",
+    "definition": "six days, 6th of the month",
+    "part": "Noun"
+  },
+  {
+    "word": "三日",
+    "reading": "みっか",
+    "definition": "three days, 3rd of the month",
+    "part": "Noun"
+  },
+  {
+    "word": "五日",
+    "reading": "いつか",
+    "definition": "five days, 5th of the month",
+    "part": "Noun"
+  },
+  {
+    "word": "八日",
+    "reading": "ようか",
+    "definition": "eight days, 8th of the month",
+    "part": "Noun"
+  },
+  {
+    "word": "二十日",
+    "reading": "はつか",
+    "definition": "20 days, 20th of the month",
+    "part": "Noun"
+  },
+  {
+    "word": "二日",
+    "reading": "ふつか",
+    "definition": "two days, 2nd of the month",
+    "part": "Noun"
+  },
+  {
+    "word": "九日",
+    "reading": "ここのか",
+    "definition": "nine days, 9th of the month",
+    "part": "Noun"
+  },
+  {
+    "word": "一日",
+    "reading": "ついたち",
+    "definition": "1st of the month",
+    "part": "Noun"
+  },
+  {
+    "word": "十日",
+    "reading": "とおか",
+    "definition": "ten days, 10th of the month",
+    "part": "Noun"
+  },
+  {
+    "word": "七日",
+    "reading": "なのか",
+    "definition": "seven days, 7th of the month",
+    "part": "Noun"
+  },
+  {
+    "word": "四日",
+    "reading": "よっか",
+    "definition": "four days, 4th of the month",
+    "part": "Noun"
+  },
+  {
+    "word": "月",
+    "reading": "つき",
+    "definition": "moon",
+    "part": "Noun"
+  },
+  {
+    "word": "水",
+    "reading": "みず",
+    "definition": "water",
+    "part": "Noun"
+  },
+  {
+    "word": "金",
+    "reading": "かね",
+    "definition": "money",
+    "part": "Noun"
+  },
+  {
+    "word": "日曜日",
+    "reading": "にちようび",
+    "definition": "Sunday",
+    "part": "Noun"
+  },
+  {
+    "word": "土曜日",
+    "reading": "どようび",
+    "definition": "Saturday",
+    "part": "Noun"
+  },
+  {
+    "word": "金曜日",
+    "reading": "きんようび",
+    "definition": "Friday",
+    "part": "Noun"
+  },
+  {
+    "word": "月曜日",
+    "reading": "げつようび",
+    "definition": "Monday",
+    "part": "Noun"
+  },
+  {
+    "word": "木曜日",
+    "reading": "もくようび",
+    "definition": "Thursday",
+    "part": "Noun"
+  },
+  {
+    "word": "曜日",
+    "reading": "ようび",
+    "definition": "day of the week",
+    "part": "Noun"
+  },
+  {
+    "word": "火曜日",
+    "reading": "かようび",
+    "definition": "Tuesday",
+    "part": "Noun"
+  },
+  {
+    "word": "水曜日",
+    "reading": "すいようび",
+    "definition": "Wednesday",
+    "part": "Noun"
+  },
+  {
+    "word": "週",
+    "reading": "しゅう",
+    "definition": "week",
+    "part": "Noun"
+  },
+  {
+    "word": "年",
+    "reading": "とし",
+    "definition": "year, age",
+    "part": "Noun"
+  },
+  {
+    "word": "分かる",
+    "reading": "わかる",
+    "definition": "understand",
+    "part": "Verb"
+  },
+  {
+    "word": "何",
+    "reading": "なに",
+    "definition": "what, which",
+    "part": "Noun"
+  },
+  {
+    "word": "先",
+    "reading": "さき",
+    "definition": "ahead, first",
+    "part": "Noun"
+  },
+  {
+    "word": "今年",
+    "reading": "ことし",
+    "definition": "this year",
+    "part": "Noun"
+  },
+  {
+    "word": "今",
+    "reading": "いま",
+    "definition": "now",
+    "part": "Adverb"
+  },
+  {
+    "word": "今日",
+    "reading": "きょう",
+    "definition": "today",
+    "part": "Noun"
+  },
+  {
+    "word": "今月",
+    "reading": "こんげつ",
+    "definition": "this month",
+    "part": "Noun"
+  },
+  {
+    "word": "今週",
+    "reading": "こんしゅう",
+    "definition": "this week",
+    "part": "Noun"
+  },
+  {
+    "word": "来る",
+    "reading": "くる",
+    "definition": "come",
+    "part": "Verb"
+  },
+  {
+    "word": "来年",
+    "reading": "らいねん",
+    "definition": "next year",
+    "part": "Noun"
+  },
+  {
+    "word": "行く",
+    "reading": "いく",
+    "definition": "go",
+    "part": "Verb"
+  },
+  {
+    "word": "帰る",
+    "reading": "かえる",
+    "definition": "return, go back",
+    "part": "Verb"
+  },
+  {
+    "word": "大きい",
+    "reading": "おおきい",
+    "definition": "big",
+    "part": "Adjective"
+  },
+  {
+    "word": "小さい",
+    "reading": "ちいさい",
+    "definition": "small",
+    "part": "Adjective"
+  },
+  {
+    "word": "少ない",
+    "reading": "すくない",
+    "definition": "few, little",
+    "part": "Adjective"
+  },
+  {
+    "word": "少し",
+    "reading": "すこし",
+    "definition": "a bit, a little while",
+    "part": "Adverb"
+  },
+  {
+    "word": "多い",
+    "reading": "おおい",
+    "definition": "lots of",
+    "part": "Adjective"
+  },
+  {
+    "word": "多分",
+    "reading": "たぶん",
+    "definition": "probably, perhaps",
+    "part": "Adverb"
+  },
+  {
+    "word": "上げる",
+    "reading": "あげる",
+    "definition": "raise, improve",
+    "part": "Verb"
+  },
+  {
+    "word": "上る",
+    "reading": "のぼる",
+    "definition": "go up",
+    "part": "Verb"
+  },
+  {
+    "word": "上",
+    "reading": "うえ",
+    "definition": "up, above",
+    "part": "Noun"
+  },
+  {
+    "word": "下",
+    "reading": "した",
+    "definition": "under, below",
+    "part": "Noun"
+  },
+  {
+    "word": "右",
+    "reading": "みぎ",
+    "definition": "right",
+    "part": "Noun"
+  },
+  {
+    "word": "左",
+    "reading": "ひだり",
+    "definition": "left",
+    "part": "Noun"
+  },
+  {
+    "word": "方",
+    "reading": "ほう",
+    "definition": "direction, side",
+    "part": "Noun"
+  },
+  {
+    "word": "大人",
+    "reading": "おとな",
+    "definition": "adult",
+    "part": "Noun"
+  },
+  {
+    "word": "人",
+    "reading": "ひと",
+    "definition": "person",
+    "part": "Noun"
+  },
+  {
+    "word": "一人",
+    "reading": "ひとり",
+    "definition": "one, one person",
+    "part": "Noun"
+  },
+  {
+    "word": "入れる",
+    "reading": "いれる",
+    "definition": "put in",
+    "part": "Verb"
+  },
+  {
+    "word": "入る",
+    "reading": "はいる",
+    "definition": "enter",
+    "part": "Verb"
+  },
+  {
+    "word": "出る",
+    "reading": "でる",
+    "definition": "go out, leave",
+    "part": "Verb"
+  },
+  {
+    "word": "出来る",
+    "reading": "できる",
+    "definition": "can do, be good at",
+    "part": "Verb"
+  },
+  {
+    "word": "出す",
+    "reading": "だす",
+    "definition": "take out",
+    "part": "Verb"
+  },
+  {
+    "word": "本",
+    "reading": "ほん",
+    "definition": "book, volume",
+    "part": "Noun"
+  },
+  {
+    "word": "休む",
+    "reading": "やすむ",
+    "definition": "take a day off, take a break",
+    "part": "Verb"
+  },
+  {
+    "word": "体",
+    "reading": "からだ",
+    "definition": "body, health",
+    "part": "Noun"
+  },
+  {
+    "word": "目",
+    "reading": "め",
+    "definition": "eye",
+    "part": "Noun"
+  },
+  {
+    "word": "口",
+    "reading": "くち",
+    "definition": "mouth",
+    "part": "Noun"
+  },
+  {
+    "word": "耳",
+    "reading": "みみ",
+    "definition": "ear, hearing",
+    "part": "Noun"
+  },
+  {
+    "word": "上手",
+    "reading": "じょうず",
+    "definition": "good, skilled",
+    "part": "Adjectival Noun"
+  },
+  {
+    "word": "手",
+    "reading": "て",
+    "definition": "hand",
+    "part": "Noun"
+  },
+  {
+    "word": "足",
+    "reading": "あし",
+    "definition": "leg, foot",
+    "part": "Noun"
+  },
+  {
+    "word": "空く",
+    "reading": "すく",
+    "definition": "be empty",
+    "part": "Verb"
+  },
+  {
+    "word": "男",
+    "reading": "おとこ",
+    "definition": "man, male",
+    "part": "Noun"
+  },
+  {
+    "word": "女",
+    "reading": "おんな",
+    "definition": "woman, girl",
+    "part": "Noun"
+  },
+  {
+    "word": "子供",
+    "reading": "こども",
+    "definition": "child, kid",
+    "part": "Noun"
+  },
+  {
+    "word": "好き",
+    "reading": "すき",
+    "definition": "favorite, liked",
+    "part": "Adjectival Noun"
+  },
+  {
+    "word": "大好き",
+    "reading": "だいすき",
+    "definition": "love",
+    "part": "Adjective"
+  },
+  {
+    "word": "私",
+    "reading": "わたし",
+    "definition": "I",
+    "part": "Noun"
+  },
+  {
+    "word": "友達",
+    "reading": "ともだち",
+    "definition": "friend, companion",
+    "part": "Noun"
+  },
+  {
+    "word": "家",
+    "reading": "うち",
+    "definition": "house, home",
+    "part": "Noun"
+  },
+  {
+    "word": "気",
+    "reading": "き",
+    "definition": "spirit, temperament",
+    "part": "Noun"
+  },
+  {
+    "word": "元気",
+    "reading": "げんき",
+    "definition": "healthy, energetic",
+    "part": "Adjective"
+  },
+  {
+    "word": "天気",
+    "reading": "てんき",
+    "definition": "weather",
+    "part": "Noun"
+  },
+  {
+    "word": "晴れる",
+    "reading": "はれる",
+    "definition": "be sunny, clear up",
+    "part": "Verb"
+  },
+  {
+    "word": "昨日",
+    "reading": "きのう",
+    "definition": "yesterday",
+    "part": "Noun"
+  },
+  {
+    "word": "開ける",
+    "reading": "あける",
+    "definition": "open, unlock",
+    "part": "Verb"
+  },
+  {
+    "word": "開く",
+    "reading": "ひらく",
+    "definition": "open",
+    "part": "Verb"
+  },
+  {
+    "word": "閉じる",
+    "reading": "とじる",
+    "definition": "close",
+    "part": "Verb"
+  },
+  {
+    "word": "閉める",
+    "reading": "しめる",
+    "definition": "shut, close",
+    "part": "Verb"
+  },
+  {
+    "word": "閉まる",
+    "reading": "しまる",
+    "definition": "be shut, be closed",
+    "part": "Verb"
+  },
+  {
+    "word": "聞く",
+    "reading": "きく",
+    "definition": "hear, ask",
+    "part": "Verb"
+  },
+  {
+    "word": "時間",
+    "reading": "じかん",
+    "definition": "time, hour",
+    "part": "Noun"
+  },
+  {
+    "word": "高い",
+    "reading": "たかい",
+    "definition": "high, tall",
+    "part": "Adjective"
+  },
+  {
+    "word": "安い",
+    "reading": "やすい",
+    "definition": "inexpensive, cheap",
+    "part": "Adjective"
+  },
+  {
+    "word": "低い",
+    "reading": "ひくい",
+    "definition": "low, short",
+    "part": "Adjective"
+  },
+  {
+    "word": "前",
+    "reading": "まえ",
+    "definition": "front, before",
+    "part": "Noun"
+  },
+  {
+    "word": "後",
+    "reading": "あと",
+    "definition": "after",
+    "part": "Adverb"
+  },
+  {
+    "word": "後ろ",
+    "reading": "うしろ",
+    "definition": "back, behind",
+    "part": "Noun"
+  },
+  {
+    "word": "午後",
+    "reading": "ごご",
+    "definition": "afternoon, p.m.",
+    "part": "Noun"
+  },
+  {
+    "word": "午前",
+    "reading": "ごぜん",
+    "definition": "morning, a.m.",
+    "part": "Noun"
+  },
+  {
+    "word": "朝",
+    "reading": "あさ",
+    "definition": "morning",
+    "part": "Noun"
+  },
+  {
+    "word": "昼",
+    "reading": "ひる",
+    "definition": "daytime, midday",
+    "part": "Noun"
+  },
+  {
+    "word": "晩",
+    "reading": "ばん",
+    "definition": "evening (usually from sunset to bedtime)",
+    "part": "Noun"
+  },
+  {
+    "word": "今晩",
+    "reading": "こんばん",
+    "definition": "this evening, tonight",
+    "part": "Noun"
+  },
+  {
+    "word": "夜",
+    "reading": "よる",
+    "definition": "night (from sunset to sunrise)",
+    "part": "Noun"
+  },
+  {
+    "word": "食べる",
+    "reading": "たべる",
+    "definition": "eat",
+    "part": "Verb"
+  },
+  {
+    "word": "飲む",
+    "reading": "のむ",
+    "definition": "drink",
+    "part": "Verb"
+  },
+  {
+    "word": "ご飯",
+    "reading": "ごはん",
+    "definition": "cooked rice, meal",
+    "part": "Noun"
+  },
+  {
+    "word": "買う",
+    "reading": "かう",
+    "definition": "buy",
+    "part": "Verb"
+  },
+  {
+    "word": "見る",
+    "reading": "みる",
+    "definition": "see, look at",
+    "part": "Verb"
+  },
+  {
+    "word": "見せる",
+    "reading": "みせる",
+    "definition": "show",
+    "part": "Verb"
+  },
+  {
+    "word": "見つける",
+    "reading": "みつける",
+    "definition": "find",
+    "part": "Verb"
+  },
+  {
+    "word": "見える",
+    "reading": "みえる",
+    "definition": "be visible",
+    "part": "Verb"
+  },
+  {
+    "word": "見つかる",
+    "reading": "みつかる",
+    "definition": "be found, be caught",
+    "part": "Verb"
+  },
+  {
+    "word": "言う",
+    "reading": "いう",
+    "definition": "say, tell",
+    "part": "Verb"
+  },
+  {
+    "word": "話す",
+    "reading": "はなす",
+    "definition": "speak, tell",
+    "part": "Verb"
+  },
+  {
+    "word": "読む",
+    "reading": "よむ",
+    "definition": "read",
+    "part": "Verb"
+  },
+  {
+    "word": "漢字",
+    "reading": "かんじ",
+    "definition": "character, kanji",
+    "part": "Noun"
+  },
+  {
+    "word": "書く",
+    "reading": "かく",
+    "definition": "write",
+    "part": "Verb"
+  },
+  {
+    "word": "覚える",
+    "reading": "おぼえる",
+    "definition": "memorize, learn",
+    "part": "Verb"
+  },
+  {
+    "word": "会う",
+    "reading": "あう",
+    "definition": "meet",
+    "part": "Verb"
+  },
+  {
+    "word": "仕事",
+    "reading": "しごと",
+    "definition": "work, job",
+    "part": "Noun"
+  },
+  {
+    "word": "場合",
+    "reading": "ばあい",
+    "definition": "situation, case",
+    "part": "Noun"
+  },
+  {
+    "word": "車",
+    "reading": "くるま",
+    "definition": "car, automobile",
+    "part": "Noun"
+  },
+  {
+    "word": "電車",
+    "reading": "でんしゃ",
+    "definition": "train",
+    "part": "Noun"
+  },
+  {
+    "word": "駅",
+    "reading": "えき",
+    "definition": "railway station",
+    "part": "Noun"
+  },
+  {
+    "word": "道",
+    "reading": "みち",
+    "definition": "road, street",
+    "part": "Noun"
+  },
+  {
+    "word": "他",
+    "reading": "ほか",
+    "definition": "other",
+    "part": "Noun"
+  },
+  {
+    "word": "止める",
+    "reading": "やめる",
+    "definition": "stop, give up, abolish",
+    "part": "Verb"
+  },
+  {
+    "word": "歩く",
+    "reading": "あるく",
+    "definition": "walk, go on foot",
+    "part": "Verb"
+  },
+  {
+    "word": "走る",
+    "reading": "はしる",
+    "definition": "run",
+    "part": "Verb"
+  },
+  {
+    "word": "近く",
+    "reading": "ちかく",
+    "definition": "near, close to",
+    "part": "Adverb"
+  },
+  {
+    "word": "近い",
+    "reading": "ちかい",
+    "definition": "near, soon",
+    "part": "Adjective"
+  },
+  {
+    "word": "近く",
+    "reading": "ちかく",
+    "definition": "vicinity, nearby",
+    "part": "Noun"
+  },
+  {
+    "word": "遠い",
+    "reading": "とおい",
+    "definition": "far, distant",
+    "part": "Adjective"
+  },
+  {
+    "word": "長い",
+    "reading": "ながい",
+    "definition": "long",
+    "part": "Adjective"
+  },
+  {
+    "word": "短い",
+    "reading": "みじかい",
+    "definition": "short, brief",
+    "part": "Adjective"
+  },
+  {
+    "word": "広い",
+    "reading": "ひろい",
+    "definition": "wide, big",
+    "part": "Adjective"
+  },
+  {
+    "word": "全部",
+    "reading": "ぜんぶ",
+    "definition": "all, wholly",
+    "part": "Adverb"
+  },
+  {
+    "word": "国",
+    "reading": "くに",
+    "definition": "country",
+    "part": "Noun"
+  },
+  {
+    "word": "白い",
+    "reading": "しろい",
+    "definition": "white, blank",
+    "part": "Adjective"
+  },
+  {
+    "word": "赤い",
+    "reading": "あかい",
+    "definition": "red",
+    "part": "Adjective"
+  },
+  {
+    "word": "部屋",
+    "reading": "へや",
+    "definition": "room",
+    "part": "Noun"
+  },
+  {
+    "word": "米",
+    "reading": "こめ",
+    "definition": "rice (grain)",
+    "part": "Noun"
+  },
+  {
+    "word": "未だ",
+    "reading": "まだ",
+    "definition": "yet, more",
+    "part": "Adverb"
+  },
+  {
+    "word": "有る",
+    "reading": "ある",
+    "definition": "exist, possess",
+    "part": "Verb"
+  },
+  {
+    "word": "無い",
+    "reading": "ない",
+    "definition": "to not be",
+    "part": "Adjective"
+  },
+  {
+    "word": "作る",
+    "reading": "つくる",
+    "definition": "make, create",
+    "part": "Verb"
+  },
+  {
+    "word": "使う",
+    "reading": "つかう",
+    "definition": "use",
+    "part": "Verb"
+  },
+  {
+    "word": "消す",
+    "reading": "けす",
+    "definition": "switch off, turn off",
+    "part": "Verb"
+  },
+  {
+    "word": "売る",
+    "reading": "うる",
+    "definition": "sell",
+    "part": "Verb"
+  },
+  {
+    "word": "店",
+    "reading": "みせ",
+    "definition": "shop, store",
+    "part": "Noun"
+  },
+  {
+    "word": "春",
+    "reading": "はる",
+    "definition": "spring",
+    "part": "Noun"
+  },
+  {
+    "word": "夏",
+    "reading": "なつ",
+    "definition": "summer",
+    "part": "Noun"
+  },
+  {
+    "word": "秋",
+    "reading": "あき",
+    "definition": "autumn, fall",
+    "part": "Noun"
+  },
+  {
+    "word": "冬",
+    "reading": "ふゆ",
+    "definition": "winter",
+    "part": "Noun"
+  },
+  {
+    "word": "暑い",
+    "reading": "あつい",
+    "definition": "hot, warm (temperature of the air)",
+    "part": "Adjective"
+  },
+  {
+    "word": "熱い",
+    "reading": "あつい",
+    "definition": "hot (things, touch)",
+    "part": "Adjective"
+  },
+  {
+    "word": "寒い",
+    "reading": "さむい",
+    "definition": "cold (temperature of the air)",
+    "part": "Adjective"
+  },
+  {
+    "word": "暖かい",
+    "reading": "あたたかい",
+    "definition": "warm",
+    "part": "Adjective"
+  },
+  {
+    "word": "新しい",
+    "reading": "あたらしい",
+    "definition": "new",
+    "part": "Adjective"
+  },
+  {
+    "word": "古い",
+    "reading": "ふるい",
+    "definition": "old",
+    "part": "Adjective"
+  },
+  {
+    "word": "良い",
+    "reading": "いい",
+    "definition": "good",
+    "part": "Adjective"
+  },
+  {
+    "word": "悪い",
+    "reading": "わるい",
+    "definition": "bad",
+    "part": "Adjective"
+  },
+  {
+    "word": "思う",
+    "reading": "おもう",
+    "definition": "think",
+    "part": "Verb"
+  },
+  {
+    "word": "忘れる",
+    "reading": "わすれる",
+    "definition": "forget, leave behind",
+    "part": "Verb"
+  },
+  {
+    "word": "考える",
+    "reading": "かんがえる",
+    "definition": "think, consider",
+    "part": "Verb"
+  },
+  {
+    "word": "決める",
+    "reading": "きめる",
+    "definition": "decide, agree upon",
+    "part": "Verb"
+  },
+  {
+    "word": "決まる",
+    "reading": "きまる",
+    "definition": "be decided",
+    "part": "Verb"
+  },
+  {
+    "word": "知る",
+    "reading": "しる",
+    "definition": "know",
+    "part": "Verb"
+  },
+  {
+    "word": "一番",
+    "reading": "いちばん",
+    "definition": "most",
+    "part": "Adverb"
+  },
+  {
+    "word": "住む",
+    "reading": "すむ",
+    "definition": "live, reside",
+    "part": "Verb"
+  },
+  {
+    "word": "名前",
+    "reading": "なまえ",
+    "definition": "name",
+    "part": "Noun"
+  },
+  {
+    "word": "食べ物",
+    "reading": "たべもの",
+    "definition": "food",
+    "part": "Noun"
+  },
+  {
+    "word": "飲み物",
+    "reading": "のみもの",
+    "definition": "beverage, drink",
+    "part": "Noun"
+  },
+  {
+    "word": "重い",
+    "reading": "おもい",
+    "definition": "heavy",
+    "part": "Adjective"
+  },
+  {
+    "word": "軽い",
+    "reading": "かるい",
+    "definition": "light, light weight",
+    "part": "Adjective"
+  },
+  {
+    "word": "送る",
+    "reading": "おくる",
+    "definition": "send",
+    "part": "Verb"
+  },
+  {
+    "word": "取る",
+    "reading": "とる",
+    "definition": "take, get",
+    "part": "Verb"
+  },
+  {
+    "word": "待つ",
+    "reading": "まつ",
+    "definition": "wait, wait for",
+    "part": "Verb"
+  },
+  {
+    "word": "持つ",
+    "reading": "もつ",
+    "definition": "have, possess",
+    "part": "Verb"
+  },
+  {
+    "word": "気持ち",
+    "reading": "きもち",
+    "definition": "feeling, sensation",
+    "part": "Noun"
+  },
+  {
+    "word": "生きる",
+    "reading": "いきる",
+    "definition": "live (one's life)",
+    "part": "Verb"
+  },
+  {
+    "word": "先生",
+    "reading": "せんせい",
+    "definition": "teacher",
+    "part": "Noun"
+  },
+  {
+    "word": "大学",
+    "reading": "だいがく",
+    "definition": "university, college",
+    "part": "Noun"
+  },
+  {
+    "word": "学生",
+    "reading": "がくせい",
+    "definition": "student",
+    "part": "Noun"
+  },
+  {
+    "word": "大学生",
+    "reading": "だいがくせい",
+    "definition": "university student",
+    "part": "Noun"
+  },
+  {
+    "word": "学校",
+    "reading": "がっこう",
+    "definition": "school",
+    "part": "Noun"
+  },
+  {
+    "word": "高校生",
+    "reading": "こうこうせい",
+    "definition": "high school student",
+    "part": "Noun"
+  },
+  {
+    "word": "教える",
+    "reading": "おしえる",
+    "definition": "teach, tell",
+    "part": "Verb"
+  },
+  {
+    "word": "勉強",
+    "reading": "べんきょう",
+    "definition": "study",
+    "part": "Verbal Noun"
+  },
+  {
+    "word": "強い",
+    "reading": "つよい",
+    "definition": "strong",
+    "part": "Adjective"
+  },
+  {
+    "word": "弱い",
+    "reading": "よわい",
+    "definition": "weak",
+    "part": "Adjective"
+  },
+  {
+    "word": "引く",
+    "reading": "ひく",
+    "definition": "draw, pull",
+    "part": "Verb"
+  },
+  {
+    "word": "質問",
+    "reading": "しつもん",
+    "definition": "question",
+    "part": "Verbal Noun"
+  },
+  {
+    "word": "難しい",
+    "reading": "むずかしい",
+    "definition": "difficult",
+    "part": "Adjective"
+  },
+  {
+    "word": "数",
+    "reading": "かず",
+    "definition": "number",
+    "part": "Noun"
+  },
+  {
+    "word": "勝つ",
+    "reading": "かつ",
+    "definition": "win",
+    "part": "Verb"
+  },
+  {
+    "word": "負ける",
+    "reading": "まける",
+    "definition": "lose",
+    "part": "Verb"
+  },
+  {
+    "word": "本当に",
+    "reading": "ほんとうに",
+    "definition": "really, truly",
+    "part": "Adverb"
+  },
+  {
+    "word": "要る",
+    "reading": "いる",
+    "definition": "need, require",
+    "part": "Verb"
+  },
+  {
+    "word": "時計",
+    "reading": "とけい",
+    "definition": "clock, watch",
+    "part": "Noun"
+  },
+  {
+    "word": "払う",
+    "reading": "はらう",
+    "definition": "pay",
+    "part": "Verb"
+  },
+  {
+    "word": "切る",
+    "reading": "きる",
+    "definition": "cut",
+    "part": "Verb"
+  },
+  {
+    "word": "変える",
+    "reading": "かえる",
+    "definition": "change",
+    "part": "Verb"
+  },
+  {
+    "word": "乗る",
+    "reading": "のる",
+    "definition": "ride, take",
+    "part": "Verb"
+  },
+  {
+    "word": "着る",
+    "reading": "きる",
+    "definition": "wear, put on",
+    "part": "Verb"
+  },
+  {
+    "word": "立つ",
+    "reading": "たつ",
+    "definition": "stand, rise",
+    "part": "Verb"
+  },
+  {
+    "word": "座る",
+    "reading": "すわる",
+    "definition": "sit, sit down",
+    "part": "Verb"
+  },
+  {
+    "word": "次",
+    "reading": "つぎ",
+    "definition": "next",
+    "part": "Noun"
+  },
+  {
+    "word": "動く",
+    "reading": "うごく",
+    "definition": "move",
+    "part": "Verb"
+  },
+  {
+    "word": "働く",
+    "reading": "はたらく",
+    "definition": "work",
+    "part": "Verb"
+  },
+  {
+    "word": "早い",
+    "reading": "はやい",
+    "definition": "early",
+    "part": "Adjective"
+  },
+  {
+    "word": "速い",
+    "reading": "はやい",
+    "definition": "fast",
+    "part": "Adjective"
+  },
+  {
+    "word": "遅い",
+    "reading": "おそい",
+    "definition": "slow, late",
+    "part": "Adjective"
+  },
+  {
+    "word": "始める",
+    "reading": "はじめる",
+    "definition": "begin, start",
+    "part": "Verb"
+  },
+  {
+    "word": "始まる",
+    "reading": "はじまる",
+    "definition": "begin",
+    "part": "Verb"
+  },
+  {
+    "word": "終わる",
+    "reading": "おわる",
+    "definition": "finish, end",
+    "part": "Verb"
+  },
+  {
+    "word": "終わり",
+    "reading": "おわり",
+    "definition": "end, conclusion",
+    "part": "Noun"
+  },
+  {
+    "word": "去年",
+    "reading": "きょねん",
+    "definition": "last year",
+    "part": "Noun"
+  },
+  {
+    "word": "紙",
+    "reading": "かみ",
+    "definition": "paper",
+    "part": "Noun"
+  },
+  {
+    "word": "楽しむ",
+    "reading": "たのしむ",
+    "definition": "enjoy",
+    "part": "Verb"
+  },
+  {
+    "word": "楽しい",
+    "reading": "たのしい",
+    "definition": "fun, enjoyable",
+    "part": "Adjective"
+  },
+  {
+    "word": "歌う",
+    "reading": "うたう",
+    "definition": "sing",
+    "part": "Verb"
+  },
+  {
+    "word": "欲しい",
+    "reading": "ほしい",
+    "definition": "want, desire",
+    "part": "Adjective"
+  },
+  {
+    "word": "色",
+    "reading": "いろ",
+    "definition": "color",
+    "part": "Noun"
+  },
+  {
+    "word": "茶色",
+    "reading": "ちゃいろ",
+    "definition": "light brown",
+    "part": "Noun"
+  },
+  {
+    "word": "直ぐ",
+    "reading": "すぐ",
+    "definition": "at once, soon",
+    "part": "Adverb"
+  },
+  {
+    "word": "書き直す",
+    "reading": "かきなおす",
+    "definition": "rewrite",
+    "part": "Verb"
+  },
+  {
+    "word": "直る",
+    "reading": "なおる",
+    "definition": "be repaired, return to normal",
+    "part": "Verb"
+  },
+  {
+    "word": "線",
+    "reading": "せん",
+    "definition": "line",
+    "part": "Noun"
+  },
+  {
+    "word": "曲がる",
+    "reading": "まがる",
+    "definition": "turn",
+    "part": "Verb"
+  },
+  {
+    "word": "同じ",
+    "reading": "おなじ",
+    "definition": "same, identical",
+    "part": "Adjectival Noun"
+  },
+  {
+    "word": "違う",
+    "reading": "ちがう",
+    "definition": "differ, be wrong",
+    "part": "Verb"
+  },
+  {
+    "word": "図書館",
+    "reading": "としょかん",
+    "definition": "library",
+    "part": "Noun"
+  },
+  {
+    "word": "泊まる",
+    "reading": "とまる",
+    "definition": "stay overnight",
+    "part": "Verb"
+  },
+  {
+    "word": "遊ぶ",
+    "reading": "あそぶ",
+    "definition": "play",
+    "part": "Verb"
+  },
+  {
+    "word": "服",
+    "reading": "ふく",
+    "definition": "clothes",
+    "part": "Noun"
+  },
+  {
+    "word": "お父さん",
+    "reading": "おとうさん",
+    "definition": "father",
+    "part": "Noun"
+  },
+  {
+    "word": "父",
+    "reading": "ちち",
+    "definition": "(speaker's)father",
+    "part": "Noun"
+  },
+  {
+    "word": "お母さん",
+    "reading": "おかあさん",
+    "definition": "mother",
+    "part": "Noun"
+  },
+  {
+    "word": "母",
+    "reading": "はは",
+    "definition": "(speaker's)mother",
+    "part": "Noun"
+  },
+  {
+    "word": "親",
+    "reading": "おや",
+    "definition": "parent",
+    "part": "Noun"
+  },
+  {
+    "word": "姉",
+    "reading": "あね",
+    "definition": "older sister",
+    "part": "Noun"
+  },
+  {
+    "word": "お姉さん",
+    "reading": "おねえさん",
+    "definition": "older sister",
+    "part": "Noun"
+  },
+  {
+    "word": "妹",
+    "reading": "いもうと",
+    "definition": "younger sister",
+    "part": "Noun"
+  },
+  {
+    "word": "兄",
+    "reading": "あに",
+    "definition": "older brother",
+    "part": "Noun"
+  },
+  {
+    "word": "お兄さん",
+    "reading": "おにいさん",
+    "definition": "older brother",
+    "part": "Noun"
+  },
+  {
+    "word": "弟",
+    "reading": "おとうと",
+    "definition": "younger brother",
+    "part": "Noun"
+  },
+  {
+    "word": "娘",
+    "reading": "むすめ",
+    "definition": "daughter, girl",
+    "part": "Noun"
+  },
+  {
+    "word": "息子",
+    "reading": "むすこ",
+    "definition": "son",
+    "part": "Noun"
+  },
+  {
+    "word": "若い",
+    "reading": "わかい",
+    "definition": "young",
+    "part": "Adjective"
+  },
+  {
+    "word": "彼女",
+    "reading": "かのじょ",
+    "definition": "she, one's girlfriend",
+    "part": "Pronoun"
+  },
+  {
+    "word": "彼",
+    "reading": "かれ",
+    "definition": "he, one's boyfriend",
+    "part": "Noun"
+  },
+  {
+    "word": "結婚",
+    "reading": "けっこん",
+    "definition": "marriage",
+    "part": "Verbal Noun"
+  },
+  {
+    "word": "自転車",
+    "reading": "じてんしゃ",
+    "definition": "bicycle",
+    "part": "Noun"
+  },
+  {
+    "word": "自分",
+    "reading": "じぶん",
+    "definition": "self, oneself",
+    "part": "Noun"
+  },
+  {
+    "word": "ご主人",
+    "reading": "ごしゅじん",
+    "definition": "(your) husband",
+    "part": "Noun"
+  },
+  {
+    "word": "答える",
+    "reading": "こたえる",
+    "definition": "answer, reply",
+    "part": "Verb"
+  },
+  {
+    "word": "別",
+    "reading": "べつ",
+    "definition": "another, different",
+    "part": "Adjectival Noun"
+  },
+  {
+    "word": "病気",
+    "reading": "びょうき",
+    "definition": "illness",
+    "part": "Verbal Noun"
+  },
+  {
+    "word": "死ぬ",
+    "reading": "しぬ",
+    "definition": "die",
+    "part": "Verb"
+  },
+  {
+    "word": "痛い",
+    "reading": "いたい",
+    "definition": "painful",
+    "part": "Adjective"
+  },
+  {
+    "word": "酒",
+    "reading": "さけ",
+    "definition": "alcoholic drink, Japanese rice wine",
+    "part": "Noun"
+  },
+  {
+    "word": "一杯",
+    "reading": "いっぱい",
+    "definition": "full",
+    "part": "Adverb"
+  },
+  {
+    "word": "飛ぶ",
+    "reading": "とぶ",
+    "definition": "fly",
+    "part": "Verb"
+  },
+  {
+    "word": "飛行機",
+    "reading": "ひこうき",
+    "definition": "airplane",
+    "part": "Noun"
+  },
+  {
+    "word": "お願い",
+    "reading": "おねがい",
+    "definition": "favor",
+    "part": "Verbal Noun"
+  },
+  {
+    "word": "続く",
+    "reading": "つづく",
+    "definition": "continue, follow",
+    "part": "Verb"
+  },
+  {
+    "word": "日記",
+    "reading": "にっき",
+    "definition": "diary",
+    "part": "Noun"
+  },
+  {
+    "word": "首",
+    "reading": "くび",
+    "definition": "neck",
+    "part": "Noun"
+  },
+  {
+    "word": "頭",
+    "reading": "あたま",
+    "definition": "head",
+    "part": "Noun"
+  },
+  {
+    "word": "顔",
+    "reading": "かお",
+    "definition": "face",
+    "part": "Noun"
+  },
+  {
+    "word": "感じる",
+    "reading": "かんじる",
+    "definition": "feel, sense",
+    "part": "Verb"
+  },
+  {
+    "word": "探す",
+    "reading": "さがす",
+    "definition": "search for, look for",
+    "part": "Verb"
+  },
+  {
+    "word": "落ちる",
+    "reading": "おちる",
+    "definition": "fall, sink",
+    "part": "Verb"
+  },
+  {
+    "word": "お手洗い",
+    "reading": "おてあらい",
+    "definition": "toilet, bathroom",
+    "part": "Noun"
+  },
+  {
+    "word": "冷たい",
+    "reading": "つめたい",
+    "definition": "cold (things, touch)",
+    "part": "Adjective"
+  },
+  {
+    "word": "汚い",
+    "reading": "きたない",
+    "definition": "dirty",
+    "part": "Adjective"
+  },
+  {
+    "word": "太い",
+    "reading": "ふとい",
+    "definition": "thick, fat",
+    "part": "Adjective"
+  },
+  {
+    "word": "曇る",
+    "reading": "くもる",
+    "definition": "become cloudy",
+    "part": "Verb"
+  },
+  {
+    "word": "神",
+    "reading": "かみ",
+    "definition": "god, spirit",
+    "part": "Noun"
+  },
+  {
+    "word": "建てる",
+    "reading": "たてる",
+    "definition": "build, erect",
+    "part": "Verb"
+  },
+  {
+    "word": "置く",
+    "reading": "おく",
+    "definition": "put, leave",
+    "part": "Verb"
+  },
+  {
+    "word": "辺",
+    "reading": "へん",
+    "definition": "area; vicinity",
+    "part": "Noun"
+  },
+  {
+    "word": "黄色い",
+    "reading": "きいろい",
+    "definition": "yellow",
+    "part": "Adjective"
+  },
+  {
+    "word": "一緒に",
+    "reading": "いっしょに",
+    "definition": "together, at the same time",
+    "part": "Adverb"
+  },
+  {
+    "word": "緑",
+    "reading": "みどり",
+    "definition": "green, foliage",
+    "part": "Noun"
+  },
+  {
+    "word": "易しい",
+    "reading": "やさしい",
+    "definition": "easy, simple",
+    "part": "Adjective"
+  },
+  {
+    "word": "留学生",
+    "reading": "りゅうがくせい",
+    "definition": "student studying abroad",
+    "part": "Noun"
+  },
+  {
+    "word": "戻る",
+    "reading": "もどる",
+    "definition": "return, turn back",
+    "part": "Verb"
+  },
+  {
+    "word": "起きる",
+    "reading": "おきる",
+    "definition": "get up, get out of bed",
+    "part": "Verb"
+  },
+  {
+    "word": "起こる",
+    "reading": "おこる",
+    "definition": "happen",
+    "part": "Verb"
+  },
+  {
+    "word": "起こす",
+    "reading": "おこす",
+    "definition": "wake up",
+    "part": "Verb"
+  },
+  {
+    "word": "起きる",
+    "reading": "おきる",
+    "definition": "occur, wake up",
+    "part": "Verb"
+  },
+  {
+    "word": "寝る",
+    "reading": "ねる",
+    "definition": "sleep, go to sleep",
+    "part": "Verb"
+  },
+  {
+    "word": "細い",
+    "reading": "ほそい",
+    "definition": "thin, slender, narrow",
+    "part": "Adjective"
+  },
+  {
+    "word": "載せる",
+    "reading": "のせる",
+    "definition": "place, put on",
+    "part": "Verb"
+  },
+  {
+    "word": "締める",
+    "reading": "しめる",
+    "definition": "tighten, fasten",
+    "part": "Verb"
+  },
+  {
+    "word": "甘い",
+    "reading": "あまい",
+    "definition": "sweet",
+    "part": "Adjective"
+  },
+  {
+    "word": "辛い",
+    "reading": "からい",
+    "definition": "spicy, salty",
+    "part": "Adjective"
+  },
+  {
+    "word": "優しい",
+    "reading": "やさしい",
+    "definition": "gentle, kind",
+    "part": "Adjective"
+  },
+  {
+    "word": "夫",
+    "reading": "おっと",
+    "definition": "husband",
+    "part": "Noun"
+  },
+  {
+    "word": "妻",
+    "reading": "つま",
+    "definition": "wife",
+    "part": "Noun"
+  },
+  {
+    "word": "誰",
+    "reading": "だれ",
+    "definition": "who, whom",
+    "part": "Noun"
+  },
+  {
+    "word": "愛する",
+    "reading": "あいする",
+    "definition": "love, care for",
+    "part": "Verb"
+  },
+  {
+    "word": "笑う",
+    "reading": "わらう",
+    "definition": "laugh, smile",
+    "part": "Verb"
+  },
+  {
+    "word": "酸っぱい",
+    "reading": "すっぱい",
+    "definition": "sour",
+    "part": "Adjective"
+  },
+  {
+    "word": "言葉",
+    "reading": "ことば",
+    "definition": "word, language",
+    "part": "Noun"
+  },
+  {
+    "word": "呼ぶ",
+    "reading": "よぶ",
+    "definition": "call, name",
+    "part": "Verb"
+  },
+  {
+    "word": "胸",
+    "reading": "むね",
+    "definition": "chest",
+    "part": "Noun"
+  },
+  {
+    "word": "腰",
+    "reading": "こし",
+    "definition": "hip, lower back",
+    "part": "Noun"
+  },
+  {
+    "word": "背",
+    "reading": "せ",
+    "definition": "height, stature",
+    "part": "Noun"
+  },
+  {
+    "word": "片仮名",
+    "reading": "かたかな",
+    "definition": "katakana",
+    "part": "Noun"
+  },
+  {
+    "word": "平仮名",
+    "reading": "ひらがな",
+    "definition": "hiragana",
+    "part": "Noun"
+  },
+  {
+    "word": "悲しい",
+    "reading": "かなしい",
+    "definition": "sad",
+    "part": "Adjective"
+  },
+  {
+    "word": "美しい",
+    "reading": "うつくしい",
+    "definition": "beautiful",
+    "part": "Adjective"
+  },
+  {
+    "word": "授業",
+    "reading": "じゅぎょう",
+    "definition": "class, lesson",
+    "part": "Verbal Noun"
+  },
+  {
+    "word": "手伝う",
+    "reading": "てつだう",
+    "definition": "help, assist",
+    "part": "Verb"
+  },
+  {
+    "word": "狭い",
+    "reading": "せまい",
+    "definition": "narrow, restricted",
+    "part": "Adjective"
+  },
+  {
+    "word": "触る",
+    "reading": "さわる",
+    "definition": "touch, feel",
+    "part": "Verb"
+  },
+  {
+    "word": "嫌い",
+    "reading": "きらい",
+    "definition": "dislike",
+    "part": "Adjective"
+  },
+  {
+    "word": "浴びる",
+    "reading": "あびる",
+    "definition": "take (a shower)",
+    "part": "Verb"
+  },
+  {
+    "word": "渇く",
+    "reading": "かわく",
+    "definition": "be thirsty",
+    "part": "Verb"
+  },
+  {
+    "word": "髪の毛",
+    "reading": "かみのけ",
+    "definition": "hair",
+    "part": "Noun"
+  },
+  {
+    "word": "肩",
+    "reading": "かた",
+    "definition": "shoulder",
+    "part": "Noun"
+  },
+  {
+    "word": "鼻",
+    "reading": "はな",
+    "definition": "nose",
+    "part": "Noun"
+  },
+  {
+    "word": "腕",
+    "reading": "うで",
+    "definition": "arm",
+    "part": "Noun"
+  },
+  {
+    "word": "掛ける",
+    "reading": "かける",
+    "definition": "hang, put on",
+    "part": "Verb"
+  },
+  {
+    "word": "僕",
+    "reading": "ぼく",
+    "definition": "I (young male)",
+    "part": "Noun"
+  },
+  {
+    "word": "駄目",
+    "reading": "だめ",
+    "definition": "no good",
+    "part": "Adjectival Noun"
+  },
+  {
+    "word": "大丈夫",
+    "reading": "だいじょうぶ",
+    "definition": "alright, OK",
+    "part": "Adjectival Noun"
+  },
+  {
+    "word": "風邪",
+    "reading": "かぜ",
+    "definition": "cold (illness)",
+    "part": "Noun"
+  },
+  {
+    "word": "奇麗",
+    "reading": "きれい",
+    "definition": "beautiful",
+    "part": "Adjectival Noun"
+  },
+  {
+    "word": "嬉しい",
+    "reading": "うれしい",
+    "definition": "happy, glad",
+    "part": "Adjective"
+  },
+  {
+    "word": "七",
+    "reading": "しち",
+    "definition": "seven",
+    "part": "Noun"
+  },
+  {
+    "word": "九",
+    "reading": "く",
+    "definition": "nine",
+    "part": "Noun"
+  },
+  {
+    "word": "億",
+    "reading": "おく",
+    "definition": "hundred million",
+    "part": "Noun"
+  },
+  {
+    "word": "寺",
+    "reading": "てら",
+    "definition": "buddhist temple",
+    "part": "Noun"
+  },
+  {
+    "word": "日",
+    "reading": "ひ",
+    "definition": "sun, sunlight, day",
+    "part": "Noun"
+  },
+  {
+    "word": "火",
+    "reading": "ひ",
+    "definition": "fire",
+    "part": "Noun"
+  },
+  {
+    "word": "木",
+    "reading": "き",
+    "definition": "tree, wood",
+    "part": "Noun"
+  },
+  {
+    "word": "金",
+    "reading": "きん",
+    "definition": "gold, sum of money, Friday",
+    "part": "Noun"
+  },
+  {
+    "word": "十分",
+    "reading": "じゅうぶん",
+    "definition": "full, plentiful",
+    "part": "Adjectival Noun"
+  },
+  {
+    "word": "分",
+    "reading": "ぶん",
+    "definition": "amount, part, share",
+    "part": "Noun"
+  },
+  {
+    "word": "分ける",
+    "reading": "わける",
+    "definition": "divide into parts, sort, share",
+    "part": "Verb"
+  },
+  {
+    "word": "分かれる",
+    "reading": "わかれる",
+    "definition": "be divided, disperse, branch off",
+    "part": "Verb"
+  },
+  {
+    "word": "何か",
+    "reading": "なにか",
+    "definition": "something",
+    "part": "Noun"
+  },
+  {
+    "word": "何",
+    "reading": "なん",
+    "definition": "what, which",
+    "part": "Noun"
+  },
+  {
+    "word": "先ず",
+    "reading": "まず",
+    "definition": "first",
+    "part": "Adverb"
+  },
+  {
+    "word": "先月",
+    "reading": "せんげつ",
+    "definition": "last month",
+    "part": "Noun"
+  },
+  {
+    "word": "先週",
+    "reading": "せんしゅう",
+    "definition": "last week",
+    "part": "Noun"
+  },
+  {
+    "word": "今まで",
+    "reading": "いままで",
+    "definition": "until now, so far",
+    "part": "Adverb"
+  },
+  {
+    "word": "来月",
+    "reading": "らいげつ",
+    "definition": "next month",
+    "part": "Noun"
+  },
+  {
+    "word": "来週",
+    "reading": "らいしゅう",
+    "definition": "next week",
+    "part": "Noun"
+  },
+  {
+    "word": "行う",
+    "reading": "おこなう",
+    "definition": "do, carry out",
+    "part": "Verb"
+  },
+  {
+    "word": "行き",
+    "reading": "いき",
+    "definition": "going",
+    "part": "Noun"
+  },
+  {
+    "word": "行き",
+    "reading": "ゆき",
+    "definition": "going",
+    "part": "Noun"
+  },
+  {
+    "word": "帰り",
+    "reading": "かえり",
+    "definition": "return, going home",
+    "part": "Noun"
+  },
+  {
+    "word": "大きさ",
+    "reading": "おおきさ",
+    "definition": "size, dimensions",
+    "part": "Noun"
+  },
+  {
+    "word": "大分",
+    "reading": "だいぶ",
+    "definition": "very, greatly",
+    "part": "Adverb"
+  },
+  {
+    "word": "中",
+    "reading": "なか",
+    "definition": "inside, middle",
+    "part": "Noun"
+  },
+  {
+    "word": "少年",
+    "reading": "しょうねん",
+    "definition": "boy",
+    "part": "Noun"
+  },
+  {
+    "word": "少しも",
+    "reading": "すこしも",
+    "definition": "at all",
+    "part": "Adverb"
+  },
+  {
+    "word": "少々",
+    "reading": "しょうしょう",
+    "definition": "a little, a few",
+    "part": "Adverb"
+  },
+  {
+    "word": "多く",
+    "reading": "おおく",
+    "definition": "many, much, largely",
+    "part": "Adverb"
+  },
+  {
+    "word": "上がる",
+    "reading": "あがる",
+    "definition": "go up, rise",
+    "part": "Verb"
+  },
+  {
+    "word": "上がる",
+    "reading": "あがる",
+    "definition": "get nervous, get stage fright",
+    "part": "Verb"
+  },
+  {
+    "word": "年上",
+    "reading": "としうえ",
+    "definition": "older, senior",
+    "part": "Noun"
+  },
+  {
+    "word": "上り",
+    "reading": "のぼり",
+    "definition": "going up, ascent",
+    "part": "Noun"
+  },
+  {
+    "word": "下げる",
+    "reading": "さげる",
+    "definition": "lower, turn down",
+    "part": "Verb"
+  },
+  {
+    "word": "下がる",
+    "reading": "さがる",
+    "definition": "come down, hang down, fall",
+    "part": "Verb"
+  },
+  {
+    "word": "下りる",
+    "reading": "おりる",
+    "definition": "go down, come down",
+    "part": "Verb"
+  },
+  {
+    "word": "下ろす",
+    "reading": "おろす",
+    "definition": "bring down, take down, pull down",
+    "part": "Verb"
+  },
+  {
+    "word": "下り",
+    "reading": "くだり",
+    "definition": "downhill, going down",
+    "part": "Noun"
+  },
+  {
+    "word": "年下",
+    "reading": "としした",
+    "definition": "younger, junior",
+    "part": "Noun"
+  },
+  {
+    "word": "下る",
+    "reading": "くだる",
+    "definition": "go down, go down or away from a central place",
+    "part": "Verb"
+  },
+  {
+    "word": "一方",
+    "reading": "いっぽう",
+    "definition": "one way",
+    "part": "Noun"
+  },
+  {
+    "word": "方",
+    "reading": "かた",
+    "definition": "person　（polite form)",
+    "part": "Noun"
+  },
+  {
+    "word": "二人",
+    "reading": "ふたり",
+    "definition": "two persons",
+    "part": "Noun"
+  },
+  {
+    "word": "大人しい",
+    "reading": "おとなしい",
+    "definition": "gentle, quiet, subdued",
+    "part": "Adjective"
+  },
+  {
+    "word": "人々",
+    "reading": "ひとびと",
+    "definition": "people",
+    "part": "Noun"
+  },
+  {
+    "word": "一人で",
+    "reading": "ひとりで",
+    "definition": "by oneself",
+    "part": "Adverb"
+  },
+  {
+    "word": "外人",
+    "reading": "がいじん",
+    "definition": "foreigner, alien",
+    "part": "Noun"
+  },
+  {
+    "word": "外",
+    "reading": "そと",
+    "definition": "outside, open air",
+    "part": "Noun"
+  },
+  {
+    "word": "休日",
+    "reading": "きゅうじつ",
+    "definition": "holiday, day off",
+    "part": "Noun"
+  },
+  {
+    "word": "休み",
+    "reading": "やすみ",
+    "definition": "rest, holiday, absence",
+    "part": "Noun"
+  },
+  {
+    "word": "力",
+    "reading": "ちから",
+    "definition": "strength, power",
+    "part": "Noun"
+  },
+  {
+    "word": "協力",
+    "reading": "きょうりょく",
+    "definition": "cooperation, collaboration",
+    "part": "Verbal Noun"
+  },
+  {
+    "word": "人口",
+    "reading": "じんこう",
+    "definition": "population",
+    "part": "Noun"
+  },
+  {
+    "word": "出口",
+    "reading": "でぐち",
+    "definition": "exit, exit ramp",
+    "part": "Noun"
+  },
+  {
+    "word": "入り口",
+    "reading": "いりぐち",
+    "definition": "entrance",
+    "part": "Noun"
+  },
+  {
+    "word": "右手",
+    "reading": "みぎて",
+    "definition": "right hand",
+    "part": "Noun"
+  },
+  {
+    "word": "左手",
+    "reading": "ひだりて",
+    "definition": "left hand",
+    "part": "Noun"
+  },
+  {
+    "word": "下手",
+    "reading": "へた",
+    "definition": "not good at",
+    "part": "Adjectival Noun"
+  },
+  {
+    "word": "足りる",
+    "reading": "たりる",
+    "definition": "suffice, serve, be satisfied",
+    "part": "Verb"
+  },
+  {
+    "word": "足す",
+    "reading": "たす",
+    "definition": "add, supplement",
+    "part": "Verb"
+  },
+  {
+    "word": "山",
+    "reading": "やま",
+    "definition": "mountain",
+    "part": "Noun"
+  },
+  {
+    "word": "川",
+    "reading": "かわ",
+    "definition": "river, stream",
+    "part": "Noun"
+  },
+  {
+    "word": "空く",
+    "reading": "あく",
+    "definition": "become available or vacant",
+    "part": "Verb"
+  },
+  {
+    "word": "空手",
+    "reading": "からて",
+    "definition": "karate, empty hand",
+    "part": "Noun"
+  },
+  {
+    "word": "空",
+    "reading": "そら",
+    "definition": "sky, weather",
+    "part": "Noun"
+  },
+  {
+    "word": "海外",
+    "reading": "かいがい",
+    "definition": "overseas, abroad",
+    "part": "Noun"
+  },
+  {
+    "word": "海",
+    "reading": "うみ",
+    "definition": "sea, ocean",
+    "part": "Noun"
+  },
+  {
+    "word": "毎日",
+    "reading": "まいにち",
+    "definition": "every day",
+    "part": "Noun"
+  },
+  {
+    "word": "毎年",
+    "reading": "まいとし",
+    "definition": "every year",
+    "part": "Noun"
+  },
+  {
+    "word": "毎年",
+    "reading": "まいねん",
+    "definition": "every year  (also まいとし)",
+    "part": "Noun"
+  },
+  {
+    "word": "毎週",
+    "reading": "まいしゅう",
+    "definition": "every week",
+    "part": "Noun"
+  },
+  {
+    "word": "毎月",
+    "reading": "まいつき",
+    "definition": "every month",
+    "part": "Noun"
+  },
+  {
+    "word": "石",
+    "reading": "いし",
+    "definition": "stone, small rock",
+    "part": "Noun"
+  },
+  {
+    "word": "田んぼ",
+    "reading": "たんぼ",
+    "definition": "rice field",
+    "part": "Noun"
+  },
+  {
+    "word": "花",
+    "reading": "はな",
+    "definition": "flower",
+    "part": "Noun"
+  },
+  {
+    "word": "林",
+    "reading": "はやし",
+    "definition": "woods, grove",
+    "part": "Noun"
+  },
+  {
+    "word": "森",
+    "reading": "もり",
+    "definition": "thick woods, forest",
+    "part": "Noun"
+  },
+  {
+    "word": "子",
+    "reading": "こ",
+    "definition": "child, kid",
+    "part": "Noun"
+  },
+  {
+    "word": "女の子",
+    "reading": "おんなのこ",
+    "definition": "girl, daughter",
+    "part": "Noun"
+  },
+  {
+    "word": "男の子",
+    "reading": "おとこのこ",
+    "definition": "boy, baby boy",
+    "part": "Noun"
+  },
+  {
+    "word": "私たち",
+    "reading": "わたしたち",
+    "definition": "we",
+    "part": "Noun"
+  },
+  {
+    "word": "達する",
+    "reading": "たっする",
+    "definition": "attain, reach",
+    "part": "Verb"
+  },
+  {
+    "word": "家",
+    "reading": "いえ",
+    "definition": "house, home",
+    "part": "Noun"
+  },
+  {
+    "word": "家内",
+    "reading": "かない",
+    "definition": "my wife",
+    "part": "Noun"
+  },
+  {
+    "word": "客",
+    "reading": "きゃく",
+    "definition": "visitor, customer",
+    "part": "Noun"
+  },
+  {
+    "word": "空気",
+    "reading": "くうき",
+    "definition": "air, atmosphere",
+    "part": "Noun"
+  },
+  {
+    "word": "気に入る",
+    "reading": "きにいる",
+    "definition": "like, be pleased with",
+    "part": "Verb"
+  },
+  {
+    "word": "人気",
+    "reading": "にんき",
+    "definition": "popularity, popular feeling, business conditions",
+    "part": "Noun"
+  },
+  {
+    "word": "雨",
+    "reading": "あめ",
+    "definition": "rain",
+    "part": "Noun"
+  },
+  {
+    "word": "雪",
+    "reading": "ゆき",
+    "definition": "snow, snowfall",
+    "part": "Noun"
+  },
+  {
+    "word": "青い",
+    "reading": "あおい",
+    "definition": "blue",
+    "part": "Adjective"
+  },
+  {
+    "word": "青",
+    "reading": "あお",
+    "definition": "blue, green, green light",
+    "part": "Noun"
+  },
+  {
+    "word": "晴れ",
+    "reading": "はれ",
+    "definition": "fine weather, clear sky",
+    "part": "Noun"
+  },
+  {
+    "word": "明らか",
+    "reading": "あきらか",
+    "definition": "clear, obvious",
+    "part": "Adjective"
+  },
+  {
+    "word": "明るい",
+    "reading": "あかるい",
+    "definition": "bright, cheerful",
+    "part": "Adjective"
+  },
+  {
+    "word": "明日",
+    "reading": "あした",
+    "definition": "tomorrow",
+    "part": "Noun"
+  },
+  {
+    "word": "暗い",
+    "reading": "くらい",
+    "definition": "dark, dreary, shadowy",
+    "part": "Adjective"
+  },
+  {
+    "word": "昨年",
+    "reading": "さくねん",
+    "definition": "last year",
+    "part": "Noun"
+  },
+  {
+    "word": "一昨年",
+    "reading": "おととし",
+    "definition": "the year before last",
+    "part": "Noun"
+  },
+  {
+    "word": "一昨日",
+    "reading": "おととい",
+    "definition": "day before yesterday",
+    "part": "Noun"
+  },
+  {
+    "word": "東",
+    "reading": "ひがし",
+    "definition": "east, eastern",
+    "part": "Noun"
+  },
+  {
+    "word": "西",
+    "reading": "にし",
+    "definition": "west, western",
+    "part": "Noun"
+  },
+  {
+    "word": "南",
+    "reading": "みなみ",
+    "definition": "south",
+    "part": "Noun"
+  },
+  {
+    "word": "北",
+    "reading": "きた",
+    "definition": "north",
+    "part": "Noun"
+  },
+  {
+    "word": "方向",
+    "reading": "ほうこう",
+    "definition": "direction, course",
+    "part": "Noun"
+  },
+  {
+    "word": "向かう",
+    "reading": "むかう",
+    "definition": "face, confront, head toward",
+    "part": "Verb"
+  },
+  {
+    "word": "向こう",
+    "reading": "むこう",
+    "definition": "the other side, the other party, opponent",
+    "part": "Noun"
+  },
+  {
+    "word": "向く",
+    "reading": "むく",
+    "definition": "turn, face, look",
+    "part": "Verb"
+  },
+  {
+    "word": "開く",
+    "reading": "あく",
+    "definition": "open",
+    "part": "Verb"
+  },
+  {
+    "word": "聞こえる",
+    "reading": "きこえる",
+    "definition": "hear, be heard",
+    "part": "Verb"
+  },
+  {
+    "word": "年間",
+    "reading": "ねんかん",
+    "definition": "period of one year",
+    "part": "Noun"
+  },
+  {
+    "word": "この間",
+    "reading": "このあいだ",
+    "definition": "the other day, recently",
+    "part": "Noun"
+  },
+  {
+    "word": "間",
+    "reading": "あいだ",
+    "definition": "interval",
+    "part": "Noun"
+  },
+  {
+    "word": "人間",
+    "reading": "にんげん",
+    "definition": "human being, people",
+    "part": "Noun"
+  },
+  {
+    "word": "高さ",
+    "reading": "たかさ",
+    "definition": "height",
+    "part": "Noun"
+  },
+  {
+    "word": "最大",
+    "reading": "さいだい",
+    "definition": "biggest, largest",
+    "part": "Noun"
+  },
+  {
+    "word": "初めて",
+    "reading": "はじめて",
+    "definition": "for the first time",
+    "part": "Adverb"
+  },
+  {
+    "word": "最初",
+    "reading": "さいしょ",
+    "definition": "first, outset",
+    "part": "Noun"
+  },
+  {
+    "word": "初め",
+    "reading": "はじめ",
+    "definition": "beginning",
+    "part": "Noun"
+  },
+  {
+    "word": "今後",
+    "reading": "こんご",
+    "definition": "after this, in the future",
+    "part": "Noun"
+  },
+  {
+    "word": "後",
+    "reading": "のち",
+    "definition": "after, afterwards",
+    "part": "Noun"
+  },
+  {
+    "word": "最後",
+    "reading": "さいご",
+    "definition": "last, final",
+    "part": "Noun"
+  },
+  {
+    "word": "明後日",
+    "reading": "あさって",
+    "definition": "day after tomorrow",
+    "part": "Noun"
+  },
+  {
+    "word": "牛",
+    "reading": "うし",
+    "definition": "cattle, cow",
+    "part": "Noun"
+  },
+  {
+    "word": "半分",
+    "reading": "はんぶん",
+    "definition": "half",
+    "part": "Noun"
+  },
+  {
+    "word": "半年",
+    "reading": "はんとし",
+    "definition": "half a year",
+    "part": "Noun"
+  },
+  {
+    "word": "半月",
+    "reading": "はんつき",
+    "definition": "half a month",
+    "part": "Noun"
+  },
+  {
+    "word": "半日",
+    "reading": "はんにち",
+    "definition": "half a day",
+    "part": "Noun"
+  },
+  {
+    "word": "毎朝",
+    "reading": "まいあさ",
+    "definition": "every morning",
+    "part": "Noun"
+  },
+  {
+    "word": "今朝",
+    "reading": "けさ",
+    "definition": "this morning",
+    "part": "Noun"
+  },
+  {
+    "word": "昼休み",
+    "reading": "ひるやすみ",
+    "definition": "noon recess, lunch break",
+    "part": "Noun"
+  },
+  {
+    "word": "昼前",
+    "reading": "ひるまえ",
+    "definition": "in the morning, before noon",
+    "part": "Noun"
+  },
+  {
+    "word": "昼間",
+    "reading": "ひるま",
+    "definition": "daytime, day",
+    "part": "Noun"
+  },
+  {
+    "word": "毎晩",
+    "reading": "まいばん",
+    "definition": "every evening",
+    "part": "Noun"
+  },
+  {
+    "word": "今夜",
+    "reading": "こんや",
+    "definition": "tonight, this evening",
+    "part": "Noun"
+  },
+  {
+    "word": "昨夜",
+    "reading": "ゆうべ",
+    "definition": "last night, last evening",
+    "part": "Noun"
+  },
+  {
+    "word": "夜中",
+    "reading": "よなか",
+    "definition": "midnight, dead of night",
+    "part": "Noun"
+  },
+  {
+    "word": "夕方",
+    "reading": "ゆうがた",
+    "definition": "evening",
+    "part": "Noun"
+  },
+  {
+    "word": "昼食",
+    "reading": "ちゅうしょく",
+    "definition": "lunch",
+    "part": "Noun"
+  },
+  {
+    "word": "朝食",
+    "reading": "ちょうしょく",
+    "definition": "breakfast",
+    "part": "Noun"
+  }
+]
