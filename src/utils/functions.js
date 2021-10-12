@@ -1,6 +1,23 @@
 import parse from "csv-parse/lib/sync";
 import { DataFile, DataFileRegistry, ParsingException } from "./types";
 
+export const shuffle = (array) => {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+};
+
 export const levenshteinDistance = (str1 = "", str2 = "") => {
   const track = Array(str2.length + 1)
     .fill(undefined)
@@ -61,7 +78,14 @@ async function readCsv(file, dataFile) {
   const records = parse(await file.text());
   const [param] = records;
   dataFile.headers.push(...param);
-  dataFile.content.push(...records.slice(1));
+  dataFile.content.push(
+    ...records.slice(1).map((arr) =>
+      arr.reduce((p, c, i) => {
+        p[param[i]] = c;
+        return p;
+      }, {})
+    )
+  );
   return dataFile;
 }
 

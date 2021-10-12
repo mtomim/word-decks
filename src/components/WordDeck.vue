@@ -115,6 +115,7 @@ import {
   levenshteinDistance,
   getSetting,
   getCurrentWordSet,
+  shuffle,
 } from "@/utils/functions";
 
 import Vue from "vue";
@@ -194,31 +195,19 @@ export default Vue.extend({
       const readingArray = this.sortedWords.filter(
         (word) => word.reading !== reading
       );
-      while (choices.length < 4) {
-        choices.push(
-          ...readingArray
-            .filter((word) => !choices.includes(word.reading))
+      choices.push(
+        // take 20 or all without words having the same `word` and shuffle
+        ...shuffle(
+          readingArray
             .filter((word) => word.word !== this.wordInFocus.word)
-            .slice(0, Math.min(3 * (4 - choices.length), readingArray.length))
-            .filter(() => Math.random() * 3 < 1)
-            .map((word) => word.reading)
-            .reduce((array, curr) => {
-              if (!array.includes(curr)) {
-                array.push(curr);
-              }
-              return array;
-            }, [])
-        );
-      }
-      if (choices.length > 4) {
-        choices.splice(4);
-      }
-      const insertPoint = Math.floor(Math.random() * 5);
-      return [
-        ...choices.slice(0, insertPoint),
-        reading,
-        ...choices.slice(insertPoint),
-      ];
+            .slice(0, Math.min(20, readingArray.length))
+        )
+          // take the 4 (or all) first of the suffled array
+          .slice(0, Math.min(4, readingArray.length))
+          .map((word) => word.reading),
+        reading
+      );
+      return shuffle(choices);
     },
   },
   mounted: function() {
@@ -240,21 +229,12 @@ export default Vue.extend({
       this.focusOnWord(this.randomN.find(() => true));
     },
     getRandomNWords() {
-      const arr = [];
-      if (this.kanjiWords.length > this.numWords) {
-        const length = this.kanjiWords.length;
-        const lower = (length * (this.difficulty - 10)) / 100;
-        const max = (length * 10) / 100;
-        while (arr.length < this.numWords) {
-          const randomWord = this.kanjiWords[
-            Math.floor(Math.random() * max + lower)
-          ];
-          if (!arr.includes(randomWord)) {
-            arr.push(randomWord);
-          }
-        }
-      }
-      return arr;
+      const length = this.kanjiWords.length;
+      const lower = (length * (this.difficulty - 10)) / 100;
+      const max = Math.max(lower + length / 10, length);
+      const subArray = this.kanjiWords.slice(lower, max);
+
+      return shuffle(subArray).slice(0, this.numWords);
     },
     focusOnWord(word) {
       const arr = this.randomN;
