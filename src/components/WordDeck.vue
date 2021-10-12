@@ -239,6 +239,10 @@ export default Vue.extend({
       (score[word.word] = score[word.word] || []).push(right);
       if (right) {
         this.focusOnWord(this.randomN.find(() => true));
+      } else {
+        setTimeout(() => {
+          this.answer = undefined;
+        }, 500);
       }
       localStorage.setItem(scoreKey, JSON.stringify(score));
     },
