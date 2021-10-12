@@ -8,19 +8,29 @@
               <v-col>
                 <span class="text-h1">{{ wordInFocus.word }}</span>
                 <span class="text-h6">{{ wordInFocus.definition }}</span>
-                <a :href="`https://jisho.org/search/${wordInFocus.word}`" target="jisho.org">
+                <a
+                  :href="`https://jisho.org/search/${wordInFocus.word}`"
+                  target="jisho.org"
+                >
                   <v-icon>mdi-link</v-icon>
                 </a>
               </v-col>
             </v-row>
             <v-row>
               <v-btn-toggle v-model="dirHorizontal" color="info">
-                <v-btn x-small :value="true"><v-icon>mdi-table-row</v-icon></v-btn>
-                <v-btn x-small :value="false"><v-icon>mdi-table-column</v-icon></v-btn>
+                <v-btn x-small :value="true"
+                  ><v-icon>mdi-table-row</v-icon></v-btn
+                >
+                <v-btn x-small :value="false"
+                  ><v-icon>mdi-table-column</v-icon></v-btn
+                >
               </v-btn-toggle>
             </v-row>
             <v-row>
-              <v-btn-toggle v-model="answer" :class="{vertical: !dirHorizontal}">
+              <v-btn-toggle
+                v-model="answer"
+                :class="{ vertical: !dirHorizontal }"
+              >
                 <v-btn
                   v-for="(rdng, i) in readings"
                   :key="`rd-${i}`"
@@ -49,7 +59,15 @@
                 ></v-progress-circular>
               </v-col>
               <v-col cols="6" class="d-flex">
-                <span :style="`color: ${color}`" class="text-h2 d-flex ma-auto mr-1">{{ Number.isNaN(proportion) ? 0 : Math.round(100 - proportion * 100) }}%</span>
+                <span
+                  :style="`color: ${color}`"
+                  class="text-h2 d-flex ma-auto mr-1"
+                  >{{
+                    Number.isNaN(proportion)
+                      ? 0
+                      : Math.round(100 - proportion * 100)
+                  }}%</span
+                >
               </v-col>
             </v-row>
           </v-col>
@@ -66,7 +84,11 @@
             <v-btn @click.prevent.stop="loadNext" color="accent">
               <v-icon>mdi-autorenew</v-icon>
             </v-btn>
-            <v-checkbox v-model="explain" :label="$t('label.explain')" class="ma-0" />
+            <v-checkbox
+              v-model="explain"
+              :label="$t('label.explain')"
+              class="ma-0"
+            />
           </v-col>
         </v-row>
       </v-col>
@@ -78,9 +100,9 @@
           link
           class="mr-auto font-weight-black"
           :key="i"
-          :color="right && 'primary lighten-1' || 'error'"
+          :color="(right && 'primary lighten-1') || 'error'"
         >
-        {{word}}: {{answer}}
+          {{ word }}: {{ answer }}
         </v-btn>
       </v-col>
     </v-row>
@@ -89,10 +111,14 @@
 
 <script>
 import word from "./word.vue";
-import { levenshteinDistance, getSetting, getCurrentWordSet } from "@/utils/functions";
+import {
+  levenshteinDistance,
+  getSetting,
+  getCurrentWordSet,
+} from "@/utils/functions";
 
 import Vue from "vue";
-import { scoreKey } from "@/views/score.vue"
+import { scoreKey } from "@/views/score.vue";
 
 const score = JSON.parse(localStorage.getItem(scoreKey) || "{}");
 
@@ -121,7 +147,10 @@ export default Vue.extend({
   },
   computed: {
     proportion() {
-      return this.answers.filter(([,,right]) => !right).length / this.answers.length;
+      return (
+        this.answers.filter(([, , right]) => !right).length /
+        this.answers.length
+      );
     },
     color() {
       if (this.answers.length === 0) {
@@ -130,7 +159,11 @@ export default Vue.extend({
       return `rgb(${255 * this.proportion}, ${255 - 255 * this.proportion}, 0)`;
     },
     progress() {
-      return  (this.numWords - this.randomN.length - (this.wordInFocus ? 1 : 0)) / this.numWords * 100;
+      return (
+        ((this.numWords - this.randomN.length - (this.wordInFocus ? 1 : 0)) /
+          this.numWords) *
+        100
+      );
     },
     kanjiWords() {
       return this.words.filter((w) => w.word !== w.reading);
@@ -158,8 +191,9 @@ export default Vue.extend({
       if (!reading) {
         return choices;
       }
-      const readingArray = this.sortedWords
-        .filter((word) => word.reading !== reading);
+      const readingArray = this.sortedWords.filter(
+        (word) => word.reading !== reading
+      );
       while (choices.length < 4) {
         choices.push(
           ...readingArray
@@ -196,7 +230,7 @@ export default Vue.extend({
       this.randomN = this.getRandomNWords();
       if (this.explain) {
         this.explain = false;
-        this.$nextTick(() => this.explain = true);
+        this.$nextTick(() => (this.explain = true));
       }
     },
     start() {
@@ -260,7 +294,7 @@ export default Vue.extend({
     },
     dirHorizontal(val) {
       localStorage.setItem("wd-dirHorizontal", JSON.stringify(val));
-    }
+    },
   },
 });
 </script>
