@@ -94,7 +94,7 @@
       </v-col>
       <v-col cols="2" class="d-flex flex-column-reverse" align-self="start">
         <v-btn
-          v-for="([word, answer, right], i) in answers"
+          v-for="({word, answer, right}, i) in answers"
           :href="`https://jisho.org/search/${word}`"
           target="jisho.org"
           link
@@ -102,6 +102,7 @@
           :key="i"
           :color="(right && 'primary lighten-1') || 'error'"
         >
+          <v-icon small>mdi-robot-{{`${ right ? "happy" : "dead"}`}}</v-icon>
           {{ word }}: {{ answer }}
         </v-btn>
       </v-col>
@@ -109,174 +110,171 @@
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
+import Component from 'vue-class-component'
 import word from "./word.vue";
 import {
   levenshteinDistance,
   getSetting,
   getCurrentWordSet,
   shuffle,
-} from "@/utils/functions";
-
-import Vue from "vue";
-import { scoreKey } from "@/views/score.vue";
+} from "../utils/functions";
+import { Answer, Word } from "../utils/types";
+import { scoreKey } from "../views/score.vue";
 
 const score = JSON.parse(localStorage.getItem(scoreKey) || "{}");
 
-export default Vue.extend({
+@Component({
   name: "WordDeck",
-
   components: {
     word,
   },
-  data() {
-    return {
-      words: [],
-      randomN: [],
-      difficulty: 10,
-      numWords: 20,
-      wordInFocus: undefined,
-      answer: undefined,
-      explain: false,
-      dirHorizontal: true,
-      answers: [],
-    };
-  },
-  beforeMount() {
-    this.words = getCurrentWordSet().content;
-    Object.assign(this, getSetting());
-  },
-  computed: {
-    proportion() {
-      return (
-        this.answers.filter(([, , right]) => !right).length /
-        this.answers.length
-      );
-    },
-    color() {
-      if (this.answers.length === 0) {
-        return "orange";
-      }
-      return `rgb(${255 * this.proportion}, ${255 - 255 * this.proportion}, 0)`;
-    },
-    progress() {
-      return (
-        ((this.numWords - this.randomN.length - (this.wordInFocus ? 1 : 0)) /
-          this.numWords) *
-        100
-      );
-    },
-    kanjiWords() {
-      return this.words.filter((w) => w.word !== w.reading);
-    },
-    running() {
-      return !!this.wordInFocus;
-    },
-    wordsOfSelectDifficulty() {
-      const { length } = this.kanjiWords;
-      const lower = (length * (this.difficulty - 10)) / 100;
-      const max = (length * 10) / 100;
-      return this.kanjiWords.slice(lower, max);
-    },
-    sortedWords() {
-      const reading = this.wordInFocus?.reading;
-      return [...this.kanjiWords].sort(
-        (a, b) =>
-          levenshteinDistance(a.reading, reading) -
-          levenshteinDistance(b.reading, reading)
-      );
-    },
-    readings() {
-      const choices = [];
-      const { reading } = this.wordInFocus;
-      if (!reading) {
-        return choices;
-      }
-      const readingArray = this.sortedWords.filter(
-        (word) => word.reading !== reading
-      );
-      choices.push(
-        // take 20 or all without words having the same `word` and shuffle
-        ...shuffle(
-          readingArray
-            .filter((word) => word.word !== this.wordInFocus.word)
-            .slice(0, Math.min(20, readingArray.length))
-        )
-          // take the 4 (or all) first of the suffled array
-          .slice(0, Math.min(4, readingArray.length))
-          .map((word) => word.reading),
-        reading
-      );
-      return shuffle(choices);
-    },
-  },
-  mounted: function() {
-    this.randomN = this.getRandomNWords();
-    this.dirHorizontal = JSON.parse(localStorage.getItem("wd-dirHorizontal"));
-  },
-  methods: {
-    loadNext() {
-      this.randomN = this.getRandomNWords();
-      if (this.explain) {
-        this.explain = false;
-        this.$nextTick(() => (this.explain = true));
-      }
-    },
-    start() {
-      if (this.randomN.length === 0) {
-        this.loadNext();
-      }
-      this.focusOnWord(this.randomN.find(() => true));
-    },
-    getRandomNWords() {
-      const length = this.kanjiWords.length;
-      const lower = (length * (this.difficulty - 10)) / 100;
-      const max = Math.max(lower + length / 10, length);
-      const subArray = this.kanjiWords.slice(lower, max);
-
-      return shuffle(subArray).slice(0, this.numWords);
-    },
-    focusOnWord(word) {
-      const arr = this.randomN;
-      if (arr.length && word) {
-        this.wordInFocus = arr.splice(arr.indexOf(word), 1).pop();
-      } else {
-        this.wordInFocus = word;
-      }
-      this.$nextTick(() => {
-        this.answer = undefined;
-      });
-    },
-    correct(word, answer) {
-      const right = word.reading === answer;
-      this.answers.push([word.word, answer, right]);
-      (score[word.word] = score[word.word] || []).push(right);
-      if (right) {
-        this.focusOnWord(this.randomN.find(() => true));
-      } else {
-        setTimeout(() => {
-          this.answer = undefined;
-        }, 500);
-      }
-      localStorage.setItem(scoreKey, JSON.stringify(score));
-    },
-    handleWordFocus(word) {
-      this.focusOnWord(word);
-    },
-  },
   watch: {
     explain(val) {
-      this.randomN.forEach((w, i) => {
+      (this as WordDeck).randomN.forEach((w: Word, i: number) => {
         if (Array.isArray(this.$refs[`w_${i}`])) {
-          this.$refs[`w_${i}`].forEach((ref) => ref.setShowReading(val));
+          (this.$refs[`w_${i}`] as word[]).forEach((ref) => ref.setShowReading(val));
         }
       });
     },
     dirHorizontal(val) {
       localStorage.setItem("wd-dirHorizontal", JSON.stringify(val));
-    },
+    }
   },
-});
+})
+export default class WordDeck extends Vue{
+
+  words: Word[] | null = []
+  randomN: Word[] = []
+  difficulty = 10
+  numWords = 20
+  wordInFocus: Word | null = null
+  answer: string|null = null
+  explain: boolean = false
+  dirHorizontal: boolean = true
+  answers: Answer[] = []
+
+  loadNext() {
+    this.randomN = this.getRandomNWords();
+    if (this.explain) {
+      this.explain = false;
+      this.$nextTick(() => (this.explain = true));
+    }
+  }
+  start() {
+    if (this.randomN.length === 0) {
+      this.loadNext();
+    }
+    this.focusOnWord(this.randomN.find(() => true) || null);
+  }
+  getRandomNWords() {
+    const length = this.kanjiWords.length;
+    const lower = (length * (this.difficulty - 10)) / 100;
+    const max = Math.max(lower + length / 10, length);
+    const subArray = this.kanjiWords.slice(lower, max);
+
+    return shuffle(subArray).slice(0, this.numWords);
+  }
+  focusOnWord(word: Word|null) {
+    const arr = this.randomN;
+    if (arr.length && word) {
+      this.wordInFocus = arr.splice(arr.indexOf(word), 1).pop() || null;
+    } else {
+      this.wordInFocus = word;
+    }
+    this.$nextTick(() => {
+      this.answer = '';
+    });
+  }
+  correct(word: Word, answer: string) {
+    const right = word.reading === answer;
+    this.answers.push({word: word.word, answer, right});
+    (score[word.word] = score[word.word] || []).push(right);
+    if (right) {
+      this.focusOnWord(this.randomN.find(() => true) || null);
+    } else {
+      setTimeout(() => {
+        this.answer = '';
+      }, 500);
+    }
+    localStorage.setItem(scoreKey, JSON.stringify(score));
+  }
+  handleWordFocus(word: Word) {
+    this.focusOnWord(word);
+  }
+  get proportion() {
+    return (
+      this.answers.filter(({right}) => !right).length /
+      this.answers.length
+    );
+  }
+  get color() {
+    if (this.answers.length === 0) {
+      return "orange";
+    }
+    return `rgb(${255 * this.proportion}, ${255 - 255 * this.proportion}, 0)`;
+  }
+  get progress() {
+    return (
+      ((this.numWords - this.randomN.length - (this.wordInFocus ? 1 : 0)) / this.numWords) * 100
+    );
+  }
+  get kanjiWords(): Word[] {
+    return this.words && this.words.filter((w) => w.word !== w.reading) || [];
+  }
+  get running() {
+    return !!this.wordInFocus;
+  }
+  get wordsOfSelectDifficulty() {
+    const { length } = this.kanjiWords;
+    const lower = (length * (this.difficulty - 10)) / 100;
+    const max = (length * 10) / 100;
+    return this.kanjiWords.slice(lower, max);
+  }
+  get sortedWords() {
+    const reading = this.wordInFocus?.reading;
+    return [...this.kanjiWords].sort(
+      (a, b) =>
+        levenshteinDistance(a.reading, reading) -
+        levenshteinDistance(b.reading, reading)
+    );
+  }
+  get readings(): string[] {
+    if (this.wordInFocus === null) {
+      return [];
+    }
+    const choices: string[] = [];
+    const { reading } = this.wordInFocus;
+    if (!reading) {
+      return choices;
+    }
+    const readingArray = this.sortedWords.filter(
+      (word) => word.reading !== reading
+    );
+    choices.push(
+      // take 20 or all without words having the same `word` and shuffle
+      ...shuffle(
+        readingArray
+          .filter((word) => word.word !== this.wordInFocus?.word)
+          .slice(0, 20)
+      )
+        // take the 4 (or all) first of the suffled array
+        .slice(0, Math.min(4, readingArray.length))
+        .map((word) => word.reading),
+      reading
+    );
+    return shuffle(choices);
+  }
+  beforeMount() {
+    this.words = getCurrentWordSet()?.content || null;
+    Object.assign(this, getSetting());
+  }
+  mounted() {
+    this.randomN = this.getRandomNWords();
+    this.dirHorizontal = JSON.parse(localStorage.getItem("wd-dirHorizontal") || "false");
+  }
+}
 </script>
 
 <style>

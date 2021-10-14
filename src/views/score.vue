@@ -21,38 +21,50 @@
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
+
 export const scoreKey = "wd-score";
 
-export default {
+declare interface IScore {
+  [key: string]: boolean[];
+}
+
+declare interface IWordHistory {
+  word: string,
+  history: boolean[],
+  score?: number,
+}
+
+export default Vue.extend({
   data() {
     return {
-      score: {}
+      score: {} as IScore
     };
   },
   beforeMount() {
-    this.score = JSON.parse(localStorage.getItem(scoreKey) || "{}");
+    this.score = JSON.parse(localStorage.getItem(scoreKey) || "{}") as IScore;
   },
   computed: {
-    toArray() {
+    toArray(): IWordHistory[] {
       return Object.entries(this.score)
-        .map(([word, history]) => ({word, history}));
+        .map(([word, history]) => ({word, history} as IWordHistory));
     },
-    fromWorst() {
+    fromWorst(): IWordHistory[] {
       return [...this.toArray].sort((a,b) => 
         this.evaluateHistory(a) - this.evaluateHistory(b)
       );
     }
   },
   methods: {
-    evaluateHistory(entry) {
+    evaluateHistory(entry: IWordHistory) {
       const { history } = entry;
       const score = 100 * history.filter(h => h).length / history.length;
       Object.assign(entry, { score });
       return score;
     }
   },
-};
+});
 </script>
 
 <style></style>

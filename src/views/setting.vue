@@ -37,9 +37,10 @@
   </v-container>
 </template>
 
-<script>
-import { getSetting } from "@/utils/functions"
-export default {
+<script lang="ts">
+import Vue from "vue";
+import { getSetting } from "../utils/functions"
+export default Vue.extend({
   name: "setting",
   data() {
     return {
@@ -58,7 +59,7 @@ export default {
       }));
     },
   }
-};
+});
 </script>
 
 <style></style>

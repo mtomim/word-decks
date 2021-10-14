@@ -83,43 +83,48 @@
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from "vue";
 import stringify from "csv-stringify/lib/sync";
-import { readFile, shorten, setCurrentWordSet, getCurrentWordSet } from "@/utils/functions";
-import { DataFileRegistry, registry as _reg } from "@/utils/types";
+import { readFile, shorten, setCurrentWordSet, getCurrentWordSet } from "../utils/functions";
+import { DataFile, DataFileRegistry, registry as _reg } from "../utils/types";
 
 const files = Vue.observable(_reg);
 const threeRows = files[0].content.slice(0, 3);
 const sampleJson = JSON.stringify(threeRows, null, 2);
-let sampleCsv = stringify(threeRows, { header: true });
+const sampleCsv = stringify(threeRows, { header: true });
 
-export default {
+declare interface myerror {
+  fileName: string,
+  error: string|Error,
+}
+
+export default Vue.extend({
   data() {
     return {
       registryWrapper: new DataFileRegistry(),
       exampleShown: false,
-      sampleJson,
-      sampleCsv,
-      files,
-      errors: [],
-      currentWordSetName: "",
+      sampleJson: sampleJson,
+      sampleCsv: sampleCsv,
+      files: files,
+      errors: [] as myerror[],
+      currentWordSetName: "" as string|undefined,
     };
   },
   beforeMount() {
-    this.currentWordSetName = getCurrentWordSet().fileName;
+    this.currentWordSetName = getCurrentWordSet()?.fileName;
   },
   methods: {
-    parse(e) {
+    parse(e: DragEvent) {
       this.end();
-      const droppedFiles = e.dataTransfer?.files;
+      const droppedFiles: FileList|undefined = e.dataTransfer?.files;
       if (!droppedFiles) {
         return;
       }
-
-      [...droppedFiles].forEach(async (f) => {
+  
+      Array.from(droppedFiles).forEach(async (f) => {
         try {
-          const dataFile = await readFile(f, this.registryWrapper);
+          const dataFile = await readFile(f);
           if (dataFile.validateHeaders()) {
             this.registryWrapper.add(dataFile);
           }
@@ -127,32 +132,32 @@ export default {
           this.errors.push({
             fileName: f.name,
             error:
-              e.name === "error.filetype"
+              (e.name === "error.filetype"
                 ? this.$t(e.name)
                 : e.name === "error.headersmissing"
                 ? this.$t(e.name, {
                     headers: shorten(e.headers.join(", "), 20),
                     filename: f.name,
                   })
-                : e,
-          });
+                : e),
+          } as myerror);
         }
       });
     },
     over() {
-      this.$refs.dropZone.classList.add("over");
+      (this.$refs.dropZone as HTMLElement).classList.add("over");
     },
     end() {
-      this.$refs.dropZone.classList.remove("over");
+      (this.$refs.dropZone as HTMLElement).classList.remove("over");
     },
-    loadData(file) {
+    loadData(file: DataFile) {
       this.$emit("csvFile", file);
       setCurrentWordSet(file.fileName);
       this.currentWordSetName = file.fileName;
       this.$router.push({name: 'play'});
     },
   },
-};
+});
 </script>
 
 <style>

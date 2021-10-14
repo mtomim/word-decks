@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home'
-import about from '@/views/about'
-import setting from '@/views/setting'
-import edit from '@/views/edit'
-import score from '@/views/score'
+import Home from '../views/Home.vue'
+import about from '../views/about.vue'
+import setting from '../views/setting.vue'
+import edit from '../views/edit.vue'
+import score from '../views/score.vue'
 
 Vue.use(VueRouter)
 

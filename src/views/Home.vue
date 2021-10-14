@@ -4,14 +4,14 @@
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import WordDeck from '@/components/WordDeck'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import WordDeck from '../components/WordDeck.vue'; // @ is an alias to /src
 
-export default {
-  name: 'Home',
+@Component({
   components: {
-    WordDeck
-  }
-}
+    WordDeck,
+  },
+})
+export default class Home extends Vue {}
 </script>
