@@ -49,7 +49,7 @@
 
     <v-main>
       <v-container>
-        <router-view />
+        <router-view></router-view>
       </v-container>
     </v-main>
   </v-app>
@@ -74,7 +74,9 @@ export default {
     },
   },
   mounted() {
-    this.routePush({ name: "play" });
+    if (!this.$route.name) {
+      this.routePush({ name: "play" });
+    }
   },
 };
 </script>

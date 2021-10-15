@@ -102,7 +102,7 @@
           :key="i"
           :color="(right && 'primary lighten-1') || 'error'"
         >
-          <v-icon small>mdi-robot-{{`${ right ? "happy" : "dead"}`}}</v-icon>
+          <v-icon small>mdi-emoticon-{{`${ right ? "excited" : "cry"}`}}</v-icon>
           {{ word }}: {{ answer }}
         </v-btn>
       </v-col>
@@ -119,9 +119,10 @@ import {
   getSetting,
   getCurrentWordSet,
   shuffle,
-} from "../utils/functions";
-import { Answer, Word } from "../utils/types";
-import { scoreKey } from "../views/score.vue";
+  partition,
+} from "@/utils/functions";
+import { Answer, Word } from "@/utils/types";
+import { scoreKey } from "@/views/score.vue";
 
 const score = JSON.parse(localStorage.getItem(scoreKey) || "{}");
 
@@ -147,7 +148,7 @@ export default class WordDeck extends Vue{
 
   words: Word[] | null = []
   randomN: Word[] = []
-  difficulty = 10
+  difficulty = 1
   numWords = 20
   wordInFocus: Word | null = null
   answer: string|null = null
@@ -169,12 +170,7 @@ export default class WordDeck extends Vue{
     this.focusOnWord(this.randomN.find(() => true) || null);
   }
   getRandomNWords() {
-    const length = this.kanjiWords.length;
-    const lower = (length * (this.difficulty - 10)) / 100;
-    const max = Math.max(lower + length / 10, length);
-    const subArray = this.kanjiWords.slice(lower, max);
-
-    return shuffle(subArray).slice(0, this.numWords);
+    return shuffle(this.levelPacks[Math.min(this.difficulty, this.maxLevel) - 1]).slice(0, this.numWords);
   }
   focusOnWord(word: Word|null) {
     const arr = this.randomN;
@@ -202,6 +198,12 @@ export default class WordDeck extends Vue{
   }
   handleWordFocus(word: Word) {
     this.focusOnWord(word);
+  }
+  get levelPacks() {
+    return partition(this.kanjiWords, Math.min(this.maxLevel, 10));
+  }
+  get maxLevel() {
+    return Math.floor(this.kanjiWords.length / this.numWords);
   }
   get proportion() {
     return (

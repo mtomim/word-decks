@@ -41,6 +41,17 @@ export const levenshteinDistance = (str1 = "", str2 = ""): number => {
   return track[str2.length][str1.length];
 };
 
+export function partition<T>(array: T[], num: number): T[][] {
+  const result:T[][] = new Array<T[]>(num);
+  const max = Math.floor(array.length / num);
+  array.forEach((item, i) => {
+    const superIndex = Math.min(Math.floor(i / max), num - 1);
+    if (!result[superIndex]) result[superIndex] = [];
+    result[superIndex].push(item);
+  });
+  return result;
+}
+
 export const getSetting = (): { difficulty: number, numWords: number } =>
   JSON.parse(
     localStorage.getItem("wd-setting") ||

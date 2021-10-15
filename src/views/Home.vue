@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import WordDeck from '../components/WordDeck.vue'; // @ is an alias to /src
+import WordDeck from '@/components/WordDeck.vue'; // @ is an alias to /src
 
 @Component({
   components: {

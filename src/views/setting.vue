@@ -9,9 +9,9 @@
               v-model="difficulty"
               append-icon="mdi-plus"
               prepend-icon="mdi-minus"
-              step="5"
-              min="10"
-              max="100"
+              step="1"
+              min="1"
+              max="10"
               thumb-label
               @input="storeSetting"
             />
@@ -39,7 +39,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { getSetting } from "../utils/functions"
+import { getSetting } from "@/utils/functions"
 export default Vue.extend({
   name: "setting",
   data() {

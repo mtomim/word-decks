@@ -86,8 +86,8 @@
 <script lang="ts">
 import Vue from "vue";
 import stringify from "csv-stringify/lib/sync";
-import { readFile, shorten, setCurrentWordSet, getCurrentWordSet } from "../utils/functions";
-import { DataFile, DataFileRegistry, registry as _reg } from "../utils/types";
+import { readFile, shorten, setCurrentWordSet, getCurrentWordSet } from "@/utils/functions";
+import { DataFile, DataFileRegistry, registry as _reg } from "@/utils/types";
 
 const files = Vue.observable(_reg);
 const threeRows = files[0].content.slice(0, 3);

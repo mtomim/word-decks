@@ -2,15 +2,16 @@
   <csv-import/>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import csvImport from "@/components/csvImport.vue";
 
-export default {
+export default Vue.extend ({
   name: "edit",
   components: {
     csvImport,
   },
-};
+});
 </script>
 
 <style>

@@ -39,7 +39,7 @@
 <script lang="ts">
 import Vue, { PropType } from "vue";
 import Component from "vue-class-component";
-import { Word } from "../utils/types";
+import { Word } from "@/utils/types";
 
 @Component({
   props: {

@@ -20,15 +20,17 @@
   </v-container>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
   name: 'about',
   data() {
     return {
       channelUrl: 'https://discord.com/guild-discovery?query=japanese%20language&offset=0&limit=12&preferredLocale=ja&categoryId=-1'
     }
   }
-};
+});
 </script>
 
 <style>
