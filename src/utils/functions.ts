@@ -42,7 +42,7 @@ export const levenshteinDistance = (str1 = "", str2 = ""): number => {
 };
 
 export function partition<T>(array: T[], num: number): T[][] {
-  const result:T[][] = new Array<T[]>(num);
+  const result: T[][] = new Array<T[]>(num);
   const max = Math.floor(array.length / num);
   array.forEach((item, i) => {
     const superIndex = Math.min(Math.floor(i / max), num - 1);
@@ -55,7 +55,7 @@ export function partition<T>(array: T[], num: number): T[][] {
 export const getSetting = (): { difficulty: number, numWords: number } =>
   JSON.parse(
     localStorage.getItem("wd-setting") ||
-      JSON.stringify({ difficulty: 10, numWords: 20 })
+    JSON.stringify({ difficulty: 10, numWords: 20 })
   );
 
 export function shorten(str: string, len: number) {
@@ -92,7 +92,7 @@ async function readCsv(file: File, dataFile: DataFile) {
   dataFile.content.push(
     ...records.slice(1)
       .map((arr: []) =>
-        arr.reduce((p, c: string, i) => Object.assign(p, {[headers[i]]: c}), new Word())
+        arr.reduce((p, c: string, i) => Object.assign(p, { [headers[i]]: c }), new Word())
       )
   );
   return dataFile;

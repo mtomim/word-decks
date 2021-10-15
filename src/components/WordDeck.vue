@@ -94,7 +94,7 @@
       </v-col>
       <v-col cols="2" class="d-flex flex-column-reverse" align-self="start">
         <v-btn
-          v-for="({word, answer, right}, i) in answers"
+          v-for="({ word, answer, right }, i) in answers"
           :href="`https://jisho.org/search/${word}`"
           target="jisho.org"
           link
@@ -102,7 +102,9 @@
           :key="i"
           :color="(right && 'primary lighten-1') || 'error'"
         >
-          <v-icon small>mdi-emoticon-{{`${ right ? "excited" : "cry"}`}}</v-icon>
+          <v-icon small
+            >mdi-emoticon-{{ `${right ? "excited" : "cry"}` }}</v-icon
+          >
           {{ word }}: {{ answer }}
         </v-btn>
       </v-col>
@@ -112,7 +114,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Component from 'vue-class-component'
+import Component from "vue-class-component";
 import word from "./word.vue";
 import {
   levenshteinDistance,
@@ -135,26 +137,27 @@ const score = JSON.parse(localStorage.getItem(scoreKey) || "{}");
     explain(val) {
       (this as WordDeck).randomN.forEach((w: Word, i: number) => {
         if (Array.isArray(this.$refs[`w_${i}`])) {
-          (this.$refs[`w_${i}`] as word[]).forEach((ref) => ref.setShowReading(val));
+          (this.$refs[`w_${i}`] as word[]).forEach((ref) =>
+            ref.setShowReading(val)
+          );
         }
       });
     },
     dirHorizontal(val) {
       localStorage.setItem("wd-dirHorizontal", JSON.stringify(val));
-    }
+    },
   },
 })
-export default class WordDeck extends Vue{
-
-  words: Word[] | null = []
-  randomN: Word[] = []
-  difficulty = 1
-  numWords = 20
-  wordInFocus: Word | null = null
-  answer: string|null = null
-  explain: boolean = false
-  dirHorizontal: boolean = true
-  answers: Answer[] = []
+export default class WordDeck extends Vue {
+  words: Word[] | null = [];
+  randomN: Word[] = [];
+  difficulty = 1;
+  numWords = 20;
+  wordInFocus: Word | null = null;
+  answer: string | null = null;
+  explain: boolean = false;
+  dirHorizontal: boolean = true;
+  answers: Answer[] = [];
 
   loadNext() {
     this.randomN = this.getRandomNWords();
@@ -170,9 +173,11 @@ export default class WordDeck extends Vue{
     this.focusOnWord(this.randomN.find(() => true) || null);
   }
   getRandomNWords() {
-    return shuffle(this.levelPacks[Math.min(this.difficulty, this.maxLevel) - 1]).slice(0, this.numWords);
+    return shuffle(
+      this.levelPacks[Math.min(this.difficulty, this.maxLevel) - 1]
+    ).slice(0, this.numWords);
   }
-  focusOnWord(word: Word|null) {
+  focusOnWord(word: Word | null) {
     const arr = this.randomN;
     if (arr.length && word) {
       this.wordInFocus = arr.splice(arr.indexOf(word), 1).pop() || null;
@@ -180,18 +185,18 @@ export default class WordDeck extends Vue{
       this.wordInFocus = word;
     }
     this.$nextTick(() => {
-      this.answer = '';
+      this.answer = "";
     });
   }
   correct(word: Word, answer: string) {
     const right = word.reading === answer;
-    this.answers.push({word: word.word, answer, right});
+    this.answers.push({ word: word.word, answer, right });
     (score[word.word] = score[word.word] || []).push(right);
     if (right) {
       this.focusOnWord(this.randomN.find(() => true) || null);
     } else {
       setTimeout(() => {
-        this.answer = '';
+        this.answer = "";
       }, 500);
     }
     localStorage.setItem(scoreKey, JSON.stringify(score));
@@ -207,8 +212,7 @@ export default class WordDeck extends Vue{
   }
   get proportion() {
     return (
-      this.answers.filter(({right}) => !right).length /
-      this.answers.length
+      this.answers.filter(({ right }) => !right).length / this.answers.length
     );
   }
   get color() {
@@ -219,11 +223,13 @@ export default class WordDeck extends Vue{
   }
   get progress() {
     return (
-      ((this.numWords - this.randomN.length - (this.wordInFocus ? 1 : 0)) / this.numWords) * 100
+      ((this.numWords - this.randomN.length - (this.wordInFocus ? 1 : 0)) /
+        this.numWords) *
+      100
     );
   }
   get kanjiWords(): Word[] {
-    return this.words && this.words.filter((w) => w.word !== w.reading) || [];
+    return (this.words && this.words.filter((w) => w.word !== w.reading)) || [];
   }
   get running() {
     return !!this.wordInFocus;
@@ -274,7 +280,9 @@ export default class WordDeck extends Vue{
   }
   mounted() {
     this.randomN = this.getRandomNWords();
-    this.dirHorizontal = JSON.parse(localStorage.getItem("wd-dirHorizontal") || "false");
+    this.dirHorizontal = JSON.parse(
+      localStorage.getItem("wd-dirHorizontal") || "false"
+    );
   }
 }
 </script>
