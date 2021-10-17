@@ -37,54 +37,85 @@ const map = {
     u: 'ū',
     e: 'ē',
     o: 'ō',
-  } as {[key:string]: string}
+  } as { [key: string]: string }
 };
 
+declare interface tempObj {
+  consonant: string,
+  vowel?: string,
+  katakana: boolean,
+}
+
+/**
+ * Hiragana is transformed into lower case output.
+ * Katakana is transformed into UPPER case output.
+ * ```js
+ * assert(toRomaji('ローマじ') === 'RŌMAji');
+ * ```
+ * The sequences of same vowels and 'ou' output with prolonged vowel of the first.
+ * The sequence of 'ei' is not represented with long 'e'.
+ * ex)
+ * - 'ちちゅうかい', 'chichūkai'
+ * - 'ふりょう', 'furyō'
+ * - 'しょうがくせい', 'shōgakusei'
+ * 
+ * Caveat: The rule to not consider as prolonged vowel sound
+ * the consecutive vowels are from separate Kanjis is not respected.
+ * 
+ * ex) 'きいはんとうのばあい'
+ * - OK: 'kiihantōnobaai'
+ * - Our _wrong_ output: 'kīhantōnobāi'
+ * @param kana The input with Hiragana/Katakana
+ * @returns Romaji representation of the input
+ */
 export function toRomaji(kana: string): string {
-  return [...kana].map((ji) =>
-  ({
-    consonant: Object.entries(map.consonant)
-      .filter(([, v]) => v.includes(ji))
-      .map(([k,]) => k).join(),
-    vowel: Object.entries(map.vowel)
-      .filter(([, v]) => v.includes(ji))
-      .map(([k,]) => k).join()
-  } as { consonant: string, vowel: string }))
-    .reduce((prev, { consonant, vowel }, i, arr) => {
+  return [...kana]
+    .map((ji) => ({ ji, code: ji.charCodeAt(0) }))
+    .map(({ ji, code }) => ({
+      katakana: code >= 0x30A1,
+      ji: code >= 0x30A1 && code < 0x30FB ? String.fromCharCode(ji.charCodeAt(0) - 96) : ji
+    }))
+    .map(({ ji, katakana }) =>
+    ({
+      consonant: Object.entries(map.consonant)
+        .filter(([, v]) => v.includes(ji))
+        .map(([k,]) => k).join(),
+      vowel: Object.entries(map.vowel)
+        .filter(([, v]) => v.includes(ji))
+        .map(([k,]) => k).join(),
+      katakana
+    } as tempObj))
+    .reduce((prev, { consonant, vowel, katakana }, i, arr) => {
       const next = arr[i + 1];
       const previous = prev[i - 1];
       if ((vowel === '-' && previous && previous.vowel)
         || (vowel === previous?.vowel && !consonant)
         || (vowel === 'u' && !consonant && previous?.vowel === 'o')
-        ) {
-        previous.vowel = map.longVowel[previous.vowel||''];
-        vowel = '';
-      }
-      if (consonant === "supPre") {
+      ) {
+        previous.vowel = map.longVowel[previous.vowel || ''];
+        vowel = undefined;
+      } else if (consonant === "supPre") {
         consonant = "";
         if (previous.consonant === "f") {
           delete previous.vowel;
         }
-      }
-      if (consonant === "ySupPre") {
+      } else if (consonant === "ySupPre") {
         consonant = "y";
         if (previous) {
           if (["i", "e"].includes(previous.vowel || "")
-          || previous.consonant === "f" && previous.vowel === "u") {
+            || previous.consonant === "f" && previous.vowel === "u") {
             delete previous.vowel;
           }
           if (["sh", "ch", "j"].includes(previous.consonant)) {
             consonant = "";
           }
         }
-      }
-      if (consonant === "repeatNextConsonant") {
+      } else if (consonant === "repeatNextConsonant") {
         consonant = next?.consonant.charAt(0) || "";
         if (next?.consonant === "ch") {
           consonant = "t";
         }
-      }
-      if (consonant === "n" && !vowel) {
+      } else if (consonant === "n" && !vowel) {
         if (next && !next.consonant) {
           consonant = "n-";
         }
@@ -92,9 +123,14 @@ export function toRomaji(kana: string): string {
           consonant = "m";
         }
       }
-      prev.push({ consonant: consonant, vowel: vowel });
+      prev.push({ consonant: consonant, vowel: vowel, katakana });
       return prev;
-    }, [] as { consonant: string, vowel?: string }[])
-    .map(({ consonant, vowel }) => consonant + (vowel || ""))
+    }, [] as tempObj[])
+    .map(({ consonant, vowel, katakana }) => {
+      if (katakana) {
+        return (consonant + (vowel || "")).toUpperCase();
+      }
+      return consonant + (vowel || "");
+    })
     .join("");
 }

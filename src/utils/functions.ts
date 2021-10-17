@@ -82,6 +82,13 @@ export async function readFile(file: File, sep: ','|';'): Promise<DataFile> {
   }
 }
 
+export function uniq(array: string[]): string[] {
+  return Object.keys(array.reduce((obj,cur) => {
+    obj[cur] = true;
+    return obj;
+  }, {} as { [key:string]: boolean }));
+}
+
 async function readCsv(file: File, dataFile: DataFile, sep: ','|';') {
   const records = parse(await file.text(), { delimiter: sep });
   const [headers]: [string[]] = records;

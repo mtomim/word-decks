@@ -142,6 +142,7 @@ import {
   getCurrentWordSet,
   shuffle,
   partitionBySize,
+  uniq,
 } from "@/utils/functions";
 import { Answer, Word } from "@/utils/types";
 import { scoreKey } from "@/views/score.vue";
@@ -277,23 +278,18 @@ export default class WordDeck extends Vue {
       return [];
     }
     const choices: string[] = [];
-    const { reading } = this.wordInFocus;
+    const { reading, word } = this.wordInFocus;
     if (!reading) {
       return choices;
     }
     const readingArray = this.sortedWords.filter(
-      (word) => word.reading !== reading
+      (w) => w.reading !== reading && w.word !== word
     );
     choices.push(
-      // take 20 or all without words having the same `word` and shuffle
-      ...shuffle(
-        readingArray
-          .filter((word) => word.word !== this.wordInFocus?.word)
-          .slice(0, 20)
-      )
-        // take the 4 (or all) first of the suffled array
-        .slice(0, Math.min(4, readingArray.length))
-        .map((word) => word.reading),
+      // shuffle first 30 or all
+      ...uniq(shuffle(readingArray.map((w) => w.reading).slice(0, 20)))
+        // take the 4 first (or all) of the suffled array
+        .slice(0, 4),
       reading
     );
     return shuffle(choices);

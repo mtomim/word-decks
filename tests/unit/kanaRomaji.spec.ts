@@ -29,8 +29,10 @@ describe('kanaRomaji.ts', () => {
         ['おかあさん', 'okāsan'],
         ['きーきー', 'kīkī'],
         ['けーき', 'kēki'],
+        ['ケーキ', 'KĒKI'],
         ['とおり', 'tōri'],
         ['きいはんとう', 'kīhantō'],
+        ['ろくおんテープ', 'rokuonTĒPU'],
     ])('translates %s to %s', (input, expected) => {
         expect(toRomaji(input)).toBe(expected);
     })
