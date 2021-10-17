@@ -67,14 +67,24 @@
                   v-model="answer"
                   :class="{ vertical: !dirHorizontal }"
                 >
-                  <v-btn
+                  <v-tooltip
                     v-for="(rdng, i) in readings"
                     :key="`rd-${i}`"
-                    @click="correct(wordInFocus, rdng)"
-                    color="secondary"
-                    class="text-h4"
-                    >{{ rdng }}</v-btn
+                    :right="!dirHorizontal"
+                    :top="dirHorizontal"
                   >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn
+                        @click="correct(wordInFocus, rdng)"
+                        color="secondary"
+                        class="text-h4"
+                        v-bind="attrs"
+                        v-on="on"
+                        >{{ rdng }}</v-btn
+                      >
+                    </template>
+                    <span>{{toRomaji(rdng)}}</span>
+                  </v-tooltip>
                 </v-btn-toggle>
               </v-col>
             </v-row>
@@ -135,6 +145,7 @@ import {
 } from "@/utils/functions";
 import { Answer, Word } from "@/utils/types";
 import { scoreKey } from "@/views/score.vue";
+import { toRomaji } from "@/utils/kanaRomaji"
 
 const score = JSON.parse(localStorage.getItem(scoreKey) || "{}");
 
@@ -169,6 +180,9 @@ export default class WordDeck extends Vue {
   dirHorizontal: boolean = true;
   answers: Answer[] = [];
 
+  toRomaji(s: string): string {
+    return toRomaji(s);
+  }
   loadNext() {
     this.randomN = this.getRandomNWords();
     if (this.explain) {
