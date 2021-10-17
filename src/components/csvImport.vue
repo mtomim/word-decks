@@ -9,10 +9,20 @@
         ref="dropZone"
       >
         <v-row class="justify-center">
-          <v-icon large color="#00ff00aa">mdi-tray-arrow-down</v-icon>
-          <span class="text-h6 text--secondary">{{
-            $t("label.acceptedformat")
-          }}</span>
+          <v-col>
+            <v-icon large color="#00ff00aa">mdi-tray-arrow-down</v-icon>
+            <span class="text-h6 text--secondary">{{
+              $t("label.acceptedformat")
+            }}</span>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-btn-toggle v-model="separator">
+              <v-btn x-small value=",">,</v-btn>
+              <v-btn x-small value=";">;</v-btn>
+            </v-btn-toggle>
+          </v-col>
         </v-row>
         <v-row class="justify-center">
           <v-col>
@@ -87,7 +97,7 @@
 import Vue from "vue";
 import stringify from "csv-stringify/lib/sync";
 import { readFile, shorten, setCurrentWordSet, getCurrentWordSet } from "@/utils/functions";
-import { DataFile, DataFileRegistry, registry as _reg } from "@/utils/types";
+import { DataFile, DataFileRegistry, ParsingError, registry as _reg } from "@/utils/types";
 
 const files = Vue.observable(_reg);
 const threeRows = files[0].content.slice(0, 3);
@@ -109,6 +119,7 @@ export default Vue.extend({
       files: files,
       errors: [] as myerror[],
       currentWordSetName: "" as string|undefined,
+      separator: ',' as ','|';',
     };
   },
   beforeMount() {
@@ -124,19 +135,19 @@ export default Vue.extend({
   
       Array.from(droppedFiles).forEach(async (f) => {
         try {
-          const dataFile = await readFile(f);
+          const dataFile = await readFile(f, this.separator);
           if (dataFile.validateHeaders()) {
             this.registryWrapper.add(dataFile);
           }
-        } catch(e) {
+        } catch(e: unknown) {
           this.errors.push({
             fileName: f.name,
             error:
-              (e.name === "error.filetype"
-                ? this.$t(e.name)
-                : e.name === "error.headersmissing"
-                ? this.$t(e.name, {
-                    headers: shorten(e.headers.join(", "), 20),
+              ((e as ParsingError).name === "error.filetype"
+                ? this.$t((e as ParsingError).name)
+                : (e as ParsingError).name === "error.headersmissing"
+                ? this.$t((e as ParsingError).name, {
+                    headers: shorten((e as ParsingError).getHeaders().join(", "), 20),
                     filename: f.name,
                   })
                 : e),

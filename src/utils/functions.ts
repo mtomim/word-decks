@@ -62,7 +62,7 @@ export function shorten(str: string, len: number) {
   return str;
 }
 
-export async function readFile(file: File): Promise<DataFile> {
+export async function readFile(file: File, sep: ','|';'): Promise<DataFile> {
   const lines: [] = [];
   const headers: string[] = [];
   const dataFile = new DataFile();
@@ -76,14 +76,14 @@ export async function readFile(file: File): Promise<DataFile> {
   if (file.type.match("application/json")) {
     return await readJson(file, dataFile);
   } else if (file.type.match("text/csv")) {
-    return await readCsv(file, dataFile);
+    return await readCsv(file, dataFile, sep);
   } else {
     throw new ParsingError("error.filetype", {});
   }
 }
 
-async function readCsv(file: File, dataFile: DataFile) {
-  const records = parse(await file.text());
+async function readCsv(file: File, dataFile: DataFile, sep: ','|';') {
+  const records = parse(await file.text(), { delimiter: sep });
   const [headers]: [string[]] = records;
   dataFile.headers.push(...headers);
   dataFile.content.push(

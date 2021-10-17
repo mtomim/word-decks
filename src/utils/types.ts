@@ -1,11 +1,20 @@
 const REQUIRED_FIELDS = ["word", "reading", "definition", "part"];
 
-export class ParsingError extends Error {
+declare interface IParsingError {
+  name: string;
+  headers?: string[];
+}
+
+export class ParsingError extends Error implements IParsingError {
+  headers: string[] | undefined;
   constructor(name: string, object: { headers?: string[] }) {
     super();
     Object.setPrototypeOf(this, ParsingError.prototype);
     this.name = name;
     Object.assign(this, object);
+  }
+  getHeaders(): string[] {
+    return this.headers || [];
   }
 }
 

@@ -2,11 +2,13 @@
   <v-container>
     <v-row>
       <v-col cols="10">
-        <v-row>
-          <v-col v-if="wordInFocus" class="col-6">
+        <v-row justify="space-between">
+          <v-col v-if="wordInFocus">
             <v-row>
-              <v-col>
-                <span class="text-h1">{{ wordInFocus.word }}</span>
+              <v-col md="auto">
+                <span class="text-h1 text-no-wrap">{{ wordInFocus.word }}</span>
+              </v-col>
+              <v-col md="auto">
                 <span class="text-h6">{{ wordInFocus.definition }}</span>
                 <a
                   :href="`https://jisho.org/search/${wordInFocus.word}`"
@@ -16,49 +18,22 @@
                 </a>
               </v-col>
             </v-row>
-            <v-row>
-              <v-btn-toggle v-model="dirHorizontal" color="info">
-                <v-btn x-small :value="true"
-                  ><v-icon>mdi-table-row</v-icon></v-btn
-                >
-                <v-btn x-small :value="false"
-                  ><v-icon>mdi-table-column</v-icon></v-btn
-                >
-              </v-btn-toggle>
-            </v-row>
-            <v-row>
-              <v-btn-toggle
-                v-model="answer"
-                :class="{ vertical: !dirHorizontal }"
-              >
-                <v-btn
-                  v-for="(rdng, i) in readings"
-                  :key="`rd-${i}`"
-                  @click="correct(wordInFocus, rdng)"
-                  color="secondary"
-                  class="text-h4"
-                  >{{ rdng }}</v-btn
-                >
-              </v-btn-toggle>
-            </v-row>
           </v-col>
           <v-col v-else>
             <v-btn color="primary" @click="start">{{
               $t("label.start")
             }}</v-btn>
           </v-col>
-          <v-col class="col-6">
+          <v-col cols="auto">
             <v-row class="d-flex flex-row">
-              <v-col cols="6" class="d-flex">
+              <v-col class="d-flex" md="auto">
                 <v-progress-circular
-                  class="d-flex ml-auto"
+                  class="d-flex ml-auto mr-3"
                   :value="progress"
                   :color="color"
                   size="64"
                   width="8"
                 ></v-progress-circular>
-              </v-col>
-              <v-col cols="6" class="d-flex">
                 <span
                   :style="`color: ${color}`"
                   class="text-h2 d-flex ma-auto mr-1"
@@ -72,6 +47,39 @@
             </v-row>
           </v-col>
         </v-row>
+        <v-row v-if="readings && readings.length">
+          <v-col>
+            <v-row no-gutters>
+              <v-col>
+                <v-btn-toggle v-model="dirHorizontal" color="info">
+                  <v-btn x-small :value="true"
+                    ><v-icon>mdi-table-row</v-icon></v-btn
+                  >
+                  <v-btn x-small :value="false"
+                    ><v-icon>mdi-table-column</v-icon></v-btn
+                  >
+                </v-btn-toggle>
+              </v-col>
+            </v-row>
+            <v-row no-gutters>
+              <v-col>
+                <v-btn-toggle
+                  v-model="answer"
+                  :class="{ vertical: !dirHorizontal }"
+                >
+                  <v-btn
+                    v-for="(rdng, i) in readings"
+                    :key="`rd-${i}`"
+                    @click="correct(wordInFocus, rdng)"
+                    color="secondary"
+                    class="text-h4"
+                    >{{ rdng }}</v-btn
+                  >
+                </v-btn-toggle>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
         <v-row class="words-stack" justify="start">
           <v-col v-for="(word, i) in randomN" :key="`w-${i}`" cols="2">
             <div class="word">
@@ -79,11 +87,13 @@
             </div>
           </v-col>
         </v-row>
-        <v-row align="start" class="mt-4">
-          <v-col>
+        <v-row align="start" class="mt-4" justify="start">
+          <v-col md="auto">
             <v-btn @click.prevent.stop="loadNext" color="accent">
               <v-icon>mdi-autorenew</v-icon>
             </v-btn>
+          </v-col>
+          <v-col>
             <v-checkbox
               v-model="explain"
               :label="$t('label.explain')"
