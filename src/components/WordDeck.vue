@@ -121,7 +121,8 @@ import {
   getSetting,
   getCurrentWordSet,
   shuffle,
-  partition,
+  // partition,
+  partitionBySize,
 } from "@/utils/functions";
 import { Answer, Word } from "@/utils/types";
 import { scoreKey } from "@/views/score.vue";
@@ -205,10 +206,10 @@ export default class WordDeck extends Vue {
     this.focusOnWord(word);
   }
   get levelPacks() {
-    return partition(this.kanjiWords, Math.min(this.maxLevel, 10));
+    return partitionBySize(this.kanjiWords, Math.round(this.kanjiWords.length / this.maxLevel));
   }
   get maxLevel() {
-    return Math.floor(this.kanjiWords.length / this.numWords);
+    return Math.min(Math.max(Math.floor(this.kanjiWords.length / this.numWords), 1), 10);
   }
   get proportion() {
     return (
