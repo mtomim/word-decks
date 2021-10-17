@@ -121,7 +121,6 @@ import {
   getSetting,
   getCurrentWordSet,
   shuffle,
-  // partition,
   partitionBySize,
 } from "@/utils/functions";
 import { Answer, Word } from "@/utils/types";
