@@ -14,7 +14,7 @@ const map = {
     supPre: [..."ぁぃぅぇぉ"],
     r: [..."らりるれろ"],
     w: [..."わを",],
-    f: [..."ふ"],
+    f: ["ふ"],
     p: [..."ぱぴぷぺぽ"],
     b: [..."ばびぶべぼ"],
     j: [..."じぢ"],
@@ -46,6 +46,22 @@ declare interface tempObj {
   katakana: boolean,
 }
 
+const [lowerKatakana, upperKatakana] = [0x30A1, 0x30FB];
+
+function isKatakana(ji: string): boolean {
+  const code = ji.codePointAt(0);
+  return code! >= lowerKatakana && code! < upperKatakana;
+}
+
+const noHiraganaCorrespondant = 'ヷヸヹヺ・ーヿ';
+
+function convHiragana(ji: string): string {
+  if (isKatakana(ji) && !noHiraganaCorrespondant.includes(ji)) {
+    return String.fromCharCode(ji.codePointAt(0)! - 0x60);
+  }
+  return ji;
+}
+
 /**
  * Hiragana is transformed into lower case output.
  * Katakana is transformed into UPPER case output.
@@ -70,10 +86,9 @@ declare interface tempObj {
  */
 export function toRomaji(kana: string): string {
   return [...kana]
-    .map((ji) => ({ ji, code: ji.charCodeAt(0) }))
-    .map(({ ji, code }) => ({
-      katakana: code >= 0x30A1,
-      ji: code >= 0x30A1 && code < 0x30FB ? String.fromCharCode(ji.charCodeAt(0) - 96) : ji
+    .map((ji) => ({
+      katakana: isKatakana(ji),
+      ji: convHiragana(ji),
     }))
     .map(({ ji, katakana }) =>
     ({
