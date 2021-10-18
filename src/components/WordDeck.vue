@@ -136,6 +136,7 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import word from "./word.vue";
+import { toRomaji } from "kana-romaji/lib/kana-romaji";
 import {
   levenshteinDistance,
   getSetting,
@@ -146,7 +147,6 @@ import {
 } from "@/utils/functions";
 import { Answer, Word } from "@/utils/types";
 import { scoreKey } from "@/views/score.vue";
-import { toRomaji } from "@/utils/kanaRomaji"
 
 const score = JSON.parse(localStorage.getItem(scoreKey) || "{}");
 
