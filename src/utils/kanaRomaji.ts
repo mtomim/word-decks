@@ -66,7 +66,7 @@ function convHiragana(ji: string): string {
  * Hiragana is transformed into lower case output.
  * Katakana is transformed into UPPER case output.
  * ```js
- * assert(toRomaji('ローマじ') === 'RŌMAji');
+ * toRomaji('ローマじ') // === 'RŌMAji';
  * ```
  * The sequences of same vowels and 'ou' output with prolonged vowel of the first.
  * The sequence of 'ei' is not represented with long 'e'.
@@ -76,11 +76,17 @@ function convHiragana(ji: string): string {
  * - 'しょうがくせい', 'shōgakusei'
  * 
  * Caveat: The rule to not consider as prolonged vowel sound
- * the consecutive vowels are from separate Kanjis is not respected.
+ * when the consecutive vowels are from separate Kanjis is not respected.
  * 
  * ex) 'きいはんとうのばあい'
  * - OK: 'kiihantōnobaai'
  * - Our _wrong_ output: 'kīhantōnobāi'
+ * 
+ * 'おかあさん'
+ * - should be and is 'okāsan'
+ * 
+ * 'とおり'
+ * - should be and is 'tōri'
  * @param kana The input with Hiragana/Katakana
  * @returns Romaji representation of the input
  */
