@@ -26,6 +26,7 @@ describe('score.vue', () => {
       '10': [...Array(9).fill(false), true]
     };
     await wrapper.setData({ score: newScore })
+    expect(Object.keys(theScore).length).toBe(6);
     const scoreCards = wrapper.findAll('.pa-4');
     expect(scoreCards.length).toBe(6);
     expect(scoreCards.at(0).text()).toContain('(10.00)')
