@@ -20,7 +20,7 @@
             </v-row>
           </v-col>
           <v-col v-else>
-            <v-btn color="primary" @click="start">{{
+            <v-btn color="primary" class="start-button" @click="start">{{
               $t("label.start")
             }}</v-btn>
           </v-col>
@@ -99,7 +99,7 @@
         </v-row>
         <v-row align="start" class="mt-4" justify="start">
           <v-col md="auto">
-            <v-btn @click.prevent.stop="loadNext" color="accent">
+            <v-btn @click.prevent.stop="loadNext" color="accent" class="renew">
               <v-icon>mdi-autorenew</v-icon>
             </v-btn>
           </v-col>
@@ -136,7 +136,7 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import word from "./word.vue";
-import { toRomaji } from "kana-romaji/lib/kana-romaji";
+import { toRomaji } from "kana-romaji";
 import {
   levenshteinDistance,
   getSetting,

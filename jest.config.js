@@ -1,4 +1,5 @@
 module.exports = {
   preset: '@vue/cli-plugin-unit-jest/presets/typescript-and-babel',
-  setupFiles: ['./tests/setup.ts']
+  setupFiles: ['./tests/setup.ts'],
+  collectCoverage: true,
 }

@@ -6699,10 +6699,10 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-kana-romaji@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/kana-romaji/-/kana-romaji-0.1.4.tgz#6eb4b6eadc9a3cc97061b69f3782aae910abc47a"
-  integrity sha512-cq00P7pm+lN+hCJjuNTlbO9WLBQ2+j2YqSCt0ZNAtcvZwYt31dSmtltApJcd98YKA+nJEPS3L1K4j4TsaShO2g==
+kana-romaji@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/kana-romaji/-/kana-romaji-0.1.6.tgz#63621dd097db8d96a2f076d7678ae62dae2c5f52"
+  integrity sha512-pHRm/WnKuzeB8WnqIwwk+nDrWvBHHSE1io/y88t+LtA/eBs9ZvCIjFb5hcIgFJFtyIF7vMYBzo1hqUAtY8yBbQ==
 
 killable@^1.0.1:
   version "1.0.1"

@@ -1,5 +1,7 @@
 import { createLocalVue, mount } from '@vue/test-utils'
 import WordDeck from '@/components/WordDeck.vue'
+import wordComponent from '@/components/word.vue'
+
 import { DataFile, DataFileRegistry, registry, Word } from "@/utils/types";
 import Vuetify from 'vuetify';
 
@@ -175,4 +177,74 @@ describe('WordDeck.vue', () => {
     })
   })
 
+  it('shows the first word when start button clicked', async () => {
+    const wrapper = mount(WordDeck, {
+      mocks: {
+        $t: (s: string, o?: object) => s
+      },
+      localVue,
+      vuetify
+    });
+    const { numWords } = wrapper.vm.$data;
+    await wrapper.find('.renew').trigger('click');
+    expect(wrapper.findAllComponents(wordComponent).length)
+      .toBe(numWords)
+    await wrapper.find('.start-button').trigger('click');
+    expect(wrapper.vm.$data.wordInFocus).not.toBeNull();
+    expect(wrapper.findComponent(wordComponent).exists()).toBeTruthy();
+    expect(wrapper.findAll('.word .word').length)
+      .toBe(numWords - 1)
+  })
+
+  it('shows explanations of words when checkbox checked', async () => {
+    const wrapper = mount(WordDeck, {
+      mocks: {
+        $t: (s: string, o?: object) => s
+      },
+      localVue,
+      vuetify
+    });
+    const { numWords } = wrapper.vm.$data;
+    expect(wrapper.vm.$data.explain).toBe(false);
+    await wrapper.find('.start-button').trigger('click');
+    expect(wrapper.findAllComponents(wordComponent).exists()).toBeTruthy()
+    expect(wrapper.findAllComponents(wordComponent).length).toBe(numWords - 1)
+    expect(wrapper.findAll('.word .word').length).toBe(numWords - 1)
+    expect(wrapper.findAllComponents(wordComponent).at(0).find('.word-info').exists()).toBeFalsy()
+    await wrapper.find('.v-input.ma-0 .v-label').trigger('click')
+    expect(wrapper.vm.$data.explain).toBe(true);
+    expect(wrapper.findAllComponents(wordComponent).at(0).find('.word-info').exists()).toBeTruthy()
+    await wrapper.find('.renew').trigger('click');
+    expect(wrapper.findAllComponents(wordComponent).at(0).find('.word-info').exists()).toBeTruthy()
+    wrapper.vm.$data.explain = false;
+    await wrapper.find('.renew').trigger('click');
+    expect(wrapper.findAllComponents(wordComponent).at(0).find('.word-info').exists()).toBeFalsy()
+  })
+
+  it('loads the next set of words when `start` clicked and empty', async() => {
+    const wrapper = mount(WordDeck, {
+      mocks: {
+        $t: (s: string, o?: object) => s
+      },
+      localVue,
+      vuetify
+    });
+    const { numWords } = wrapper.vm.$data;
+    await wrapper.find('.start-button').trigger('click');
+    expect(wrapper.findAllComponents(wordComponent).length).toBe(numWords - 1)
+    for (let i = 0; i < numWords - 1; i++) {
+      await wrapper.find('.word .word').trigger('click')
+    }
+    expect(wrapper.findAllComponents(wordComponent).length).toBe(0)
+    expect(wrapper.findComponent(wordComponent).exists()).toBeFalsy()
+    expect(wrapper.findAll('.text-h4').length).toBe(5)
+    let i = 0;
+    while (wrapper.vm.$data.wordInFocus) {
+      await wrapper.findAll('.text-h4').at(i++).trigger('click')
+    }
+    expect(wrapper.find('.start-button').exists()).toBeTruthy()
+    await wrapper.find('.start-button').trigger('click');
+    expect(wrapper.findComponent(wordComponent).exists()).toBeTruthy()
+    expect(wrapper.findAllComponents(wordComponent).length).toBe(numWords - 1)
+  })
 })
