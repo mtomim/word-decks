@@ -89,7 +89,7 @@ describe('WordDeck.vue', () => {
       localVue,
       vuetify
     });
-    const assertLevelWords = function(level: number) {
+    const assertLevelWords = function (level: number) {
       const numWords = 15;
       wrapper.vm.$data.difficulty = level;
       wrapper.find('i.mdi-autorenew').trigger('click');
@@ -109,7 +109,7 @@ describe('WordDeck.vue', () => {
     assertLevelWords(6);
     assertLevelWords(10);
     if (file !== undefined) {
-      file.content.push(... Array(90).fill(0).map((_, i) => ({
+      file.content.push(...Array(90).fill(0).map((_, i) => ({
         word: `${i + 91}`,
         reading: `0${i + 91}`,
         definition: 'd',
@@ -158,15 +158,15 @@ describe('WordDeck.vue', () => {
       vuetify
     });
     const len = file?.content.length || 500;
-    [1,5,15,51,100].forEach((numWords) => {
-      wrapper.vm.$data.numWords = numWords;
+    [1, 5, 15, 51, 100].forEach((numWords) => {
+      wrapper.setData({ numWords: numWords });
       const maxLevel = Math.min(Math.max(Math.floor(len / numWords), 1), 10);
       const packSize = Math.round(len / maxLevel);
-      [1,2,9,10].forEach((level) => {
+      [1, 2, 9, 10].forEach((level) => {
         if (level > 500 / numWords) {
           level = Math.floor(500 / numWords);
         }
-        wrapper.vm.$data.difficulty = level;
+        wrapper.setData({ difficulty: level });
         wrapper.find('i.mdi-autorenew').trigger('click');
         (wrapper.vm.$data.randomN as Word[]).forEach((w) => {
           const num = Number(w.word);
@@ -221,7 +221,7 @@ describe('WordDeck.vue', () => {
     expect(wrapper.findAllComponents(wordComponent).at(0).find('.word-info').exists()).toBeFalsy()
   })
 
-  it('loads the next set of words when `start` clicked and empty', async() => {
+  it('loads the next set of words when `start` clicked and empty', async () => {
     const wrapper = mount(WordDeck, {
       mocks: {
         $t: (s: string, o?: object) => s
@@ -239,9 +239,21 @@ describe('WordDeck.vue', () => {
     expect(wrapper.findComponent(wordComponent).exists()).toBeFalsy()
     expect(wrapper.findAll('.text-h4').length).toBe(5)
     let i = 0;
-    while (wrapper.vm.$data.wordInFocus) {
-      await wrapper.findAll('.text-h4').at(i++).trigger('click')
+    let answerIdx;
+    const { reading } = wrapper.vm.$data.wordInFocus;
+    while (wrapper.vm.$data.wordInFocus
+      && i < wrapper.findAll('.text-h4').length) {
+      const answer = wrapper.findAll('.text-h4').at(i).text();
+      if (answer !== reading) {
+        await wrapper.findAll('.text-h4').at(i).trigger('click')
+        setTimeout(()=> expect(wrapper.vm.$data.answer).toBe(""), 501)
+      } else {
+        answerIdx = i;
+      }
+      i++;
     }
+    expect(wrapper.find('.start-button').exists()).toBeFalsy()
+    await wrapper.findAll('.text-h4').at(answerIdx as number).trigger('click')
     expect(wrapper.find('.start-button').exists()).toBeTruthy()
     await wrapper.find('.start-button').trigger('click');
     expect(wrapper.findComponent(wordComponent).exists()).toBeTruthy()

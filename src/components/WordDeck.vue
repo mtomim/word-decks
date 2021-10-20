@@ -195,7 +195,7 @@ export default class WordDeck extends Vue {
     if (this.randomN.length === 0) {
       this.loadNext();
     }
-    this.focusOnWord(this.randomN.find(() => true) || null);
+    this.focusOnWord(this.randomN.shift()!);
   }
   getRandomNWords() {
     return shuffle(
@@ -204,11 +204,10 @@ export default class WordDeck extends Vue {
   }
   focusOnWord(word: Word | null) {
     const arr = this.randomN;
-    if (arr.length && word) {
-      this.wordInFocus = arr.splice(arr.indexOf(word), 1).pop() || null;
-    } else {
-      this.wordInFocus = word;
+    if (arr.length && word && arr.includes(word)) {
+      arr.splice(arr.indexOf(word), 1);
     }
+    this.wordInFocus = word;
     this.$nextTick(() => {
       this.answer = "";
     });
@@ -218,7 +217,7 @@ export default class WordDeck extends Vue {
     this.answers.push({ word: word.word, answer, right });
     (score[word.word] = score[word.word] || []).push(right);
     if (right) {
-      this.focusOnWord(this.randomN.find(() => true) || null);
+      this.focusOnWord(this.randomN.shift() || null);
     } else {
       setTimeout(() => {
         this.answer = "";
@@ -258,12 +257,6 @@ export default class WordDeck extends Vue {
   }
   get running() {
     return !!this.wordInFocus;
-  }
-  get wordsOfSelectDifficulty() {
-    const { length } = this.kanjiWords;
-    const lower = (length * (this.difficulty - 10)) / 100;
-    const max = (length * 10) / 100;
-    return this.kanjiWords.slice(lower, max);
   }
   get sortedWords() {
     const reading = this.wordInFocus?.reading;
