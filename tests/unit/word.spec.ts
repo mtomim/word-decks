@@ -3,7 +3,6 @@ import wordComponent from '@/components/word.vue'
 
 import Vuetify from 'vuetify';
 import { Word } from '@/utils/types';
-import { PropType } from 'vue';
 
 describe('WordDeck.vue', () => {
   let vuetify: Vuetify
