@@ -69,7 +69,7 @@
           <v-card-title>{{ err.fileName }}</v-card-title>
           <v-card-text>{{ err.error }}</v-card-text>
           <v-card-actions>
-            <v-btn text v-bind="attrs" @click="errors.splice(i, 1)"
+            <v-btn text @click="errors.splice(i, 1)"
               ><v-icon>mdi-close</v-icon>
             </v-btn>
           </v-card-actions>
@@ -133,27 +133,7 @@ export default Vue.extend({
         return;
       }
   
-      Array.from(droppedFiles).forEach(async (f) => {
-        try {
-          const dataFile = await readFile(f, this.separator);
-          if (dataFile.validateHeaders()) {
-            this.registryWrapper.add(dataFile);
-          }
-        } catch(e: unknown) {
-          this.errors.push({
-            fileName: f.name,
-            error:
-              ((e as ParsingError).name === "error.filetype"
-                ? this.$t((e as ParsingError).name)
-                : (e as ParsingError).name === "error.headersmissing"
-                ? this.$t((e as ParsingError).name, {
-                    headers: shorten((e as ParsingError).getHeaders().join(", "), 20),
-                    filename: f.name,
-                  })
-                : e),
-          } as myerror);
-        }
-      });
+      Array.from(droppedFiles).forEach(this.read);
     },
     over() {
       (this.$refs.dropZone as HTMLElement).classList.add("over");
@@ -166,6 +146,27 @@ export default Vue.extend({
       setCurrentWordSet(file.fileName);
       this.currentWordSetName = file.fileName;
       this.$router.push({name: 'play'});
+    },
+    async read(f: File): Promise<void> {
+      try {
+        const dataFile = await readFile(f, this.separator);
+        if (dataFile.validateHeaders()) {
+          this.registryWrapper.add(dataFile);
+        }
+      } catch(e: unknown) {
+        this.errors.push({
+          fileName: f.name,
+          error:
+            ((e as ParsingError).name === "error.filetype"
+              ? this.$t((e as ParsingError).name)
+              : (e as ParsingError).name === "error.headersmissing"
+              ? this.$t((e as ParsingError).name, {
+                  headers: shorten((e as ParsingError).getHeaders().join(", "), 20),
+                  filename: f.name,
+                })
+              : e),
+        } as myerror);
+      }
     },
   },
 });
