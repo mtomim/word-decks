@@ -1,11 +1,12 @@
-import { createLocalVue, mount } from '@vue/test-utils'
+import { createLocalVue, mount, Wrapper } from '@vue/test-utils'
 import VueI18n from 'vue-i18n';
 import csvImport from '@/components/csvImport.vue'
 import router from '@/router'
 
 import Vuetify from 'vuetify';
 import messages from '@/assets/language';
-import { Word } from '@/utils/types';
+import { DataFileRegistry, Word } from '@/utils/types';
+import { CombinedVueInstance } from 'vue/types/vue';
 
 const i18n = new VueI18n({
   locale: localStorage.getItem('wd-locale') || 'fr',
@@ -100,45 +101,98 @@ describe('csvImport.vue', () => {
 
     expect(parse).toHaveBeenCalledTimes(1);
 
-    expect(wrapper.vm.$data.errors.length).toBe(0);
+  })
+
+})
+
+describe('csvImport.vue::read', () => {
+  interface myerror {
+    fileName: string,
+    error: string|Error,
+  }
+  
+  let vuetify: Vuetify
+  let wrapper: Wrapper<CombinedVueInstance<csvImport, object, object, object, Record<never, any>>, Element>;
+  const localVue = createLocalVue()
+  let initialFileLength: number;
+  let read: (f: File) => Promise<void>;
+  let errors: myerror[];
+  beforeEach(() => {
+    vuetify = new Vuetify()
+    wrapper = mount(csvImport, {
+      mocks: {
+        $t: (s: string, o?: object) => s,
+      },
+      i18n,
+      router,
+      localVue,
+      vuetify
+    });
+    DataFileRegistry.REGISTRY.length = 2;
+    initialFileLength = DataFileRegistry.REGISTRY.length;
     // @ts-ignore
-    const { read } = wrapper.vm;
+    read = wrapper.vm.read;
+    errors = wrapper.vm.$data.errors;
+  })
+  function createFile(name: string, content: string, type: string): File {
+    const file = new File([], name, { type });
+    file.text = async() => content;
+    return file;
+  }
+  it('rejects csv without all fields', async() => {
+    expect(errors.length).toBe(0);
+    await read(createFile('data.csv', 'word,reading,xxx,yyy', 'text/csv'));
 
-    let file = new File([], 'data.csv', { type: 'text/csv' });
-    file.text = async function() {
-      return 'word,reading,xxx,yyy';
-    }
-    await read(file);
+    expect(errors.length).toBe(1);
+    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength);
+  })
+  it('accepts csv with no data', async() => {
+    expect(errors.length).toBe(0);
+    await read(createFile('data.csv', 'word,reading,definition,part,xxx,yyy', 'text/csv'));
 
-    expect(wrapper.vm.$data.errors.length).toBe(1);
-
-    file.text = async() => [
+    expect(errors.length).toBe(0);
+    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength + 1);
+  })
+  it('accepts csv with all fields', async() => {
+    expect(errors.length).toBe(0);
+    await read(createFile('data.csv', [
       'word,reading,definition,part',
       'abc,def,ghi,jkl',
       'ABC,DEF,GHI,JKL',
-    ].join('\n');
-    await read(file);
+    ].join('\n'), 'text/csv'));
 
-    file = new File([], 'data.json', { type: 'application/json' })
-    file.text = async () => JSON.stringify(Array(3).fill(new Word()).map((_,i) => ({
+    expect(errors.length).toBe(0);
+    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength + 1);
+
+  })
+  it('accepts json with all properties', async() => {
+    const content = JSON.stringify(Array(3).fill(new Word()).map((_,i) => ({
       word: `word${i}`,
       reading: `r${i}`,
       definition: `d${i}`,
       part: `p${i}`,
     })));
-    await read(file);
+    await read(createFile('data.json', content, 'application/json'));
 
-    expect(wrapper.vm.$data.errors.length).toBe(1);
+    expect(errors.length).toBe(0);
+    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength + 1);
 
-    file.text = async () => JSON.stringify(Array(3).fill(new Word()).map((_,i) => ({
+  })
+  it('rejects json without all fields', async() => {
+    const content = JSON.stringify(Array(3).fill(new Word()).map((_,i) => ({
       wordx: `word${i}`,
       reading: `r${i}`,
       definitionx: `d${i}`,
       part: `p${i}`,
     })));
-    await read(file);
+    await read(createFile('data.json', content, 'application/json'));
 
-    expect(wrapper.vm.$data.errors.length).toBe(2);
+    expect(errors.length).toBe(1);
+    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength);
   })
-
+  it('rejects if neither json nor csv', async() => {
+    await read(createFile('main.js', 'import * from "csv";', 'text/plain'));
+    expect(errors.length).toBe(1);
+    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength);
+  })
 })
