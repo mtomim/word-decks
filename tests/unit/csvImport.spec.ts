@@ -195,4 +195,9 @@ describe('csvImport.vue::read', () => {
     expect(errors.length).toBe(1);
     expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength);
   })
+  it('rejects if file is not readable', async() => {
+    await read(new File([], 'some.csv', { type: 'text/csv' }));
+    expect(errors.length).toBe(1);
+    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength);
+  })
 })

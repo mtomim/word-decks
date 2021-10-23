@@ -7,7 +7,8 @@ declare interface IParsingError {
 
 export class ParsingError extends Error implements IParsingError {
   headers: string[] | undefined;
-  constructor(name: string, object: { headers?: string[] }) {
+  file?: DataFile;
+  constructor(name: string, object: { headers?: string[], file?: DataFile }) {
     super();
     Object.setPrototypeOf(this, ParsingError.prototype);
     this.name = name;
@@ -48,7 +49,7 @@ export class DataFile {
   hdrInit = false;
   validateHeaders() {
     if (!REQUIRED_FIELDS.every((key) => this.headers.includes(key))) {
-      throw new ParsingError("error.headersmissing", { headers: this.headers });
+      throw new ParsingError("error.headersmissing", { headers: this.headers, file: this });
     }
     return true;
   }
@@ -97,4 +98,10 @@ export class DataFileRegistry {
     this.size = DataFileRegistry.REGISTRY.length;
     localStorage.setItem(DataFile.STORE_KEY, JSON.stringify(DataFileRegistry.REGISTRY));
   }
+}
+
+export declare interface myerror {
+  fileName: string,
+  file?: DataFile,
+  error: string|Error,
 }

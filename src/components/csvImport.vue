@@ -97,17 +97,12 @@
 import Vue from "vue";
 import stringify from "csv-stringify/lib/sync";
 import { readFile, shorten, setCurrentWordSet, getCurrentWordSet } from "@/utils/functions";
-import { DataFile, DataFileRegistry, ParsingError, registry as _reg } from "@/utils/types";
+import { DataFile, DataFileRegistry, myerror, ParsingError, registry as _reg } from "@/utils/types";
 
 const files = Vue.observable(_reg);
 const threeRows = files[0].content.slice(0, 3);
 const sampleJson = JSON.stringify(threeRows, null, 2);
 const sampleCsv = stringify(threeRows, { header: true });
-
-declare interface myerror {
-  fileName: string,
-  error: string|Error,
-}
 
 export default Vue.extend({
   data() {
@@ -165,6 +160,7 @@ export default Vue.extend({
                   filename: f.name,
                 })
               : e),
+          file: (e as ParsingError).file
         } as myerror);
       }
     },
