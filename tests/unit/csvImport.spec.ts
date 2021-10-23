@@ -112,7 +112,7 @@ describe('csvImport.vue::read', () => {
   }
   
   let vuetify: Vuetify
-  let wrapper: Wrapper<CombinedVueInstance<csvImport, object, object, object, Record<never, any>>, Element>;
+  let wrapper;
   const localVue = createLocalVue()
   let initialFileLength: number;
   let read: (f: File) => Promise<void>;

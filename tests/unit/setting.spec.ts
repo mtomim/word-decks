@@ -5,7 +5,7 @@ import setting from "@/views/setting.vue"
 import { getSetting } from '@/utils/functions';
 
 describe('setting.vue', () => {
-  let wrapper: Wrapper<CombinedVueInstance<setting, object, object, object, Record<never, any>>, Element>;
+  let wrapper;
   let vuetify: Vuetify
   const localVue = createLocalVue()
   beforeEach(() => {
