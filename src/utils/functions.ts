@@ -1,5 +1,5 @@
 import parse from "csv-parse/lib/sync";
-import { DataFile, DataFileRegistry, ParsingError, SimpleObject, Word } from "./types";
+import { DataFile, DataFileRegistry, Field, ParsingError, Word, ISetting } from "./types";
 
 export function shuffle<T>(array: T[]): T[] {
   let currentIndex = array.length,
@@ -49,11 +49,18 @@ export function partitionBySize<T>(array: T[], size: number): T[][] {
   }, Array<T[]>());
 }
 
-export const getSetting = (): { difficulty: number, numWords: number } =>
-  JSON.parse(
-    localStorage.getItem("wd-setting") ||
-    JSON.stringify({ difficulty: 1, numWords: 20 })
-  );
+const defaultSetting: ISetting = {
+  difficulty: 1,
+  numWords: 20,
+  q: Field.word,
+  a: Field.reading,
+};
+
+export const getSetting = (): ISetting => {
+  return Object.assign({...defaultSetting}, JSON.parse(
+    localStorage.getItem("wd-setting") || '{}'
+  ));
+}
 
 export function shorten(str: string, len: number) {
   if (str.length <= len) {

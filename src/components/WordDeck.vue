@@ -6,10 +6,13 @@
           <v-col v-if="wordInFocus">
             <v-row>
               <v-col md="auto">
-                <span class="text-h1 text-no-wrap">{{ wordInFocus.word }}</span>
+                <span class="text-h1 text-no-wrap">{{ wordInFocus[q] }}</span>
               </v-col>
               <v-col md="auto">
-                <span class="text-h6">{{ wordInFocus.definition }}</span>
+                <span class="text-h6" v-if="![q,a].includes('word')">{{ wordInFocus.word }}</span>
+                <span class="text-h6" v-if="![q,a].includes('reading')">{{ wordInFocus.reading }}</span>
+                <span class="text-h6" v-if="![q,a].includes('part')">{{ wordInFocus.part }}</span>
+                <span class="text-h6" v-if="![q,a].includes('definition')">{{ wordInFocus.definition }}</span>
                 <a
                   :href="`https://jisho.org/search/${wordInFocus.word}`"
                   target="jisho.org"
@@ -47,7 +50,7 @@
             </v-row>
           </v-col>
         </v-row>
-        <v-row v-if="readings && readings.length">
+        <v-row v-if="multipleChoices && multipleChoices.length">
           <v-col>
             <v-row no-gutters>
               <v-col>
@@ -68,7 +71,8 @@
                   :class="{ vertical: !dirHorizontal }"
                 >
                   <v-tooltip
-                    v-for="(rdng, i) in readings"
+                    :disabled="a !== 'reading'"
+                    v-for="(rdng, i) in multipleChoices"
                     :key="`rd-${i}`"
                     :right="!dirHorizontal"
                     :top="dirHorizontal"
@@ -83,7 +87,7 @@
                         >{{ rdng }}</v-btn
                       >
                     </template>
-                    <span>{{toRomaji(rdng)}}</span>
+                    <span>{{ toRomaji(rdng) }}</span>
                   </v-tooltip>
                 </v-btn-toggle>
               </v-col>
@@ -145,7 +149,7 @@ import {
   partitionBySize,
   uniq,
 } from "@/utils/functions";
-import { Answer, Word } from "@/utils/types";
+import { Answer, Field, Word } from "@/utils/types";
 import { scoreKey } from "@/views/score.vue";
 
 const score = JSON.parse(localStorage.getItem(scoreKey) || "{}");
@@ -175,6 +179,8 @@ export default class WordDeck extends Vue {
   randomN: Word[] = [];
   difficulty = 1;
   numWords = 20;
+  q = Field.word;
+  a = Field.reading;
   wordInFocus: Word | null = null;
   answer: string | null = null;
   explain: boolean = false;
@@ -213,9 +219,9 @@ export default class WordDeck extends Vue {
     });
   }
   correct(word: Word, answer: string) {
-    const right = word.reading === answer;
-    this.answers.push({ word: word.word, answer, right });
-    (score[word.word] = score[word.word] || []).push(right);
+    const right = word[this.a] === answer;
+    this.answers.push({ word: word[this.q], answer, right });
+    (score[word[this.q]] = score[word[this.q]] || []).push(right);
     if (right) {
       this.focusOnWord(this.randomN.shift() || null);
     } else {
@@ -229,10 +235,16 @@ export default class WordDeck extends Vue {
     this.focusOnWord(word);
   }
   get levelPacks() {
-    return partitionBySize(this.kanjiWords, Math.round(this.kanjiWords.length / this.maxLevel));
+    return partitionBySize(
+      this.kanjiWords,
+      Math.round(this.kanjiWords.length / this.maxLevel)
+    );
   }
   get maxLevel() {
-    return Math.min(Math.max(Math.floor(this.kanjiWords.length / this.numWords), 1), 10);
+    return Math.min(
+      Math.max(Math.floor(this.kanjiWords.length / this.numWords), 1),
+      10
+    );
   }
   get proportion() {
     return (
@@ -253,37 +265,44 @@ export default class WordDeck extends Vue {
     );
   }
   get kanjiWords(): Word[] {
-    return (this.words && this.words.filter((w) => w.word !== w.reading)) || [];
+    return (
+      (this.words && this.words.filter((w) => w[this.q] !== w[this.a])) || []
+    );
   }
   get running() {
     return !!this.wordInFocus;
   }
   get sortedWords() {
-    const reading = this.wordInFocus?.reading;
+    const answerField = this.a;
+    const expected = (this.wordInFocus && this.wordInFocus[answerField]) || "";
     return [...this.kanjiWords].sort(
       (a, b) =>
-        levenshteinDistance(a.reading, reading) -
-        levenshteinDistance(b.reading, reading)
+        levenshteinDistance(a[answerField], expected) -
+        levenshteinDistance(b[answerField], expected)
     );
   }
-  get readings(): string[] {
+  get multipleChoices(): string[] {
     if (this.wordInFocus === null) {
       return [];
     }
     const choices: string[] = [];
-    const { reading, word } = this.wordInFocus;
-    if (!reading) {
+    const { a: answer, q: question } = this;
+    const {
+      [answer]: rightAnswer,
+      [question]: shownObject,
+    } = this.wordInFocus;
+    if (!rightAnswer) {
       return choices;
     }
-    const readingArray = this.sortedWords.filter(
-      (w) => w.reading !== reading && w.word !== word
+    const choiceArray = this.sortedWords.filter(
+      (w) => w[answer] !== rightAnswer && w[question] !== shownObject
     );
     choices.push(
       // shuffle first 30 or all
-      ...uniq(shuffle(readingArray.map((w) => w.reading).slice(0, 20)))
+      ...uniq(shuffle(choiceArray.map((w) => w[answer]).slice(0, 20)))
         // take the 4 first (or all) of the suffled array
         .slice(0, 4),
-      reading
+      rightAnswer
     );
     return shuffle(choices);
   }

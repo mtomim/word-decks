@@ -19,24 +19,34 @@ export class ParsingError extends Error implements IParsingError {
   }
 }
 
-export interface SimpleObject {
-  [key: string]: (string | number | boolean);
-}
-
-export class Word implements SimpleObject {
-  [key: string]: string | number | boolean
+export class Word {
+  [key: string]: string;
   word: string = '';
   reading: string = ''
   definition: string = ''
   part: string = ''
 }
 
-export class Answer implements SimpleObject {
-  [key: string]: string | number | boolean
+export interface ISetting {
+  difficulty: number;
+  numWords: number;
+  q: string;
+  a: string;
+}
+
+export class Answer {
+  [key: string]: string | boolean;
   word: string = '';
   right: boolean = false;
   answer: string = '';
 }
+
+export const Field = Object.freeze({
+  word: 'word',
+  reading: 'reading',
+  definition: 'definition',
+  part: 'part',
+});
 
 export class DataFile {
   static STORE_KEY = 'word-deck-parsed-csv-files';
@@ -103,5 +113,5 @@ export class DataFileRegistry {
 export declare interface myerror {
   fileName: string,
   file?: DataFile,
-  error: string|Error,
+  error: string | Error,
 }

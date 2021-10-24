@@ -2,8 +2,18 @@
   <v-container>
     <v-row>
       <v-col class="mb-4">
+        <v-row>
+          <v-col>
+            <v-select :items="fields" v-model="q" label="Question" @change="storeSetting"></v-select>
+          </v-col>
+          <v-col>
+            <v-select :items="fields" v-model="a" label="Answer" @change="storeSetting"></v-select>
+          </v-col>
+        </v-row>
         <v-row style="height: 150px;">
-          <v-col cols="3" align-self="center">{{ $t("label.difficulty") }}</v-col>
+          <v-col cols="3" align-self="center">{{
+            $t("label.difficulty")
+          }}</v-col>
           <v-col cols="9" align-self="center">
             <v-slider
               v-model="difficulty"
@@ -39,13 +49,18 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { getSetting } from "@/utils/functions"
+import { getSetting } from "@/utils/functions";
+import { Field } from "@/utils/types";
+const fields = Object.keys(Field).filter((f) => !Number.isInteger(f));
 export default Vue.extend({
   name: "setting",
   data() {
     return {
       difficulty: 10,
       numWords: 20,
+      q: Field.word,
+      a: Field.reading,
+      fields,
     };
   },
   beforeMount() {
@@ -53,12 +68,17 @@ export default Vue.extend({
   },
   methods: {
     storeSetting() {
-      localStorage.setItem("wd-setting", JSON.stringify({
-        difficulty: this.difficulty,
-        numWords: this.numWords,
-      }));
+      localStorage.setItem(
+        "wd-setting",
+        JSON.stringify({
+          difficulty: this.difficulty,
+          numWords: this.numWords,
+          q: this.q,
+          a: this.a,
+        })
+      );
     },
-  }
+  },
 });
 </script>
 

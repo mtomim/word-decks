@@ -7,18 +7,20 @@
     @click="$emit('focus', word)"
   >
     <v-card-title>
-      {{ word.word }}
+      {{ word[setting.q] }}
     </v-card-title>
     <v-card-text class="word-info" v-if="showReading">
-      <v-tooltip bottom>
+      <v-tooltip bottom v-if="setting.q !== 'part'">
         <template v-slot:activator="{ on, attrs }">
           <span v-on="on" v-bind="attrs" class="word-category"> 【{{ category }}】 </span>
         </template>
         <span class="word-part">{{ word.part }}</span>
       </v-tooltip>
-      {{ word.definition }}
+      <span v-if="setting.q !== 'definition'">
+        {{ word.definition }}
+      </span>
       <div class="font-weight-black text-h6">
-        {{ word.reading }}
+        {{ word[setting.a] }}
       </div>
     </v-card-text>
     <v-card-actions v-show="!$parent.running">
@@ -39,7 +41,8 @@
 <script lang="ts">
 import Vue, { PropType } from "vue";
 import Component from "vue-class-component";
-import { Word } from "@/utils/types";
+import { ISetting, Word } from "@/utils/types";
+import { getSetting } from "@/utils/functions";
 
 const WithAWord = Vue.extend({
   props: {
@@ -82,6 +85,7 @@ const WithAWord = Vue.extend({
 })
 export default class wordComponent extends WithAWord {
   showReading = false;
+  setting: ISetting = getSetting();
 
   toggle(): void {
     this.showReading = !this.showReading;
