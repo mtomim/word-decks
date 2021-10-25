@@ -51,25 +51,17 @@ There are only English, French and Japanese languages are available for now.
 
 Big love and thanks to **[Jisho.org](https://jisho.org/)**! The application displays links to this wonderful site.
 
-## Project setup
-```
-yarn install
-```
+# Now possible to configure the fields for Question and Answer
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+By default the Question is the shown **word** (kanji) and the Answer is chosen by user among the multiple choice of **reading** (kana).
 
-### Compiles and minifies for production
-```
-yarn build
-```
+Default setting:
+ Question | Answer
+----------|-------
+ word | reading
 
-### Lints and fixes files
-```
-yarn lint
-```
+Now the combination can be freely set by user.
+![setting of question-answer fields](doc-res/qa-field-setting.png)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Below is a capture under setting of "show `reading` to choose `definition`":
+![show reading to choose definition](./doc-res/show-reading-to-choose-definition.png)

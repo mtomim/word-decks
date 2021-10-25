@@ -8,10 +8,11 @@
               <v-col md="auto">
                 <span class="text-h1 text-no-wrap">{{ wordInFocus[q] }}</span>
               </v-col>
-              <v-col md="auto">
+              <v-col md="auto" class="hints">
+                <span class="text-h6" v-if="q == 'reading'">{{ toRomaji(wordInFocus.reading) }}</span>
                 <span class="text-h6" v-if="![q,a].includes('word')">{{ wordInFocus.word }}</span>
                 <span class="text-h6" v-if="![q,a].includes('reading')">{{ wordInFocus.reading }}</span>
-                <span class="text-h6" v-if="![q,a].includes('part')">{{ wordInFocus.part }}</span>
+                <span class="text-h6" v-if="![q,a].includes('part')">【{{ category }}】</span>
                 <span class="text-h6" v-if="![q,a].includes('definition')">{{ wordInFocus.definition }}</span>
                 <a
                   :href="`https://jisho.org/search/${wordInFocus.word}`"
@@ -139,7 +140,7 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
-import word from "./word.vue";
+import word, { displayCategory } from "./word.vue";
 import { toRomaji } from "kana-romaji";
 import {
   levenshteinDistance,
@@ -234,6 +235,11 @@ export default class WordDeck extends Vue {
   handleWordFocus(word: Word) {
     this.focusOnWord(word);
   }
+
+  get category(): string {
+    return displayCategory(this.wordInFocus?.part || '');
+  }
+
   get levelPacks() {
     return partitionBySize(
       this.kanjiWords,
@@ -329,5 +335,8 @@ export default class WordDeck extends Vue {
 }
 .v-btn-toggle.vertical {
   flex-direction: column;
+}
+.hints > * {
+  padding-right: 0.25rem;
 }
 </style>

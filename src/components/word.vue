@@ -44,36 +44,40 @@ import Component from "vue-class-component";
 import { ISetting, Word } from "@/utils/types";
 import { getSetting } from "@/utils/functions";
 
+export function displayCategory(category: string): string {
+  switch (category) {
+    case "Verb":
+      return "v.";
+    case "Noun":
+      return "n.";
+    case "Pronoun":
+      return "pron.";
+    case "Adverb":
+      return "adv.";
+    case "Adjective":
+      return "adj.";
+    case "Adjectival Noun":
+      return "adj.n.";
+    case "Verbal Noun":
+      return "v.n.";
+    case "Na-adjective":
+      return "NAadj.";
+    case "Noun; Na-adjective; No-adjective":
+      return "n.; NAadj.; NOadj.";
+    case "Interjection":
+      return "interj.";
+    default:
+      return category;
+  }
+}
+
 const WithAWord = Vue.extend({
   props: {
     word: Word,
   },
   computed: {
     category(): string {
-      switch (this.word.part) {
-        case "Verb":
-          return "v.";
-        case "Noun":
-          return "n.";
-        case "Pronoun":
-          return "pron.";
-        case "Adverb":
-          return "adv.";
-        case "Adjective":
-          return "adj.";
-        case "Adjectival Noun":
-          return "adj.n.";
-        case "Verbal Noun":
-          return "v.n.";
-        case "Na-adjective":
-          return "NAadj.";
-        case "Noun; Na-adjective; No-adjective":
-          return "n.; NAadj.; NOadj.";
-        case "Interjection":
-          return "interj.";
-        default:
-          return this.word.part;
-      }
+      return displayCategory(this.word.part);
     },
   },
 });
