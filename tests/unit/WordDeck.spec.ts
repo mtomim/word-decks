@@ -246,7 +246,7 @@ describe('WordDeck.vue', () => {
       const answer = wrapper.findAll('.text-h4').at(i).text();
       if (answer !== reading) {
         await wrapper.findAll('.text-h4').at(i).trigger('click')
-        setTimeout(()=> expect(wrapper.vm.$data.answer).toBe(""), 501)
+        setTimeout(() => expect(wrapper.vm.$data.answer).toBe(""), 501)
       } else {
         answerIdx = i;
       }
@@ -258,5 +258,39 @@ describe('WordDeck.vue', () => {
     await wrapper.find('.start-button').trigger('click');
     expect(wrapper.findComponent(wordComponent).exists()).toBeTruthy()
     expect(wrapper.findAllComponents(wordComponent).length).toBe(numWords - 1)
+  })
+  it('displays info on the word without answer', async () => {
+    const wrapper = mount(WordDeck, {
+      mocks: {
+        $t: (s: string, o?: object) => s
+      },
+      localVue,
+      vuetify
+    });
+    await wrapper.find('.start-button').trigger('click');
+    const { wordInFocus } = wrapper.vm.$data;
+    const hints = wrapper.find('.hints')
+    const mainDisp = wrapper.find('.text-h1.text-no-wrap')
+    // standard setting
+    await wrapper.setData({ q: 'word', a: 'reading' });
+    [`【${(wrapper.vm as any).category}】`, wordInFocus.definition]
+    .every((t:string) => expect(hints.text()).toContain(t));
+    [wordInFocus.word, wordInFocus.reading]
+    .every((t:string) => expect(hints.text()).not.toContain(t));
+    expect(mainDisp.text()).toContain(wordInFocus.word);
+    // setting 'reading' => 'part'
+    await wrapper.setData({ q: 'reading', a: 'part' });
+    [wordInFocus.word, wordInFocus.definition]
+    .every((t:string) => expect(hints.text()).toContain(t));
+    [`【${(wrapper.vm as any).category}】`,  wordInFocus.reading]
+    .every((t:string) => expect(hints.text()).not.toContain(t));
+    expect(mainDisp.text()).toContain(wordInFocus.reading);
+    // setting 'word' => 'definition'
+    await wrapper.setData({ q: 'word', a: 'definition' });
+    [`【${(wrapper.vm as any).category}】`, wordInFocus.reading]
+    .every((t:string) => expect(hints.text()).toContain(t));
+    [wordInFocus.word, wordInFocus.definition]
+    .every((t:string) => expect(hints.text().split(/\s+/g).includes(t)).toBeFalsy());
+    expect(mainDisp.text()).toContain(wordInFocus.word);
   })
 })

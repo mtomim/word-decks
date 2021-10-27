@@ -10,8 +10,8 @@
               </v-col>
               <v-col md="auto" class="hints">
                 <span class="text-h6" v-if="![q,a].includes('word')">{{ wordInFocus.word }}</span>
-                <span class="text-h6" v-if="![q,a].includes('reading')">
-                  {{ wordInFocus.reading }}
+                <span class="text-h6" v-if="a !== 'reading'">
+                  <template v-if="q !== 'reading'">{{ wordInFocus.reading }}</template>
                   {{ toRomaji(wordInFocus.reading) }}
                 </span>
                 <span class="text-h6" v-if="![q,a].includes('part')">【{{ category }}】</span>
