@@ -9,9 +9,11 @@
                 <span class="text-h1 text-no-wrap">{{ wordInFocus[q] }}</span>
               </v-col>
               <v-col md="auto" class="hints">
-                <span class="text-h6" v-if="q == 'reading'">{{ toRomaji(wordInFocus.reading) }}</span>
                 <span class="text-h6" v-if="![q,a].includes('word')">{{ wordInFocus.word }}</span>
-                <span class="text-h6" v-if="![q,a].includes('reading')">{{ wordInFocus.reading }}</span>
+                <span class="text-h6" v-if="![q,a].includes('reading')">
+                  {{ wordInFocus.reading }}
+                  {{ toRomaji(wordInFocus.reading) }}
+                </span>
                 <span class="text-h6" v-if="![q,a].includes('part')">【{{ category }}】</span>
                 <span class="text-h6" v-if="![q,a].includes('definition')">{{ wordInFocus.definition }}</span>
                 <a
@@ -237,7 +239,7 @@ export default class WordDeck extends Vue {
   }
 
   get category(): string {
-    return displayCategory(this.wordInFocus?.part || '');
+    return displayCategory(this.wordInFocus?.part || "");
   }
 
   get levelPacks() {
@@ -293,10 +295,7 @@ export default class WordDeck extends Vue {
     }
     const choices: string[] = [];
     const { a: answer, q: question } = this;
-    const {
-      [answer]: rightAnswer,
-      [question]: shownObject,
-    } = this.wordInFocus;
+    const { [answer]: rightAnswer, [question]: shownObject } = this.wordInFocus;
     if (!rightAnswer) {
       return choices;
     }
