@@ -271,9 +271,12 @@ describe('WordDeck.vue', () => {
     const { wordInFocus } = wrapper.vm.$data;
     const hints = wrapper.find('.hints')
     const mainDisp = wrapper.find('.text-h1.text-no-wrap')
-    // standard setting
+    function getCategory() {
+      return `【${(wrapper.vm as any).category}】`;
+    }
+    // standard setting, 'word' => 'reading'
     await wrapper.setData({ q: 'word', a: 'reading' });
-    [`【${(wrapper.vm as any).category}】`, wordInFocus.definition]
+    [getCategory(), wordInFocus.definition]
     .every((t:string) => expect(hints.text()).toContain(t));
     [wordInFocus.word, wordInFocus.reading]
     .every((t:string) => expect(hints.text()).not.toContain(t));
@@ -282,12 +285,12 @@ describe('WordDeck.vue', () => {
     await wrapper.setData({ q: 'reading', a: 'part' });
     [wordInFocus.word, wordInFocus.definition]
     .every((t:string) => expect(hints.text()).toContain(t));
-    [`【${(wrapper.vm as any).category}】`,  wordInFocus.reading]
+    [getCategory(),  wordInFocus.reading]
     .every((t:string) => expect(hints.text()).not.toContain(t));
     expect(mainDisp.text()).toContain(wordInFocus.reading);
     // setting 'word' => 'definition'
     await wrapper.setData({ q: 'word', a: 'definition' });
-    [`【${(wrapper.vm as any).category}】`, wordInFocus.reading]
+    [getCategory(), wordInFocus.reading]
     .every((t:string) => expect(hints.text()).toContain(t));
     [wordInFocus.word, wordInFocus.definition]
     .every((t:string) => expect(hints.text().split(/\s+/g).includes(t)).toBeFalsy());
