@@ -19,6 +19,8 @@ export default {
             explain: 'Show explanation of words',
             acceptedformat: 'CSV or JSON with \'word\', \'reading\', \'definition\', \'part\'.',
             example: "Example:",
+            question: "Question",
+            answer: "Answer",
         },
         error: {
             headersmissing: "The fields ({headers}) present in '{filename}' doesn't include every expected field.",
@@ -45,6 +47,8 @@ export default {
             explain: 'Montrer l\'explication des mots',
             acceptedformat: 'CSV ou JSON avec \'word\', \'reading\', \'definition\', \'part\'.',
             example: "Exemple :",
+            question: "Question",
+            answer: "Réponse",
         },
         error: {
             headersmissing: "Les champs ({headers}) présents dans '{filename}' n'incluent pas tous les champs requis.",
@@ -71,6 +75,8 @@ export default {
             explain: '単語（たんご）の説明（せつめい）を表示（ひょうじ）',
             acceptedformat: 'CSV または JSON で、 \'word\', \'reading\', \'definition\', \'part\' を含（ふく）むもの。',
             example: "例（れい）：",
+            question: "質問（しつもん）",
+            answer: "解答（かいとう）",
       },
       error: {
           headersmissing: "ファイル '{filename}' 中（ちゅう）に見（み）つかったフィールド ({headers}) は必要（ひつよう）なフィールドをすべて含（ふく）んでません。",

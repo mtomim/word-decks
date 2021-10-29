@@ -4,10 +4,10 @@
       <v-col class="mb-4">
         <v-row>
           <v-col>
-            <v-select :items="fields" v-model="q" label="Question" @change="storeSetting"></v-select>
+            <v-select :items="fields" v-model="q" :label="$t('label.question')" @change="storeSetting"></v-select>
           </v-col>
           <v-col>
-            <v-select :items="fields" v-model="a" label="Answer" @change="storeSetting"></v-select>
+            <v-select :items="fields" v-model="a" :label="$t('label.answer')" @change="storeSetting"></v-select>
           </v-col>
         </v-row>
         <v-row style="height: 150px;">
