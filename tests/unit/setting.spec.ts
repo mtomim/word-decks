@@ -1,5 +1,4 @@
 import { createLocalVue, mount, Wrapper } from "@vue/test-utils";
-import { CombinedVueInstance } from "vue/types/vue";
 import Vuetify from 'vuetify';
 import setting from "@/views/setting.vue"
 import { getSetting } from '@/utils/functions';
