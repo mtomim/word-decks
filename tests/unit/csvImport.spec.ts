@@ -112,11 +112,12 @@ describe('csvImport.vue::read', () => {
   }
   
   let vuetify: Vuetify
-  let wrapper;
+  let wrapper: Wrapper<CombinedVueInstance<csvImport, object, object, object, Record<never, any>>, Element>;
   const localVue = createLocalVue()
   let initialFileLength: number;
   let read: (f: File) => Promise<void>;
   let errors: myerror[];
+  const registry = new DataFileRegistry();
   beforeEach(() => {
     vuetify = new Vuetify()
     wrapper = mount(csvImport, {
@@ -128,8 +129,8 @@ describe('csvImport.vue::read', () => {
       localVue,
       vuetify
     });
-    DataFileRegistry.REGISTRY.length = 2;
-    initialFileLength = DataFileRegistry.REGISTRY.length;
+    registry.size = 2;
+    initialFileLength = registry.size;
     // @ts-ignore
     read = wrapper.vm.read;
     errors = wrapper.vm.$data.errors;
@@ -144,25 +145,29 @@ describe('csvImport.vue::read', () => {
     await read(createFile('data.csv', 'word,reading,xxx,yyy', 'text/csv'));
 
     expect(errors.length).toBe(1);
-    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength);
+    expect(registry.size).toBe(initialFileLength);
   })
   it('accepts csv with no data', async() => {
     expect(errors.length).toBe(0);
     await read(createFile('data.csv', 'word,reading,definition,part,xxx,yyy', 'text/csv'));
 
     expect(errors.length).toBe(0);
-    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength + 1);
+    expect(registry.size).toBe(initialFileLength + 1);
+    registry.remove('data.csv');
+    expect(registry.size).toBe(initialFileLength);
   })
   it('accepts csv with all fields', async() => {
     expect(errors.length).toBe(0);
-    await read(createFile('data.csv', [
+    await read(createFile('datax.csv', [
       'word,reading,definition,part',
       'abc,def,ghi,jkl',
       'ABC,DEF,GHI,JKL',
     ].join('\n'), 'text/csv'));
 
     expect(errors.length).toBe(0);
-    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength + 1);
+    expect(registry.size).toBe(initialFileLength + 1);
+    registry.remove('datax.csv');
+    expect(registry.size).toBe(initialFileLength);
 
   })
   it('accepts json with all properties', async() => {
@@ -175,7 +180,15 @@ describe('csvImport.vue::read', () => {
     await read(createFile('data.json', content, 'application/json'));
 
     expect(errors.length).toBe(0);
-    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength + 1);
+    expect(registry.size).toBe(initialFileLength + 1);
+
+    // simulate duplicate file error
+    await read(createFile('data.json', content, 'application/json'));
+    expect(errors.length).toBe(1);
+    expect(errors[0].error.toString()).toContain('data.json exists already');
+
+    registry.remove('data.json');
+    expect(registry.size).toBe(initialFileLength);
 
   })
   it('rejects json without all fields', async() => {
@@ -188,16 +201,16 @@ describe('csvImport.vue::read', () => {
     await read(createFile('data.json', content, 'application/json'));
 
     expect(errors.length).toBe(1);
-    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength);
+    expect(registry.size).toBe(initialFileLength);
   })
   it('rejects if neither json nor csv', async() => {
     await read(createFile('main.js', 'import * from "csv";', 'text/plain'));
     expect(errors.length).toBe(1);
-    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength);
+    expect(registry.size).toBe(initialFileLength);
   })
   it('rejects if file is not readable', async() => {
     await read(new File([], 'some.csv', { type: 'text/csv' }));
     expect(errors.length).toBe(1);
-    expect(DataFileRegistry.REGISTRY.length).toBe(initialFileLength);
+    expect(registry.size).toBe(initialFileLength);
   })
 })

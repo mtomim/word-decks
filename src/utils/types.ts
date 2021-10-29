@@ -90,13 +90,19 @@ if (!registry.find((f) => f.fileName === "(internal easy 500)")) {
 export class DataFileRegistry {
   static REGISTRY = registry;
 
-  size = registry.length;
+  get size(): number {
+    return registry.length;
+  }
+
+  set size(num: number) {
+    registry.length = num;
+  }
 
   add(file: DataFile) {
     if (DataFileRegistry.REGISTRY.map((f) => f.fileName).includes(file.fileName)) {
       throw new Error(`${file.fileName} exists already, discarding the add request.`);
     }
-    this.size = DataFileRegistry.REGISTRY.push(file);
+    DataFileRegistry.REGISTRY.push(file);
     localStorage.setItem(DataFile.STORE_KEY, JSON.stringify(DataFileRegistry.REGISTRY));
   }
 
@@ -105,7 +111,6 @@ export class DataFileRegistry {
     if (position !== -1) {
       DataFileRegistry.REGISTRY.splice(position, 1);
     }
-    this.size = DataFileRegistry.REGISTRY.length;
     localStorage.setItem(DataFile.STORE_KEY, JSON.stringify(DataFileRegistry.REGISTRY));
   }
 }
