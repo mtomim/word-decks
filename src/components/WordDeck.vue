@@ -329,6 +329,7 @@ export default class WordDeck extends Vue {
 .words-stack .word {
   min-width: 8rem;
   max-width: 15rem;
+  background-color: #ffffffbf;
 }
 .words-stack .word .v-card__title {
   white-space: nowrap;
