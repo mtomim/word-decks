@@ -36,6 +36,14 @@ export interface ISetting {
 
 export class Answer {
   [key: string]: string | boolean;
+  /**
+   *
+   */
+  constructor({ word, right, answer }: { word: string, right: boolean, answer: string }) {
+    this.answer = answer;
+    this.word = word;
+    this.right = right;
+  }
   word: string = '';
   right: boolean = false;
   answer: string = '';

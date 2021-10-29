@@ -1,5 +1,6 @@
 <template>
-  <v-container>
+  <v-container id="wd-container">
+    <div id="wd-word-bg" v-if="wordInFocus">{{ wordInFocus[q] }}</div>
     <v-row>
       <v-col cols="10">
         <v-row justify="space-between">
@@ -223,7 +224,7 @@ export default class WordDeck extends Vue {
   }
   correct(word: Word, answer: string) {
     const right = word[this.a] === answer;
-    this.answers.push({ word: word[this.q], answer, right });
+    this.answers.push(new Answer({ word: word[this.q], answer, right }));
     (score[word[this.q]] = score[word[this.q]] || []).push(right);
     if (right) {
       this.focusOnWord(this.randomN.shift() || null);
@@ -337,5 +338,14 @@ export default class WordDeck extends Vue {
 }
 .hints > * {
   padding-right: 0.25rem;
+}
+#wd-word-bg {
+  position: absolute;
+  top: 10rem;
+  left: 8rem;
+  right: 0;
+  color: transparent;
+  text-shadow: 0 0 5px rgba(9, 200, 9, 0.5);
+  font-size: 20rem;
 }
 </style>
