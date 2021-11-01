@@ -131,3 +131,24 @@ export function getCurrentWordSet(): DataFile | undefined {
 export function setCurrentWordSet(name: string) {
   localStorage.setItem(WORD_SET_NAME, name);
 }
+
+export function randomItem<T>(array: T[]) {
+  const max = array.length;
+  return array[Math.floor(Math.random() * max)];
+}
+
+export function randomItems<T>(array: T[], size: number) {
+  const result: T[] = [];
+  size = Math.min(size, array.length);
+  while (result.length < size) {
+    const item = randomItem(array);
+    if (!result.includes(item)) {
+      result.push(item)
+    }
+  }
+  return result;
+}
+
+export function without<T>(array: T[], without: T[]) {
+  return array.filter(item => !without.includes(item));
+}
