@@ -58,8 +58,6 @@
             </div>
           </v-col>
         </v-row>
-        <v-row>
-        </v-row>
       </v-col>
     </v-row>
     <v-row>
