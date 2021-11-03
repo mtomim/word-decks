@@ -82,6 +82,7 @@ export default Vue.extend({
   width: 105%;
   right: -1rem;
   overflow: hidden;
+  position: fixed;
 }
 
 #bg div {

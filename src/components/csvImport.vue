@@ -15,6 +15,9 @@
               $t("label.acceptedformat")
             }}</span>
           </v-col>
+          <v-col>
+            <v-file-input dense truncate-length="30" @change="read($event);"/>
+          </v-col>
         </v-row>
         <v-row>
           <v-col>
@@ -54,6 +57,8 @@
               </v-card>
             </div>
           </v-col>
+        </v-row>
+        <v-row>
         </v-row>
       </v-col>
     </v-row>
@@ -121,6 +126,9 @@ export default Vue.extend({
     this.currentWordSetName = getCurrentWordSet()?.fileName;
   },
   methods: {
+    log(obj: Object) {
+      console.log(obj);
+    },
     parse(e: DragEvent) {
       this.end();
       const droppedFiles: FileList|undefined = e.dataTransfer?.files;
