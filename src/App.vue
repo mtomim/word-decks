@@ -142,12 +142,6 @@ export default {
   /* background by SVGBackgrounds.com */
 }
 
-.v-application--wrap #bg {
-  background-attachment: fixed;
-  background-size: cover;
-  position: absolute;
-}
-
 .logo {
   position: fixed !important;
   bottom: 0;
