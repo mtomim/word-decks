@@ -1,8 +1,10 @@
 <template>
-  <v-container class="grey lighten-5">
+  <v-container class="">
     <v-row>
       <v-col>
-        <v-btn @click="playWorst">{{
+        <v-btn @click="playWorst" dark color="orange">
+          <v-icon>mdi-shimmer</v-icon>
+          {{
           $t("label.replay_worst_in_current_mode")
         }}</v-btn>
       </v-col>

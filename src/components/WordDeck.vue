@@ -208,9 +208,6 @@ export default class WordDeck extends Vue {
     this.focusOnWord(this.randomN.shift()!);
   }
   getRandomNWords() {
-    if (!this.worstPack || !this.worstPack.length) {
-      this.$store.commit('deactivatePlayWorstMode');
-    }
     if (this.playWorstModeActive) {
       return this.worstPack;
     }
@@ -233,6 +230,9 @@ export default class WordDeck extends Vue {
     this.answers.push(new Answer({ word: word[this.q], answer, right }));
     (score[word[this.q]] = score[word[this.q]] || []).push(right);
     if (right) {
+      if (!this.worstPack || !this.worstPack.length) {
+        this.$store.commit('deactivatePlayWorstMode');
+      }
       this.focusOnWord(this.randomN.shift() || null);
     } else {
       setTimeout(() => {

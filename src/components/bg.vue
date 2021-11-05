@@ -1,5 +1,10 @@
 <template>
   <div id="bg" ref="bg">
+    <v-icon
+      v-show="replayWorstOngoing"
+      x-large
+      class="drill"
+    >mdi-shimmer</v-icon>
   </div>
 </template>
 
@@ -15,6 +20,11 @@ export default Vue.extend({
     return {
       height: 0
     };
+  },
+  computed: {
+    replayWorstOngoing(): boolean {
+      return this.$store.state.playWorstMode;
+    }
   },
   watch: {
     height(newVal, oldVal) {
@@ -66,6 +76,13 @@ export default Vue.extend({
       }, {
         backgroundColor: '#ceecce',
       })
+      gsap.to('.drill', {
+        color: 'orange',
+        repeat: -1,
+        yoyo: true,
+        duration: 5,
+        startAt: { color: '#fff' },
+      })
     }
   },
   mounted() {
@@ -91,6 +108,13 @@ export default Vue.extend({
   height: 2rem;
   margin: 0.5rem;
   border-radius: 0.25rem;
+  background-color: transparent;
+}
+
+.drill.v-icon {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
   background-color: transparent;
 }
 </style>

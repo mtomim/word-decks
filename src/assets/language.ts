@@ -22,6 +22,7 @@ export default {
             question: "Question",
             answer: "Answer",
             replay_worst_in_current_mode: "Drill the worst in the current mode",
+            mode_replay: "Drill mode",
         },
         error: {
             headersmissing: "The fields ({headers}) present in '{filename}' doesn't include every expected field.",
@@ -51,6 +52,7 @@ export default {
             question: "Question",
             answer: "Réponse",
             replay_worst_in_current_mode: "Réapprendre les pires dans la mode courante",
+            mode_replay: "Mode replay",
         },
         error: {
             headersmissing: "Les champs ({headers}) présents dans '{filename}' n'incluent pas tous les champs requis.",
@@ -80,6 +82,7 @@ export default {
             question: "質問（しつもん）",
             answer: "解答（かいとう）",
             replay_worst_in_current_mode: "現行（げんこう）モードで復習（ふくしゅう）する",
+            mode_replay: "ドリルモード",
         },
         error: {
             headersmissing: "ファイル '{filename}' 中（ちゅう）に見（み）つかったフィールド ({headers}) は必要（ひつよう）なフィールドをすべて含（ふく）んでません。",

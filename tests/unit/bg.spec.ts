@@ -3,6 +3,7 @@ import Vuetify from 'vuetify';
 import messages from '@/assets/language';
 import VueI18n from "vue-i18n";
 import bg from '@/components/bg.vue';
+import store from '@/store';
 
 const i18n = new VueI18n({
   locale: localStorage.getItem('wd-locale') || 'fr',
@@ -22,6 +23,7 @@ describe('bg.vue', () => {
         $t: (s: string, o?: object) => s,
       },
       i18n,
+      store,
       localVue,
       vuetify
     });
