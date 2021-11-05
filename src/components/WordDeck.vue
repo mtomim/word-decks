@@ -208,6 +208,12 @@ export default class WordDeck extends Vue {
     this.focusOnWord(this.randomN.shift()!);
   }
   getRandomNWords() {
+    if (!this.worstPack || !this.worstPack.length) {
+      this.$store.commit('deactivatePlayWorstMode');
+    }
+    if (this.playWorstModeActive) {
+      return this.worstPack;
+    }
     return shuffle(
       this.levelPacks[Math.min(this.difficulty, this.maxLevel) - 1]
     ).slice(0, this.numWords);
@@ -237,6 +243,14 @@ export default class WordDeck extends Vue {
   }
   handleWordFocus(word: Word) {
     this.focusOnWord(word);
+  }
+
+  get playWorstModeActive(): boolean {
+    return this.$store.state.playWorstMode;
+  }
+
+  get worstPack(): Word[] {
+    return this.$store.state.worstPack;
   }
 
   get category(): string {

@@ -21,6 +21,7 @@ export default {
             example: "Example:",
             question: "Question",
             answer: "Answer",
+            replay_worst_in_current_mode: "Drill the worst in the current mode",
         },
         error: {
             headersmissing: "The fields ({headers}) present in '{filename}' doesn't include every expected field.",
@@ -49,6 +50,7 @@ export default {
             example: "Exemple :",
             question: "Question",
             answer: "Réponse",
+            replay_worst_in_current_mode: "Réapprendre les pires dans la mode courante",
         },
         error: {
             headersmissing: "Les champs ({headers}) présents dans '{filename}' n'incluent pas tous les champs requis.",
@@ -77,10 +79,11 @@ export default {
             example: "例（れい）：",
             question: "質問（しつもん）",
             answer: "解答（かいとう）",
-      },
-      error: {
-          headersmissing: "ファイル '{filename}' 中（ちゅう）に見（み）つかったフィールド ({headers}) は必要（ひつよう）なフィールドをすべて含（ふく）んでません。",
-          filetype: "以下（いか）のフィールドを含（ふく）んだ CSV あるいは JSON ファイルのみ受け付け（うけつけ）ます: 'word', 'reading', 'definition', 'part'"
-      },
+            replay_worst_in_current_mode: "現行（げんこう）モードで復習（ふくしゅう）する",
+        },
+        error: {
+            headersmissing: "ファイル '{filename}' 中（ちゅう）に見（み）つかったフィールド ({headers}) は必要（ひつよう）なフィールドをすべて含（ふく）んでません。",
+            filetype: "以下（いか）のフィールドを含（ふく）んだ CSV あるいは JSON ファイルのみ受け付け（うけつけ）ます: 'word', 'reading', 'definition', 'part'"
+        },
     }
 };
