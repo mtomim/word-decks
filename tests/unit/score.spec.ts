@@ -1,6 +1,7 @@
 import { createLocalVue, mount } from '@vue/test-utils'
 import score from '@/views/score.vue'
 import store from '@/store';
+import router, { routes } from '@/router';
 
 import Vuetify from 'vuetify';
 
@@ -17,6 +18,7 @@ describe('score.vue', () => {
         $t: (s:string) => s
       },
       localVue,
+      router,
       store,
       vuetify
     });
@@ -40,5 +42,8 @@ describe('score.vue', () => {
     expect(scoreCards.at(3).text()).toContain('(50.00)')
     expect(scoreCards.at(4).text()).toContain('(66.67)')
     expect(scoreCards.at(5).text()).toContain('(100.00)')
+
+    await wrapper.find('button.v-size--default').trigger('click');
+    expect(wrapper.vm.$store.state.playWorstMode).toBeTruthy();
   })
 })
