@@ -30,6 +30,6 @@ describe('bg.vue', () => {
 
     expect(wrapper.find('#bg').exists());
     await wrapper.setData({ height: 400 });
-    expect(wrapper.findAll('#bg > div').length).not.toBe(0);
+    expect(wrapper.findAll('#bg > div').length).toBeGreaterThan(1);
   });
 });

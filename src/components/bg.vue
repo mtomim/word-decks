@@ -78,10 +78,12 @@ export default Vue.extend({
       })
       gsap.to('.drill', {
         color: 'orange',
+        backgroundColor: 'transparent',
         repeat: -1,
         yoyo: true,
-        duration: 5,
-        startAt: { color: '#fff' },
+        duration: 2,
+        scale: 2,
+        startAt: { color: '#fff', backgroundColor: 'transparent', scale: 1 },
       })
     }
   },
