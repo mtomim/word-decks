@@ -4,6 +4,7 @@ import wordComponent from '@/components/word.vue'
 
 import { DataFile, DataFileRegistry, registry, Word } from "@/utils/types";
 import Vuetify from 'vuetify';
+import { Store } from 'vuex';
 
 
 jest.mock('@/utils/functions', () => {
@@ -31,6 +32,7 @@ jest.mock('@/utils/functions', () => {
   };
 });
 
+import store from '@/store';
 describe('WordDeck.vue', () => {
   let vuetify: Vuetify
   const localVue = createLocalVue()
@@ -43,6 +45,7 @@ describe('WordDeck.vue', () => {
       mocks: {
         $t: (s: string, o?: object) => s
       },
+      store,
       localVue,
       vuetify
     });
@@ -86,6 +89,7 @@ describe('WordDeck.vue', () => {
       mocks: {
         $t: (s: string, o?: object) => s
       },
+      store,
       localVue,
       vuetify
     });
@@ -154,6 +158,7 @@ describe('WordDeck.vue', () => {
       mocks: {
         $t: (s: string, o?: object) => s
       },
+      store,
       localVue,
       vuetify
     });
@@ -182,6 +187,7 @@ describe('WordDeck.vue', () => {
       mocks: {
         $t: (s: string, o?: object) => s
       },
+      store,
       localVue,
       vuetify
     });
@@ -201,6 +207,7 @@ describe('WordDeck.vue', () => {
       mocks: {
         $t: (s: string, o?: object) => s
       },
+      store,
       localVue,
       vuetify
     });
@@ -226,6 +233,7 @@ describe('WordDeck.vue', () => {
       mocks: {
         $t: (s: string, o?: object) => s
       },
+      store,
       localVue,
       vuetify
     });
@@ -264,6 +272,7 @@ describe('WordDeck.vue', () => {
       mocks: {
         $t: (s: string, o?: object) => s
       },
+      store,
       localVue,
       vuetify
     });

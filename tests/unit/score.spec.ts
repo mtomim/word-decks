@@ -1,5 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils'
 import score from '@/views/score.vue'
+import store from '@/store';
 
 import Vuetify from 'vuetify';
 
@@ -12,7 +13,11 @@ describe('score.vue', () => {
 
   it('orders score history correctly', async () => {
     const wrapper = mount(score, {
+      mocks: {
+        $t: (s:string) => s
+      },
       localVue,
+      store,
       vuetify
     });
     const { score: theScore } = wrapper.vm.$data;
