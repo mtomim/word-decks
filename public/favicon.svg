@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
 
-    <rect x="2" y="2" width="96" height="12" fill="#0d0"/>
-    <rect x="2" y="72" width="96" height="26" fill="#0d0"/>
+    <rect x="2" y="2" width="96" height="12" fill="#090"/>
+    <rect x="2" y="72" width="96" height="26" fill="#060"/>
     <text
         x="9"
         y="60"
         style="
         filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
-        fill: #0d0;
+        fill: #0f0;
         font: bold 50px Verdana, sans-serif;">WD</text>
 </svg>
