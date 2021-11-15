@@ -140,8 +140,8 @@
     <v-row>
       <v-col>
         <v-alert
-          v-for="msg in messages"
-          :key="msg"
+          v-for="(msg, i) in messages"
+          :key="`${msg}-${i}`"
           type="success"
           dismissible
         >{{msg}}</v-alert>
