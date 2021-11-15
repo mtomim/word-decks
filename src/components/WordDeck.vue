@@ -137,6 +137,16 @@
         </v-btn>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col>
+        <v-alert
+          v-for="msg in messages"
+          :key="msg"
+          type="success"
+          dismissible
+        >{{msg}}</v-alert>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -190,6 +200,8 @@ export default class WordDeck extends Vue {
   explain: boolean = false;
   dirHorizontal: boolean = true;
   answers: Answer[] = [];
+  score = score;
+  messages: string[] = [];
 
   toRomaji(s: string): string {
     return toRomaji(s);
@@ -229,9 +241,17 @@ export default class WordDeck extends Vue {
     const right = word[this.a] === answer;
     this.answers.push(new Answer({ word: word[this.q], answer, right }));
     (score[word[this.q]] = score[word[this.q]] || []).push(right);
+    const history = score[word[this.q]] as boolean[];
     if (right) {
       if (!this.worstPack || !this.worstPack.length) {
         this.$store.commit('deactivatePlayWorstMode');
+      }
+      if (this.playWorstModeActive) {
+        if (history[history.length - 2]) {
+          if ((history.splice(history.indexOf(false), 1)).length) {
+            this.notifyHistoryImprovement(word[this.q], history);
+          }
+        }
       }
       this.focusOnWord(this.randomN.shift() || null);
     } else {
@@ -243,6 +263,13 @@ export default class WordDeck extends Vue {
   }
   handleWordFocus(word: Word) {
     this.focusOnWord(word);
+  }
+  notifyHistoryImprovement(word: string, history: boolean[]) {
+    this.messages.push(this.$t('message.bravo.worst', {
+      word,
+      ok: history.filter(b => b).length,
+      all: history.length
+    }).toString());
   }
 
   get playWorstModeActive(): boolean {

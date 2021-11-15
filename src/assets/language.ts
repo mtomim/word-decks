@@ -28,6 +28,11 @@ export default {
             headersmissing: "The fields ({headers}) present in '{filename}' doesn't include every expected field.",
             filetype: "Only CSV or JSON files with fields 'word', 'reading', 'definition', 'part' are accepted."
         },
+        message: {
+            bravo: {
+                worst: "Good job! As you answered correctly consecutively twice for {word}, I erased 1 bad answer from its history! ({ok}/{all})",
+            },
+        },
     },
     fr: {
         welcome: 'Bienvenue à WordDeck',
@@ -58,6 +63,11 @@ export default {
             headersmissing: "Les champs ({headers}) présents dans '{filename}' n'incluent pas tous les champs requis.",
             filetype: "Seuls les fichiers CSV ou JSON ayant les champs 'word', 'reading', 'definition' et 'part' sont acceptés."
         },
+        message: {
+            bravo: {
+                worst: "Bravo ! Comme tu as fait la bonne réponse deux fois de suite pour {word}, j'ai effacé une mauvaise réponse de l'historique du mot pour toi ! ({ok}/{all})",
+            },
+        },
     },
     ja: {
         welcome: 'WordDeck へようこそ',
@@ -87,6 +97,11 @@ export default {
         error: {
             headersmissing: "ファイル '{filename}' 中（ちゅう）に見（み）つかったフィールド ({headers}) は必要（ひつよう）なフィールドをすべて含（ふく）んでません。",
             filetype: "以下（いか）のフィールドを含（ふく）んだ CSV あるいは JSON ファイルのみ受け付け（うけつけ）ます: 'word', 'reading', 'definition', 'part'"
+        },
+        message: {
+            bravo: {
+                worst: "すごい！{word}２回（かい）連続（れんぞく）正解（せいかい）したので、過去（かこ）の解答（かいとう）歴（れき）から一つ不正解（ふせいかい）の解答（かいとう）を消去（しょうきょ）しましたよ。({ok}/{all})",
+            },
         },
     }
 };
