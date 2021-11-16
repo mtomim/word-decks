@@ -10,13 +10,21 @@
                 <span class="text-h1 text-no-wrap">{{ wordInFocus[q] }}</span>
               </v-col>
               <v-col md="auto" class="hints">
-                <span class="text-h6" v-if="![q,a].includes('word')">{{ wordInFocus.word }}</span>
+                <span class="text-h6" v-if="![q, a].includes('word')">{{
+                  wordInFocus.word
+                }}</span>
                 <span class="text-h6" v-if="a !== 'reading'">
-                  <template v-if="q !== 'reading'">{{ wordInFocus.reading }}</template>
+                  <template v-if="q !== 'reading'">{{
+                    wordInFocus.reading
+                  }}</template>
                   {{ toRomaji(wordInFocus.reading) }}
                 </span>
-                <span class="text-h6" v-if="![q,a].includes('part')">【{{ category }}】</span>
-                <span class="text-h6" v-if="![q,a].includes('definition')">{{ wordInFocus.definition }}</span>
+                <span class="text-h6" v-if="![q, a].includes('part')"
+                  >【{{ category }}】</span
+                >
+                <span class="text-h6" v-if="![q, a].includes('definition')">{{
+                  wordInFocus.definition
+                }}</span>
                 <a
                   :href="`https://jisho.org/search/${wordInFocus.word}`"
                   target="jisho.org"
@@ -144,7 +152,8 @@
           :key="`${msg}-${i}`"
           type="success"
           dismissible
-        >{{msg}}</v-alert>
+          >{{ msg }}</v-alert
+        >
       </v-col>
     </v-row>
   </v-container>
@@ -243,15 +252,16 @@ export default class WordDeck extends Vue {
     (score[word[this.q]] = score[word[this.q]] || []).push(right);
     const history = score[word[this.q]] as boolean[];
     if (right) {
-      if (!this.worstPack || !this.worstPack.length) {
-        this.$store.commit('deactivatePlayWorstMode');
+      if (
+        this.playWorstModeActive &&
+        history[history.length - 2] &&
+        history.includes(false)
+      ) {
+        history.splice(history.indexOf(false), 1);
+        this.notifyHistoryImprovement(word[this.q], history);
       }
-      if (this.playWorstModeActive) {
-        if (history[history.length - 2]) {
-          if ((history.splice(history.indexOf(false), 1)).length) {
-            this.notifyHistoryImprovement(word[this.q], history);
-          }
-        }
+      if (!this.worstPack || !this.worstPack.length) {
+        this.$store.commit("deactivatePlayWorstMode");
       }
       this.focusOnWord(this.randomN.shift() || null);
     } else {
@@ -265,11 +275,13 @@ export default class WordDeck extends Vue {
     this.focusOnWord(word);
   }
   notifyHistoryImprovement(word: string, history: boolean[]) {
-    this.messages.push(this.$t('message.bravo.worst', {
-      word,
-      ok: history.filter(b => b).length,
-      all: history.length
-    }).toString());
+    this.messages.push(
+      this.$t("message.bravo.worst", {
+        word,
+        ok: history.filter((b) => b).length,
+        all: history.length,
+      }).toString()
+    );
   }
 
   get playWorstModeActive(): boolean {

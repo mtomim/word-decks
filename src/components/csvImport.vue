@@ -124,9 +124,6 @@ export default Vue.extend({
     this.currentWordSetName = getCurrentWordSet()?.fileName;
   },
   methods: {
-    log(obj: Object) {
-      console.log(obj);
-    },
     parse(e: DragEvent) {
       this.end();
       const droppedFiles: FileList|undefined = e.dataTransfer?.files;

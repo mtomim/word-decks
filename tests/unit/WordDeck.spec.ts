@@ -356,6 +356,11 @@ describe('WordDeck.vue', () => {
     // simulate 2 correct answers after last correct answer => 1 faults 5 corrects
     score.word6 = [false, true, false, true, false, true];
     localStorage.setItem('wd-score', JSON.stringify(score));
+    store.commit("activatePlayWorstMode");
+    store.commit(
+      "setWorstPack",
+      worstWords
+    );
     const wrapper = mount(WordDeck, {
       mocks: {
         $t: (s: string, o?: object) => s
@@ -365,11 +370,6 @@ describe('WordDeck.vue', () => {
       vuetify
     });
     (wrapper.vm as any).score.word6 = score.word6;
-    wrapper.vm.$store.commit("activatePlayWorstMode");
-    wrapper.vm.$store.commit(
-      "setWorstPack",
-      worstWords
-    );
     await (wrapper.vm as any).focusOnWord(word6);
     let answers = wrapper.findAll('.text-h4');
     expect(answers.length).toBe(5);
