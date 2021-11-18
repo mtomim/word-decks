@@ -82,7 +82,7 @@ export async function readFile(file: File, sep: ','|';'): Promise<DataFile> {
 
   if (file.type.match("application/json")) {
     return await readJson(file, dataFile);
-  } else if (file.type.match("text/csv")) {
+  } else if (['text/csv', 'application/vnd.ms-excel'].includes(file.type)) {
     return await readCsv(file, dataFile, sep);
   } else {
     throw new ParsingError("error.filetype", {});
