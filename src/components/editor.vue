@@ -166,7 +166,7 @@ export default Vue.extend({
     headers() {
       return Object.keys(Field);
     },
-    rulesSatisfied() {
+    rulesSatisfied(): boolean {
       return (Object.values(this.rules) as RuleFunction[])
         .every(f => f(this.newFileName) === true);
     },
