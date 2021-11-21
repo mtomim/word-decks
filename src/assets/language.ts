@@ -23,10 +23,13 @@ export default {
             answer: "Answer",
             replay_worst_in_current_mode: "Drill the worst in the current mode",
             mode_replay: "Drill mode",
+            new_words: 'New Words List',
         },
         error: {
             headersmissing: "The fields ({headers}) present in '{filename}' doesn't include every expected field.",
-            filetype: "Only CSV or JSON files with fields 'word', 'reading', 'definition', 'part' are accepted."
+            filetype: "Only CSV or JSON files with fields 'word', 'reading', 'definition', 'part' are accepted.",
+            already_used: "The name {fileName} is already used for another file.",
+            required: "Required.",
         },
         message: {
             bravo: {
@@ -58,10 +61,13 @@ export default {
             answer: "Réponse",
             replay_worst_in_current_mode: "Réapprendre les pires dans la mode courante",
             mode_replay: "Mode replay",
+            new_words: 'Nouvelle liste des mots',
         },
         error: {
             headersmissing: "Les champs ({headers}) présents dans '{filename}' n'incluent pas tous les champs requis.",
-            filetype: "Seuls les fichiers CSV ou JSON ayant les champs 'word', 'reading', 'definition' et 'part' sont acceptés."
+            filetype: "Seuls les fichiers CSV ou JSON ayant les champs 'word', 'reading', 'definition' et 'part' sont acceptés.",
+            already_used: "Le nom {fileName} est déjà utilisé pour un autre fichier.",
+            required: "Requis.",
         },
         message: {
             bravo: {
@@ -93,10 +99,13 @@ export default {
             answer: "解答（かいとう）",
             replay_worst_in_current_mode: "現行（げんこう）モードで復習（ふくしゅう）する",
             mode_replay: "ドリルモード",
+            new_words: '新規（しんき）のリスト',
         },
         error: {
             headersmissing: "ファイル '{filename}' 中（ちゅう）に見（み）つかったフィールド ({headers}) は必要（ひつよう）なフィールドをすべて含（ふく）んでません。",
-            filetype: "以下（いか）のフィールドを含（ふく）んだ CSV あるいは JSON ファイルのみ受け付け（うけつけ）ます: 'word', 'reading', 'definition', 'part'"
+            filetype: "以下（いか）のフィールドを含（ふく）んだ CSV あるいは JSON ファイルのみ受け付け（うけつけ）ます: 'word', 'reading', 'definition', 'part'",
+            already_used: "ファイル名 {fileName} はすでに使（つか）われています。",
+            required: "必須（ひっす）項目（こうもく）です。",
         },
         message: {
             bravo: {

@@ -48,33 +48,33 @@ describe('WordDeck.vue', () => {
     constructor() {
       this.store = {};
     }
-  
+
     clear() {
       this.store = {};
       this.length = 0;
     }
-  
+
     key(index: number): string | null {
       return Object.keys(this.store)[index];
     }
-  
+
     getItem(key: string) {
       return this.store[key] || null;
     }
-  
+
     setItem(key: string, value: string) {
       this.store[key] = String(value);
       this.length = Object.keys(this.store).length;
     }
-  
+
     removeItem(key: string) {
       delete this.store[key];
     }
   }
-  
+
   // mocking localStorage
   global.localStorage = new LocalStorageMock;
-  
+
   it('renders N words', () => {
     const wrapper = mount(WordDeck, {
       mocks: {
@@ -321,127 +321,127 @@ describe('WordDeck.vue', () => {
     // standard setting, 'word' => 'reading'
     await wrapper.setData({ q: 'word', a: 'reading' });
     [getCategory(), wordInFocus.definition]
-    .every((t:string) => expect(hints.text()).toContain(t));
+      .every((t: string) => expect(hints.text()).toContain(t));
     [wordInFocus.word, wordInFocus.reading]
-    .every((t:string) => expect(hints.text()).not.toContain(t));
+      .every((t: string) => expect(hints.text()).not.toContain(t));
     expect(mainDisp.text()).toContain(wordInFocus.word);
     // setting 'reading' => 'part'
     await wrapper.setData({ q: 'reading', a: 'part' });
     [wordInFocus.word, wordInFocus.definition]
-    .every((t:string) => expect(hints.text()).toContain(t));
-    [getCategory(),  wordInFocus.reading]
-    .every((t:string) => expect(hints.text()).not.toContain(t));
+      .every((t: string) => expect(hints.text()).toContain(t));
+    [getCategory(), wordInFocus.reading]
+      .every((t: string) => expect(hints.text()).not.toContain(t));
     expect(mainDisp.text()).toContain(wordInFocus.reading);
     // setting 'word' => 'definition'
     await wrapper.setData({ q: 'word', a: 'definition' });
     [getCategory(), wordInFocus.reading]
-    .every((t:string) => expect(hints.text()).toContain(t));
+      .every((t: string) => expect(hints.text()).toContain(t));
     [wordInFocus.word, wordInFocus.definition]
-    .every((t:string) => expect(hints.text().split(/\s+/g).includes(t)).toBeFalsy());
+      .every((t: string) => expect(hints.text().split(/\s+/g).includes(t)).toBeFalsy());
     expect(mainDisp.text()).toContain(wordInFocus.word);
   }),
-  it('reduces 1 faults per 2 consecutive correct answers under worst mode', async () => {
-    // mock a score with a word having 3 faults and 3 corrects in history
-    const getScore = () => JSON.parse(localStorage.getItem("wd-score") || "{}") as { [key: string]: boolean[] };
-    let score = getScore();
-    // activate worst mode
-    const word6 = { word: 'word6', reading: 'word6-r', definition: '', part: '' };
-    const worstWords = [
-      { word: 'word5', reading: 'word5-r', definition: '', part: '' },
-      word6,
-      { word: 'word7', reading: 'word7-r', definition: '', part: '' },
-      { word: 'word8', reading: 'word8-r', definition: '', part: '' },
-      { word: 'word9', reading: 'word9-r', definition: '', part: '' },
-    ];
-    // simulate 2 correct answers after last correct answer => 1 faults 5 corrects
-    score.word6 = [false, true, false, true, false, true];
-    localStorage.setItem('wd-score', JSON.stringify(score));
-    store.commit("activatePlayWorstMode");
-    store.commit(
-      "setWorstPack",
-      worstWords
-    );
-    const wrapper = mount(WordDeck, {
-      mocks: {
-        $t: (s: string, o?: object) => s
-      },
-      store,
-      localVue,
-      vuetify
-    });
-    (wrapper.vm as any).score.word6 = score.word6;
-    await (wrapper.vm as any).focusOnWord(word6);
-    let answers = wrapper.findAll('.text-h4');
-    expect(answers.length).toBe(5);
-    for (let i = 0; i < 5; i++) {
-      if (answers.at(i).text() === 'word6-r') {
-        await answers.at(i).trigger('click');
-        break;
+    it('reduces 1 faults per 2 consecutive correct answers under worst mode', async () => {
+      // mock a score with a word having 3 faults and 3 corrects in history
+      const getScore = () => JSON.parse(localStorage.getItem("wd-score") || "{}") as { [key: string]: boolean[] };
+      let score = getScore();
+      // activate worst mode
+      const word6 = { word: 'word6', reading: 'word6-r', definition: '', part: '' };
+      const worstWords = [
+        { word: 'word5', reading: 'word5-r', definition: '', part: '' },
+        word6,
+        { word: 'word7', reading: 'word7-r', definition: '', part: '' },
+        { word: 'word8', reading: 'word8-r', definition: '', part: '' },
+        { word: 'word9', reading: 'word9-r', definition: '', part: '' },
+      ];
+      // simulate 2 correct answers after last correct answer => 1 faults 5 corrects
+      score.word6 = [false, true, false, true, false, true];
+      localStorage.setItem('wd-score', JSON.stringify(score));
+      store.commit("activatePlayWorstMode");
+      store.commit(
+        "setWorstPack",
+        worstWords
+      );
+      const wrapper = mount(WordDeck, {
+        mocks: {
+          $t: (s: string, o?: object) => s
+        },
+        store,
+        localVue,
+        vuetify
+      });
+      (wrapper.vm as any).score.word6 = score.word6;
+      await (wrapper.vm as any).focusOnWord(word6);
+      let answers = wrapper.findAll('.text-h4');
+      expect(answers.length).toBe(5);
+      for (let i = 0; i < 5; i++) {
+        if (answers.at(i).text() === 'word6-r') {
+          await answers.at(i).trigger('click');
+          break;
+        }
       }
-    }
-    expect(score.word6.filter(b => !b).length).toBe(2);
-    await (wrapper.vm as any).focusOnWord(word6);
-    expect(wrapper.findAll('.text-h4').length).toBe(5);
-    answers = wrapper.findAll('.text-h4');
-    for (let i = 0; i < 5; i++) {
-      if (answers.at(i).text() === 'word6-r') {
-        await answers.at(i).trigger('click');
-        break;
+      expect(score.word6.filter(b => !b).length).toBe(2);
+      await (wrapper.vm as any).focusOnWord(word6);
+      expect(wrapper.findAll('.text-h4').length).toBe(5);
+      answers = wrapper.findAll('.text-h4');
+      for (let i = 0; i < 5; i++) {
+        if (answers.at(i).text() === 'word6-r') {
+          await answers.at(i).trigger('click');
+          break;
+        }
       }
-    }
-    score = getScore();
-    expect(score.word6.filter(b => b).length).toBe(5);
-    expect(score.word6.filter(b => !b).length).toBe(1);
-    // simulate 1 ko then 1 ok => 2 faults 6 corrects
-    await (wrapper.vm as any).focusOnWord(word6);
-    expect(wrapper.findAll('.text-h4').length).toBe(5);
-    answers = wrapper.findAll('.text-h4');
-    for (let i = 0; i < 5; i++) {
-      if (answers.at(i).text() !== 'word6-r') {
-        await answers.at(i).trigger('click');
-        break;
+      score = getScore();
+      expect(score.word6.filter(b => b).length).toBe(5);
+      expect(score.word6.filter(b => !b).length).toBe(1);
+      // simulate 1 ko then 1 ok => 2 faults 6 corrects
+      await (wrapper.vm as any).focusOnWord(word6);
+      expect(wrapper.findAll('.text-h4').length).toBe(5);
+      answers = wrapper.findAll('.text-h4');
+      for (let i = 0; i < 5; i++) {
+        if (answers.at(i).text() !== 'word6-r') {
+          await answers.at(i).trigger('click');
+          break;
+        }
       }
-    }
-    score = getScore();
-    expect(score.word6.filter(b => b).length).toBe(5);
-    expect(score.word6.filter(b => !b).length).toBe(2);
-    await (wrapper.vm as any).focusOnWord(word6);
-    expect(wrapper.findAll('.text-h4').length).toBe(5);
-    answers = wrapper.findAll('.text-h4');
-    for (let i = 0; i < 5; i++) {
-      if (answers.at(i).text() === 'word6-r') {
-        await answers.at(i).trigger('click');
-        break;
+      score = getScore();
+      expect(score.word6.filter(b => b).length).toBe(5);
+      expect(score.word6.filter(b => !b).length).toBe(2);
+      await (wrapper.vm as any).focusOnWord(word6);
+      expect(wrapper.findAll('.text-h4').length).toBe(5);
+      answers = wrapper.findAll('.text-h4');
+      for (let i = 0; i < 5; i++) {
+        if (answers.at(i).text() === 'word6-r') {
+          await answers.at(i).trigger('click');
+          break;
+        }
       }
-    }
-    score = getScore();
-    expect(score.word6.filter(b => b).length).toBe(6);
-    expect(score.word6.filter(b => !b).length).toBe(2);
-    // simulate 1 ok => 1 faults, 7 corrects
-    await (wrapper.vm as any).focusOnWord(word6);
-    expect(wrapper.findAll('.text-h4').length).toBe(5);
-    answers = wrapper.findAll('.text-h4');
-    for (let i = 0; i < 5; i++) {
-      if (answers.at(i).text() === 'word6-r') {
-        await answers.at(i).trigger('click');
-        break;
+      score = getScore();
+      expect(score.word6.filter(b => b).length).toBe(6);
+      expect(score.word6.filter(b => !b).length).toBe(2);
+      // simulate 1 ok => 1 faults, 7 corrects
+      await (wrapper.vm as any).focusOnWord(word6);
+      expect(wrapper.findAll('.text-h4').length).toBe(5);
+      answers = wrapper.findAll('.text-h4');
+      for (let i = 0; i < 5; i++) {
+        if (answers.at(i).text() === 'word6-r') {
+          await answers.at(i).trigger('click');
+          break;
+        }
       }
-    }
-    score = getScore();
-    expect(score.word6.filter(b => b).length).toBe(7);
-    expect(score.word6.filter(b => !b).length).toBe(1);
-    // simulate 1 ok => 0 faults, 8 corrects
-    await (wrapper.vm as any).focusOnWord(word6);
-    expect(wrapper.findAll('.text-h4').length).toBe(5);
-    answers = wrapper.findAll('.text-h4');
-    for (let i = 0; i < 5; i++) {
-      if (answers.at(i).text() === 'word6-r') {
-        await answers.at(i).trigger('click');
-        break;
+      score = getScore();
+      expect(score.word6.filter(b => b).length).toBe(7);
+      expect(score.word6.filter(b => !b).length).toBe(1);
+      // simulate 1 ok => 0 faults, 8 corrects
+      await (wrapper.vm as any).focusOnWord(word6);
+      expect(wrapper.findAll('.text-h4').length).toBe(5);
+      answers = wrapper.findAll('.text-h4');
+      for (let i = 0; i < 5; i++) {
+        if (answers.at(i).text() === 'word6-r') {
+          await answers.at(i).trigger('click');
+          break;
+        }
       }
-    }
-    score = getScore();
-    expect(score.word6.filter(b => b).length).toBe(8);
-    expect(score.word6.filter(b => !b).length).toBe(0);
-  })
+      score = getScore();
+      expect(score.word6.filter(b => b).length).toBe(8);
+      expect(score.word6.filter(b => !b).length).toBe(0);
+    })
 })

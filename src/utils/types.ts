@@ -121,6 +121,10 @@ export class DataFileRegistry {
     }
     localStorage.setItem(DataFile.STORE_KEY, JSON.stringify(DataFileRegistry.REGISTRY));
   }
+
+  static save() {
+    localStorage.setItem(DataFile.STORE_KEY, JSON.stringify(DataFileRegistry.REGISTRY));
+  }
 }
 
 export declare interface myerror {
