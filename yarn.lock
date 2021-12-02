@@ -1415,9 +1415,9 @@
   integrity sha512-ipixuVrh2OdNmauvtT51o3d8z12p6LtFW9in7U79der/kwejjdNchQC5UMn5u/KxNoM7VHHOs/l8KS8uHxhODQ==
 
 "@types/testing-library__jest-dom@^5.9.1":
-  version "5.14.1"
-  resolved "https://registry.yarnpkg.com/@types/testing-library__jest-dom/-/testing-library__jest-dom-5.14.1.tgz#014162a5cee6571819d48e999980694e2f657c3c"
-  integrity sha512-Gk9vaXfbzc5zCXI9eYE9BI5BNHEp4D3FWjgqBE/ePGYElLAP+KvxBcsdkwfIVvezs605oiyd/VrpiHe3Oeg+Aw==
+  version "5.14.2"
+  resolved "https://registry.yarnpkg.com/@types/testing-library__jest-dom/-/testing-library__jest-dom-5.14.2.tgz#564fb2b2dc827147e937a75b639a05d17ce18b44"
+  integrity sha512-vehbtyHUShPxIa9SioxDwCvgxukDMH//icJG90sXQBUm5lJOHLT5kNeU9tnivhnA/TkOFMzGIXN2cTc4hY8/kg==
   dependencies:
     "@types/jest" "*"
 
@@ -4236,9 +4236,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.896:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.5.tgz#912e8fd1645edee2f0f212558f40916eb538b1f9"
-  integrity sha512-YKaB+t8ul5crdh6OeqT2qXdxJGI0fAYb6/X8pDIyye+c3a7ndOCk5gVeKX+ABwivCGNS56vOAif3TN0qJMpEHw==
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.8.tgz#e1b7752ac1a75e39b5dd90cc7e29ea08b351c484"
+  integrity sha512-Cu5+dbg55+1E3ohlsa8HT0s4b8D0gBewXEGG8s5wBl8ynWv60VuvYW25GpsOeTVXpulhyU/U8JYZH+yxASSJBQ==
 
 elliptic@^6.5.3:
   version "6.5.4"
@@ -6851,9 +6851,9 @@ jsprim@^1.2.2:
     verror "1.10.0"
 
 kana-romaji@^0.1.7:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/kana-romaji/-/kana-romaji-0.1.9.tgz#500b28972cb3dedc9b4b649de852b12b6652445e"
-  integrity sha512-ZP6Jf2E1YdyUCoM03KpeN8A2JTsjcQxEJsudz3q0Akj5pAOFsiWSo0+q/bE/LLERTImReEl4fdFuPHzswrd9mg==
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/kana-romaji/-/kana-romaji-0.1.10.tgz#605ba8a3d720d5e7e8ea5f02781953a501f71c3e"
+  integrity sha512-7k8tXEetst8mCHnO6Y+2hbyJmsCgjKbtf+UWk47VmZU9D2FQEakXl2wkhvkkgsm/IIloNtV6tcAD+rWOad+MCQ==
 
 killable@^1.0.1:
   version "1.0.1"
