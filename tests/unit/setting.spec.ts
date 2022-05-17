@@ -1,4 +1,4 @@
-import { createLocalVue, mount, Wrapper } from "@vue/test-utils";
+import { createLocalVue, mount } from "@vue/test-utils";
 import Vuetify from 'vuetify';
 import setting from "@/views/setting.vue"
 import { getSetting } from '@/utils/functions';
@@ -45,14 +45,11 @@ describe('setting.vue', () => {
     }
   }
 
-  // mocking localStorage
-  global.localStorage = new LocalStorageMock;
-
   it('respects the `getSetting` values', () => {
     const settingData = { difficulty: 1, numWords: 15 };
     localStorage.setItem('wd-setting', JSON.stringify(settingData));
     wrapper = mount(setting, {
-      mocks: { $t: (s: string, o?: object) => s },
+      mocks: { $t: (s: string) => s },
       localVue,
       vuetify
     });
@@ -63,7 +60,7 @@ describe('setting.vue', () => {
     settingData.numWords = 5;
     localStorage.setItem('wd-setting', JSON.stringify(settingData));
     wrapper = mount(setting, {
-      mocks: { $t: (s: string, o?: object) => s },
+      mocks: { $t: (s: string) => s },
       localVue,
       vuetify
     });
@@ -74,7 +71,7 @@ describe('setting.vue', () => {
     const settingData = { difficulty: 1, numWords: 15 };
     localStorage.setItem('wd-setting', JSON.stringify(settingData));
     wrapper = mount(setting, {
-      mocks: { $t: (s: string, o?: object) => s },
+      mocks: { $t: (s: string) => s },
       localVue,
       vuetify
     });

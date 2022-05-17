@@ -2,12 +2,12 @@ import { createLocalVue, mount } from '@vue/test-utils'
 import WordDeck from '@/components/WordDeck.vue'
 import wordComponent from '@/components/word.vue'
 
-import { DataFile, DataFileRegistry, registry, Word } from "@/utils/types";
+import { DataFile, DataFileRegistry, Word } from "@/utils/types";
 import Vuetify from 'vuetify';
 
 
 jest.mock('@/utils/functions', () => {
-  const { DataFile, registry } = jest.requireActual('@/utils/types');
+  const { registry } = jest.requireActual('@/utils/types');
   const testDataFile = {
     fileName: "test-asset",
     fileSize: 56533,
@@ -38,6 +38,8 @@ describe('WordDeck.vue', () => {
   beforeEach(() => {
     vuetify = new Vuetify()
   })
+
+  const { registry } = jest.requireActual('@/utils/types');
 
   interface d {
     [key: string]: string
@@ -72,20 +74,17 @@ describe('WordDeck.vue', () => {
     }
   }
 
-  // mocking localStorage
-  global.localStorage = new LocalStorageMock;
-
   it('renders N words', () => {
     const wrapper = mount(WordDeck, {
       mocks: {
-        $t: (s: string, o?: object) => s
+        $t: (s: string) => s
       },
       store,
       localVue,
       vuetify
     });
     expect(wrapper.vm.$data.words.length).toBe(
-      registry.find((r) => r.fileName === 'test-asset')?.content.length);
+      registry.find((r: { fileName: string; }) => r.fileName === 'test-asset')?.content.length);
     expect(wrapper.vm.$data.difficulty).toBe(1);
     expect(wrapper.vm.$data.numWords).toBe(15);
     (wrapper.vm.$data.randomN as Word[]).map((w) => Number(w.word)).forEach((n) => {
@@ -122,7 +121,7 @@ describe('WordDeck.vue', () => {
     }
     const wrapper = mount(WordDeck, {
       mocks: {
-        $t: (s: string, o?: object) => s
+        $t: (s: string) => s
       },
       store,
       localVue,
@@ -191,7 +190,7 @@ describe('WordDeck.vue', () => {
     }
     const wrapper = mount(WordDeck, {
       mocks: {
-        $t: (s: string, o?: object) => s
+        $t: (s: string) => s
       },
       store,
       localVue,
@@ -220,7 +219,7 @@ describe('WordDeck.vue', () => {
   it('shows the first word when start button clicked', async () => {
     const wrapper = mount(WordDeck, {
       mocks: {
-        $t: (s: string, o?: object) => s
+        $t: (s: string) => s
       },
       store,
       localVue,
@@ -240,7 +239,7 @@ describe('WordDeck.vue', () => {
   it('shows explanations of words when checkbox checked', async () => {
     const wrapper = mount(WordDeck, {
       mocks: {
-        $t: (s: string, o?: object) => s
+        $t: (s: string) => s
       },
       store,
       localVue,
@@ -266,7 +265,7 @@ describe('WordDeck.vue', () => {
   it('loads the next set of words when `start` clicked and empty', async () => {
     const wrapper = mount(WordDeck, {
       mocks: {
-        $t: (s: string, o?: object) => s
+        $t: (s: string) => s
       },
       store,
       localVue,
@@ -305,7 +304,7 @@ describe('WordDeck.vue', () => {
   it('displays info on the word without answer', async () => {
     const wrapper = mount(WordDeck, {
       mocks: {
-        $t: (s: string, o?: object) => s
+        $t: (s: string) => s
       },
       store,
       localVue,
@@ -363,7 +362,7 @@ describe('WordDeck.vue', () => {
       );
       const wrapper = mount(WordDeck, {
         mocks: {
-          $t: (s: string, o?: object) => s
+          $t: (s: string) => s
         },
         store,
         localVue,
