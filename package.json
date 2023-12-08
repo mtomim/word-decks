@@ -43,7 +43,7 @@
     "ftp-deploy": "^2.4.1",
     "jest-localstorage-mock": "^2.4.21",
     "node-notifier": "^8.0.1",
-    "postcss": "^8.2.10",
+    "postcss": "^8.4.31",
     "sass": "^1.32.0",
     "sass-loader": "^10.0.0",
     "typescript": "~4.1.5",
